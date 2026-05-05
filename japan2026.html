@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇯🇵 2026 日本旅行攻略</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+:root{
+  --ink:#18130e;--paper:#f9f5ef;--warm:#f0e8d8;
+  --red:#c43b1e;--red2:#e05535;
+  --gold:#b8882a;--gold2:#e8c060;
+  --sage:#3d6b45;--sage2:#6aaa78;
+  --sky:#2055a0;--sky2:#4a85d8;
+  --muted:#7a6b55;--border:#ddd0b8;
+  --must:#c43b1e;--opt:#3d6b45;
+  --purple:#5e3a9c;--bg2:#f2ead8;
+  --card:#fff;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* ── HEADER ── */
+.site-header{
+  background:var(--ink);
+  padding:1.4rem 1.1rem 1rem;
+  position:relative;overflow:hidden;
+}
+.site-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%,rgba(184,136,42,.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.site-header::after{
+  content:'日本';
+  font-family:'Noto Serif TC',serif;font-weight:900;font-size:8rem;
+  color:rgba(255,255,255,.03);
+  position:absolute;right:-1rem;top:-1.5rem;line-height:1;pointer-events:none;
+}
+.hbadge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--red);color:#fff;
+  font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:.22rem .7rem;border-radius:2px;margin-bottom:.6rem;
+}
+.site-header h1{
+  font-family:'Noto Serif TC',serif;font-weight:900;
+  font-size:clamp(1.55rem,5.5vw,2.6rem);line-height:1.1;
+  color:#fff;
+}
+.site-header h1 em{color:var(--gold2);font-style:normal;}
+.hmeta{
+  display:flex;flex-wrap:wrap;gap:.3rem 1rem;
+  font-size:.83rem;color:rgba(255,255,255,.52);margin-top:.65rem;
+}
+.hmeta b{color:var(--gold2);}
+
+/* ── TABS ── */
+.tabbar{
+  background:var(--ink);
+  display:flex;overflow-x:auto;
+  border-top:1px solid rgba(255,255,255,.07);
+  scrollbar-width:none;position:sticky;top:0;z-index:100;
+}
+.tabbar::-webkit-scrollbar{display:none;}
+.tbtn{
+  flex-shrink:0;background:none;border:none;
+  color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;
+  font-size:.88rem;font-weight:500;
+  padding:.65rem .9rem;cursor:pointer;
+  border-bottom:2.5px solid transparent;
+  transition:color .2s,border-color .2s;white-space:nowrap;
+}
+.tbtn:hover{color:rgba(255,255,255,.7);}
+.tbtn.active{color:var(--gold2);border-bottom-color:var(--red);}
+
+/* ── PANELS ── */
+.panel{display:none;padding:1rem;}
+.panel.active{display:block;}
+@media(min-width:720px){.panel{max-width:860px;margin:0 auto;padding:1.5rem;}}
+
+/* ── UTILITY ── */
+.stitle{
+  font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:1.1rem 0 .5rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.stitle::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.pill{
+  display:inline-block;font-size:.63rem;font-weight:700;
+  letter-spacing:.06em;padding:.1rem .38rem;border-radius:3px;
+  vertical-align:middle;margin-left:.25rem;
+}
+.pill-must{background:#fde4dc;color:var(--must);}
+.pill-opt{background:#d8eddc;color:var(--opt);}
+.pill-donut{background:#fdf0c0;color:#8a6010;}
+.pill-note{background:#e8eaf8;color:var(--sky);}
+
+.tag{font-size:.64rem;font-weight:700;letter-spacing:.04em;padding:.1rem .38rem;border-radius:3px;}
+.tf{background:#fde8d8;color:#a03010;}
+.ts{background:#d8edd8;color:#2a5a2a;}
+.tp{background:#d8e8f5;color:#1a4880;}
+.ta{background:#e8e4f5;color:#42308a;}
+.tkey{background:var(--gold2);color:#5a3a00;}
+
+.chip{display:inline-flex;align-items:center;gap:.3rem;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:.18rem .5rem;font-size:.78rem;color:var(--muted);}
+.chip b{color:var(--ink);}
+
+/* ── INFO GRID ── */
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-bottom:.9rem;}
+@media(min-width:480px){.igrid{grid-template-columns:repeat(4,1fr);}}
+.icard{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.7rem .85rem;}
+.icard .il{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem;}
+.icard .iv{font-family:'Noto Serif TC',serif;font-size:.97rem;font-weight:600;line-height:1.35;}
+.icard.accent{background:var(--red);border-color:var(--red);}
+.icard.accent .il,.icard.accent .iv{color:#fff;}
+
+/* ── FLIGHT BOX ── */
+.fbox{background:var(--sky);color:#fff;border-radius:10px;padding:.9rem 1.05rem;margin-bottom:.8rem;}
+.fbox-title{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:.45rem;}
+.frow{display:flex;align-items:center;gap:.55rem;font-size:.9rem;margin-bottom:.22rem;}
+.frow:last-child{margin-bottom:0;}
+.fnum{background:rgba(255,255,255,.18);border-radius:4px;padding:.1rem .4rem;font-size:.76rem;font-weight:700;}
+.farr{flex:1;text-align:center;opacity:.45;font-size:1.05rem;}
+
+/* ── ACCOM ── */
+.abox{background:var(--sage);color:#fff;border-radius:10px;padding:.9rem 1.05rem;margin-bottom:.8rem;}
+.abox h3{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:.4rem;}
+.arow{display:flex;gap:.38rem;align-items:flex-start;margin-bottom:.25rem;font-size:.87rem;}
+.atag{background:rgba(255,255,255,.18);border-radius:4px;padding:.06rem .35rem;font-size:.75rem;white-space:nowrap;flex-shrink:0;}
+
+/* ── IC CARD BOX ── */
+.icbox{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem;margin-bottom:.8rem;}
+.icbox h3{font-family:'Noto Serif TC',serif;font-weight:600;font-size:.95rem;margin-bottom:.4rem;color:var(--sky);}
+.ictable{width:100%;border-collapse:collapse;font-size:.82rem;}
+.ictable th{background:var(--ink);color:var(--gold2);padding:.3rem .5rem;text-align:left;font-size:.72rem;letter-spacing:.08em;}
+.ictable td{padding:.3rem .5rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.45;}
+.ictable tr:last-child td{border-bottom:none;}
+.ictable tr:nth-child(even) td{background:var(--bg2);}
+
+/* ── LEGEND ── */
+.legend{display:flex;gap:.7rem;flex-wrap:wrap;font-size:.8rem;margin-bottom:.75rem;}
+.ldot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.25rem;vertical-align:middle;}
+
+/* ── DAY CARDS ── */
+.daycard{background:var(--card);border:1px solid var(--border);border-radius:11px;margin-bottom:.7rem;overflow:hidden;transition:box-shadow .2s;}
+.daycard:hover{box-shadow:var(--shadow);}
+.dayhead{display:flex;align-items:stretch;cursor:pointer;user-select:none;}
+.daynum{
+  background:var(--ink);color:var(--gold2);
+  font-family:'Noto Serif TC',serif;font-weight:900;font-size:1.2rem;
+  writing-mode:vertical-rl;padding:.7rem .52rem;
+  display:flex;align-items:center;justify-content:center;
+  min-width:2.5rem;letter-spacing:.05em;
+}
+.daysum{flex:1;padding:.75rem .85rem;}
+.dtitle{font-family:'Noto Serif TC',serif;font-weight:600;font-size:.98rem;color:var(--ink);margin-bottom:.16rem;}
+.dsub{font-size:.8rem;color:var(--muted);}
+.dtags{display:flex;flex-wrap:wrap;gap:.2rem;margin-top:.3rem;}
+.daytog{display:flex;align-items:center;padding:0 .65rem;color:var(--muted);font-size:.9rem;transition:transform .28s;}
+.daycard.open .daytog{transform:rotate(180deg);}
+
+/* TRANSPORT LINK */
+.tlink{
+  display:inline-flex;align-items:center;gap:.22rem;
+  background:var(--purple);color:#fff;
+  font-size:.67rem;font-weight:700;padding:.1rem .42rem;border-radius:3px;
+  cursor:pointer;border:none;font-family:inherit;margin-top:.28rem;
+}
+.tlink:hover{background:#7248b8;}
+
+/* ── DAY DETAIL ── */
+.daydet{display:none;padding:0 .9rem .9rem;border-top:1px solid var(--border);}
+.daycard.open .daydet{display:block;}
+
+/* ── EXPAND CONTROLS ── */
+.expctrls{display:flex;gap:.4rem;margin-bottom:.7rem;flex-wrap:wrap;}
+.expbtn{
+  background:var(--card);border:1px solid var(--border);border-radius:6px;
+  padding:.28rem .6rem;font-size:.78rem;font-family:inherit;cursor:pointer;
+  color:var(--muted);transition:all .18s;
+}
+.expbtn:hover{background:var(--ink);color:var(--gold2);border-color:var(--ink);}
+
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:1.25rem;margin-top:.5rem;}
+.tl::before{content:'';position:absolute;left:.42rem;top:.5rem;bottom:.5rem;width:1px;background:var(--border);}
+.tli{position:relative;margin-bottom:.72rem;}
+.tli::before{content:'';position:absolute;left:-.86rem;top:.42rem;width:7px;height:7px;border-radius:50%;background:var(--border);border:1.5px solid var(--paper);}
+.tli.must::before{background:var(--must);}
+.tli.opt::before{background:var(--opt);}
+.tli.donut::before{background:var(--gold);}
+.tli.trans::before{background:var(--sky);}
+.tltime{font-size:.71rem;font-weight:700;color:var(--muted);margin-bottom:.05rem;font-variant-numeric:tabular-nums;}
+.tltxt{font-size:.9rem;color:var(--ink);line-height:1.55;}
+.tlnote{
+  font-size:.8rem;color:var(--muted);
+  background:var(--bg2);border-radius:5px;
+  padding:.28rem .46rem;margin-top:.22rem;line-height:1.5;
+}
+
+/* ── INFO BOX ── */
+.ibox{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:.5rem .7rem;font-size:.82rem;color:var(--muted);line-height:1.55;margin-top:.35rem;}
+.ibox strong{color:var(--ink);}
+.ibox.warn{border-left:3px solid var(--red);color:var(--red);}
+.ibox.grn{border-left:3px solid var(--sage);}
+.ibox.blue{border-left:3px solid var(--sky);}
+.ibox.gold{border-left:3px solid var(--gold);}
+.ibox.purple{border-left:3px solid var(--purple);}
+
+/* ── WEATHER ── */
+.wrow{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.35rem;}
+.wchip{background:var(--sky-light,#ddeeff);color:var(--sky);border-radius:4px;padding:.15rem .45rem;font-size:.77rem;font-weight:600;}
+.wchip{background:#d8e8fa;}
+.wchip.rain{background:#e4d8f8;color:var(--purple);}
+
+/* ── TIPS ── */
+.tipc{
+  background:var(--card);border-left:3px solid var(--gold);
+  border-radius:0 9px 9px 0;padding:.65rem .9rem;margin-bottom:.5rem;
+  font-size:.87rem;line-height:1.6;box-shadow:0 1px 4px rgba(0,0,0,.05);
+}
+.tipc h4{font-family:'Noto Serif TC',serif;font-weight:600;font-size:.9rem;margin-bottom:.2rem;}
+.tipc p{color:var(--muted);}
+.tipc.warn{border-left-color:var(--red);}
+.tipc.warn h4{color:var(--red);}
+.tipc.grn{border-left-color:var(--sage);}
+.tipc.grn h4{color:var(--sage);}
+.tipc.blue{border-left-color:var(--sky);}
+.tipc.blue h4{color:var(--sky);}
+.tipc.purple{border-left-color:var(--purple);}
+.tipc.purple h4{color:var(--purple);}
+
+/* ── SHOPPING ── */
+.sitem{display:flex;gap:.4rem;padding:.38rem 0;border-bottom:1px solid var(--border);font-size:.87rem;line-height:1.44;}
+.sitem:last-child{border-bottom:none;}
+.sdot{width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:.46rem;}
+
+/* ── QNAV ── */
+.qnav{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.85rem;}
+.qbtn{
+  background:var(--card);border:1px solid var(--border);border-radius:6px;
+  padding:.25rem .55rem;font-size:.77rem;font-family:inherit;cursor:pointer;
+  color:var(--muted);transition:all .18s;
+}
+.qbtn:hover{background:var(--ink);color:var(--gold2);border-color:var(--ink);}
+
+/* ── TRANSPORT PAGE ── */
+.dtblock{background:var(--card);border:1px solid var(--border);border-radius:11px;margin-bottom:.72rem;overflow:hidden;}
+.dth{display:flex;align-items:stretch;cursor:pointer;user-select:none;}
+.dthnum{
+  background:var(--purple);color:#fff;
+  font-family:'Noto Serif TC',serif;font-weight:900;font-size:1.1rem;
+  writing-mode:vertical-rl;padding:.6rem .5rem;
+  display:flex;align-items:center;justify-content:center;min-width:2.3rem;
+}
+.dthsum{flex:1;padding:.65rem .82rem;}
+.dthtitle{font-family:'Noto Serif TC',serif;font-weight:600;font-size:.93rem;margin-bottom:.1rem;}
+.dthsub{font-size:.78rem;color:var(--muted);}
+.dthtog{display:flex;align-items:center;padding:0 .62rem;color:var(--muted);font-size:.9rem;transition:transform .28s;}
+.dtblock.open .dthtog{transform:rotate(180deg);}
+.dthbody{display:none;padding:.1rem .9rem .9rem;}
+.dtblock.open .dthbody{display:block;}
+
+/* ── ROUTE STEPS ── */
+.rstep{display:flex;gap:.65rem;margin-bottom:.7rem;align-items:flex-start;}
+.rsleft{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:34px;}
+.rsicon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;border:2px solid var(--border);flex-shrink:0;}
+.rsicon.walk{background:#f0e8d0;border-color:#c0a060;}
+.rsicon.train{background:var(--sky);color:#fff;border-color:var(--sky);}
+.rsicon.bus{background:#2e8a5e;color:#fff;border-color:#2e8a5e;}
+.rsicon.dest{background:var(--red);color:#fff;border-color:var(--red);}
+.rsicon.home{background:var(--sage);color:#fff;border-color:var(--sage);}
+.rsicon.donut{background:var(--gold);color:#fff;border-color:var(--gold);}
+.rsline{width:2px;flex:1;background:var(--border);margin:3px auto;min-height:16px;}
+.rsbody{flex:1;padding-top:.06rem;}
+.rsbody strong{display:block;font-size:.9rem;line-height:1.4;}
+.rsmeta{font-size:.78rem;color:var(--muted);margin-top:.06rem;line-height:1.45;}
+.rsfare{display:inline-block;background:#fde4dc;color:var(--must);font-size:.7rem;font-weight:700;padding:.07rem .32rem;border-radius:3px;margin-left:.3rem;}
+.rstip{font-size:.78rem;background:#ddeefa;color:#1a3a60;border-radius:5px;padding:.2rem .4rem;margin-top:.18rem;line-height:1.45;}
+
+/* ── TIMETABLE ── */
+.ttwrap{overflow-x:auto;margin-top:.45rem;border-radius:7px;border:1px solid var(--border);}
+.tt{border-collapse:collapse;font-size:.79rem;width:100%;min-width:300px;}
+.tt th{background:var(--ink);color:var(--gold2);font-weight:700;padding:.35rem .5rem;text-align:left;white-space:nowrap;letter-spacing:.05em;}
+.tt td{padding:.3rem .5rem;border-bottom:1px solid var(--border);vertical-align:top;}
+.tt tr:last-child td{border-bottom:none;}
+.tt tr:nth-child(even) td{background:var(--bg2);}
+.tt .rec{color:var(--must);font-weight:700;}
+.tt .alt{color:var(--sage);}
+.tt .note{color:var(--muted);font-size:.75rem;}
+
+/* ── SOURCE BOX ── */
+.srcbox{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:.48rem .68rem;margin-top:.6rem;font-size:.76rem;color:var(--muted);}
+.srcbox .srct{font-weight:700;color:var(--ink);margin-bottom:.2rem;font-size:.78rem;}
+.srcbox a{color:var(--sky);text-decoration:none;word-break:break-all;display:block;margin-bottom:.15rem;}
+.srcbox a:hover{text-decoration:underline;}
+
+/* ── NEX PAGE ── */
+.nexcmp{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem;}
+@media(max-width:460px){.nexcmp{grid-template-columns:1fr;}}
+.nexcol{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.8rem .95rem;}
+.nexcol h3{font-size:.77rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem;padding-bottom:.28rem;border-bottom:2px solid;}
+.nexcol.totsuka h3{border-color:var(--sky);color:var(--sky);}
+.nexcol.ofuna h3{border-color:var(--sage);color:var(--sage);}
+.pros p,.cons p{font-size:.81rem;margin-bottom:.22rem;padding-left:.85rem;position:relative;line-height:1.42;}
+.pros p::before{content:'✓';position:absolute;left:0;color:var(--sage);font-weight:700;}
+.cons p::before{content:'✗';position:absolute;left:0;color:var(--red);}
+
+/* ── DONUT ── */
+.dbanner{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--red) 100%);
+  color:#fff;border-radius:11px;padding:.95rem 1.1rem;margin-bottom:.9rem;
+}
+.dbanner h3{font-family:'Noto Serif TC',serif;font-size:1.02rem;font-weight:900;margin-bottom:.25rem;}
+.dbanner p{font-size:.85rem;line-height:1.65;opacity:.93;}
+.dentry{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.72rem .95rem;margin-bottom:.55rem;font-size:.85rem;line-height:1.6;}
+.dentry strong{display:block;font-family:'Noto Serif TC',serif;font-size:.92rem;margin-bottom:.16rem;color:var(--red);}
+
+/* ── LINKS PAGE ── */
+.linktable{width:100%;border-collapse:collapse;font-size:.84rem;}
+.linktable th{background:var(--ink);color:var(--gold2);padding:.35rem .55rem;text-align:left;font-size:.72rem;letter-spacing:.08em;}
+.linktable td{padding:.35rem .55rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.linktable tr:last-child td{border-bottom:none;}
+.linktable tr:nth-child(even) td{background:var(--bg2);}
+.linktable a{color:var(--sky);text-decoration:none;word-break:break-all;}
+.linktable a:hover{text-decoration:underline;}
+
+
+/* ── DAY MAPS ── */
+.daymap-wrap{margin-top:.9rem;}
+.daymap-tabs{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.6rem;}
+.dmtab{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:.22rem .55rem;font-size:.75rem;font-family:inherit;cursor:pointer;color:var(--muted);transition:all .18s;}
+.dmtab.active{background:var(--ink);color:var(--gold2);border-color:var(--ink);}
+.dmview{display:none;}
+.dmview.active{display:block;}
+.map-svg-wrap{width:100%;overflow-x:auto;border:1px solid var(--border);border-radius:9px;background:#f8f4f0;}
+.map-svg-wrap svg{display:block;max-width:100%;height:auto;}
+.map-caption{font-size:.75rem;color:var(--muted);margin-top:.35rem;line-height:1.5;}
+
+/* ── RESPONSIVE TOUCH ── */
+@media(max-width:400px){
+  .tbtn{font-size:.82rem;padding:.6rem .75rem;}
+  .daynum{font-size:1.1rem;min-width:2.3rem;}
+  .dtitle{font-size:.93rem;}
+  .tltxt{font-size:.88rem;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hbadge">🇯🇵 2026 年 5 月 9–16 日</div>
+  <h1>🐓🐷 <em>日本</em>旅行攻略</h1>
+  <div class="hmeta">
+    <span>✈️ <b>JX802 / JX805</b> 台灣之星</span>
+    <span>🏠 <b>藤澤本町</b> 親戚家大本營</span>
+    <span>🛏️ <b>5/11夜</b> 橫濱 JR METS</span>
+  </div>
+</header>
+
+<nav class="tabbar">
+  <button class="tbtn active" onclick="showTab('overview')">總覽</button>
+  <button class="tbtn" onclick="showTab('itinerary')">逐日行程</button>
+  <button class="tbtn" onclick="showTab('transport')">🚃 交通指南</button>
+  <button class="tbtn" onclick="showTab('nex')">✈ NEX</button>
+  <button class="tbtn" onclick="showTab('donut')">🍩 甜甜圈</button>
+  <button class="tbtn" onclick="showTab('shopping')">購物</button>
+  <button class="tbtn" onclick="showTab('tips')">💡 建議</button>
+  <button class="tbtn" onclick="showTab('links')">🔗 連結</button>
+</nav>
+
+<!-- ══════ OVERVIEW ══════ -->
+<div class="panel active" id="panel-overview">
+  <div class="igrid">
+    <div class="icard accent"><div class="il">去程</div><div class="iv">5/9 (六)<br>台北T1 10:40</div></div>
+    <div class="icard accent"><div class="il">回程</div><div class="iv">5/16 (六)<br>成田T2 20:40</div></div>
+    <div class="icard"><div class="il">住宿主</div><div class="iv">親戚家<br>藤澤本町</div></div>
+    <div class="icard"><div class="il">飯店夜</div><div class="iv">5/11（一）<br>橫濱 JR METS</div></div>
+  </div>
+
+  <div class="fbox">
+    <div class="fbox-title">航班資訊</div>
+    <div class="frow"><span class="fnum">JX802</span><span>台北T1 10:40</span><span class="farr">✈</span><span>東京成田T2 15:05</span></div>
+    <div class="frow"><span class="fnum">JX805</span><span>東京成田T2 20:40</span><span class="farr">✈</span><span>台北T1 23:20</span></div>
+  </div>
+
+  <div class="abox">
+    <h3>住宿安排</h3>
+    <div class="arow"><span class="atag">Day1–2, 4–8</span><span>🏠 藤澤本町 姑姑家</span></div>
+    <div class="arow"><span class="atag">Day3 (5/11 一) 夜</span><span>🏨 JR EAST METS Premier 橫濱櫻木町</span></div>
+  </div>
+
+  <div class="icbox">
+    <h3>💳 ICOCA / Suica 交通卡說明</h3>
+    <p style="font-size:.84rem;color:var(--muted);margin-bottom:.5rem;">兩張在關東地區<b style="color:var(--ink)">完全通用</b>，帶哪張都行。2013年起全國交通系IC卡相互利用，小田急、江ノ電、港未來線、橫濱地鐵均可刷。</p>
+    <div style="overflow-x:auto;">
+    <table class="ictable">
+      <tr><th>卡片</th><th>適用範圍</th><th>建議</th></tr>
+      <tr><td><b>Suica</b></td><td>JR東日本全線、大部分私鐵地鐵</td><td>可在成田機場辦理</td></tr>
+      <tr><td><b>ICOCA</b></td><td>與Suica相同</td><td>手邊有可直接用</td></tr>
+    </table>
+    </div>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:.4rem;">⚠️ ICOCA 不能購買 Suica グリーン券，但此行程完全用不到。</p>
+  </div>
+
+  <div class="stitle">圖例</div>
+  <div class="legend">
+    <span><span class="ldot" style="background:var(--must)"></span><b style="color:var(--must)">必去</b> 強力推薦</span>
+    <span><span class="ldot" style="background:var(--opt)"></span><b style="color:var(--opt)">選做</b> 有時間再去</span>
+    <span><span class="ldot" style="background:var(--gold)"></span>🍩 甜甜圈</span>
+    <span><span style="background:var(--purple);color:#fff;font-size:.63rem;padding:.07rem .28rem;border-radius:3px;font-weight:700;">🚃</span> 點擊跳交通指南</span>
+  </div>
+
+  <div class="stitle">8天行程速覽</div>
+  <div id="ov-days"></div>
+</div>
+
+<!-- ══════ ITINERARY ══════ -->
+<div class="panel" id="panel-itinerary">
+  <div class="expctrls">
+    <button class="expbtn" onclick="expandAll()">全部展開</button>
+    <button class="expbtn" onclick="collapseAll()">全部收合</button>
+  </div>
+  <div class="legend">
+    <span><span class="ldot" style="background:var(--must)"></span><b style="color:var(--must)">必去</b></span>
+    <span><span class="ldot" style="background:var(--opt)"></span><b style="color:var(--opt)">選做</b></span>
+    <span><span class="ldot" style="background:var(--gold)"></span>🍩</span>
+    <span><span class="ldot" style="background:var(--sky)"></span>交通</span>
+  </div>
+  <div class="qnav" id="qnav"></div>
+  <div id="itin-days"></div>
+</div>
+
+<!-- ══════ TRANSPORT ══════ -->
+<div class="panel" id="panel-transport">
+  <p style="font-size:.87rem;color:var(--muted);margin-bottom:.85rem;">每天 Step-by-Step 路線、最新時刻表與搭車教學。點擊各天展開。</p>
+  <div class="expctrls">
+    <button class="expbtn" onclick="expandAllT()">全部展開</button>
+    <button class="expbtn" onclick="collapseAllT()">全部收合</button>
+  </div>
+  <div id="trans-days"></div>
+</div>
+
+<!-- ══════ NEX ══════ -->
+<div class="panel" id="panel-nex">
+  <div class="tipc blue">
+    <h4>📋 結論：去程下大船，回程也下大船</h4>
+    <p>附件已確認：<b>去程 NEX 38號（成田T2 16:57 → 大船 18:51）</b>；<b>回程 NEX 39號（大船 15:10 → 成田T2 17:15）</b>。購票時同時劃好去回程座位！</p>
+  </div>
+
+  <div class="stitle">去程班次（5/9 週六）</div>
+  <div class="ttwrap">
+    <table class="tt">
+      <tr><th>班次</th><th>成田T2 發</th><th>大船 抵</th><th>建議</th></tr>
+      <tr><td>NEX 34號</td><td>15:57</td><td>17:51</td><td class="note">若清關快可考慮</td></tr>
+      <tr><td class="rec">⭐ NEX 38號</td><td class="rec">16:57</td><td class="rec">18:51</td><td class="rec">最推薦</td></tr>
+      <tr><td>NEX 42號</td><td class="alt">17:57</td><td class="alt">19:51</td><td class="note">備案（較晚）</td></tr>
+    </table>
+  </div>
+  <div class="ibox blue" style="margin-top:.5rem;">
+    <b>大船→藤澤（JR東海道線）：</b> 約 9 分 / <b>藤澤→藤澤本町（小田急）：</b> 約 2–3 分，¥136<br>
+    推薦NEX 38號：18:51抵大船 → 19:00抵藤澤 → 19:05抵藤澤本町
+  </div>
+
+  <div class="stitle">回程班次（5/16 週六）</div>
+  <div class="ttwrap">
+    <table class="tt">
+      <tr><th>班次</th><th>大船 發</th><th>橫濱 發</th><th>成田T2 抵</th><th>建議</th></tr>
+      <tr><td>NEX 35號</td><td>14:10</td><td>14:21</td><td>16:15</td><td class="note">太早</td></tr>
+      <tr><td class="rec">⭐ NEX 39號</td><td class="rec">15:10</td><td class="rec">15:21</td><td class="rec">17:15</td><td class="rec">最推薦</td></tr>
+      <tr><td>NEX 43號</td><td class="alt">16:10</td><td class="alt">16:21</td><td class="alt">18:15</td><td class="note">緊急備案</td></tr>
+    </table>
+  </div>
+
+  <div class="stitle">購票注意事項</div>
+  <div class="ibox">
+    • 票價：<b>¥5,200（來回，14天有效）</b>，需出示護照<br>
+    • 購票：成田T2 B1「JR東日本旅行服務中心」綠色櫃檯或自動售票機<br>
+    • <b>同時劃好去程（NEX 38號 16:57）及回程（NEX 39號 大船15:10）座位！</b><br>
+    • NEX 在東京站後分大船方向和新宿方向，請確認乘坐大船方向車廂
+  </div>
+
+  <div class="srcbox">
+    <div class="srct">📎 時刻表來源</div>
+    <a href="https://www.jreast.co.jp/tc/nex/" target="_blank">JR東日本 N'EX 官方頁面（繁體中文）</a>
+    <a href="https://ekitan.com/timetable/railway/line-station/179-10/d1" target="_blank">N'EX 大船→成田 時刻表（ekitan）</a>
+    <a href="https://www.navitime.co.jp/diagram/depArrTimeList?departure=00004637&arrival=00005672&line=00000161&updown=0" target="_blank">N'EX 成田→大船 時刻表（NAVITIME）</a>
+    <a href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank">JR東日本網路訂票（英文）</a>
+  </div>
+</div>
+
+<!-- ══════ DONUT ══════ -->
+<div class="panel" id="panel-donut">
+  <div class="dbanner">
+    <h3>🍩 I'm donut？完整攻略</h3>
+    <p>Day 3（5/11 週一）行程中有充裕機會。詳細交通路線請見「交通指南 Day 3」。</p>
+  </div>
+
+  <div class="stitle">Day 3（5/11 週一）橫濱ティンバーワーフ店</div>
+  <div class="tipc grn">
+    <h4>✅ 最佳時機：上午 10:00 開始排隊</h4>
+    <p>飯店辦理寄放行李後，從橫濱站搭港未來線→みなとみらい駅（¥210，4分）→ 2番出口出站步行約13分，沿海濱步道前行，見木玻璃建築「横浜ティンバーワーフ」即是。<b>建議 10:00 到，種類最齊，等候最少。</b></p>
+  </div>
+
+  <div class="dentry">
+    <strong>店舗資訊</strong>
+    📍 地址：横浜市西区みなとみらい1-1-5 横浜ティンバーワーフ 1F<br>
+    🕐 營業：<b>8:00–19:00</b>（完售即打烊，11:00前後種類最豐富）<br>
+    🚇 交通A：港未來線「みなとみらい駅」2番出口 → 步行約13分<br>
+    🚇 交通B：横浜駅東口 → BAYSIDE BLUE巴士 →「ティンバーワーフ」站下車（¥220）<br>
+    💳 刷 Cube 卡享 8% 日本賞
+  </div>
+
+  <div class="dentry">
+    <strong>🍩 吃甜甜圈攻略（dacō 聯合體驗！）</strong>
+    1. 在 <b>I'm donut？</b> 排隊購買生甜甜圈（多買幾個，完售就停止）<br>
+    2. 到隔壁 <b>dacō</b> 點飲料或麵包<br>
+    3. <b>帶著 I'm donut？ 到 dacō 座位區享用</b>（dacō 約80個座位，允許此做法）<br>
+    4. 靠窗海景座位邊吃邊欣賞港未來灣景！🌊
+  </div>
+
+  <div class="dentry">
+    <strong>🏆 必買口味</strong>
+    ① <b>I'm donut? オリジナル</b>（原味）¥440 — 最人氣<br>
+    ② <b>ピスタチオ</b>（開心果）¥525<br>
+    ③ <b>カスタード</b>（卡士達）¥525<br>
+    ④ <b>マンハッタン</b>（橫濱限定）— 必吃<br>
+    ⑤ <b>ドバイチョコレート</b>（橫濱限定，開心果+巧克力）
+  </div>
+
+  <div class="dentry">
+    <strong>⚠️ 注意事項</strong>
+    • 建議 10:00 前到，平日等候約10–20分<br>
+    • 完售即打烊，不要太晚去<br>
+    • 常溫保存，當天吃完最佳
+  </div>
+
+  <div class="srcbox">
+    <div class="srct">📎 參考來源</div>
+    <a href="https://prtimes.jp/main/html/rd/p/000000026.000129324.html" target="_blank">橫濱初出店プレスリリース（peace put）</a>
+    <a href="https://www.mm21railway.co.jp/global/chinese_han/" target="_blank">港未來線 路線圖（繁體中文）</a>
+  </div>
+</div>
+
+<!-- ══════ SHOPPING ══════ -->
+<div class="panel" id="panel-shopping">
+  <div class="stitle">小田原（Day 2）</div>
+  <div class="sitem"><div class="sdot"></div><span>🥐 <b>パン工房ブンブン Plus</b>（ミナカ小田原）爆餡紅豆麵包 ¥194，10:00–20:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍡 <b>甘味喫茶 岡西</b> 御荻¥400、團子¥220，外帶送姑姑，10:00–20:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🐟 <b>籠清 魚板</b> 小田原名物，10:00–20:00</span></div>
+
+  <div class="stitle">橫濱（Day 3–4）</div>
+  <div class="sitem"><div class="sdot"></div><span>🏬 <b>JOINUS 必逛</b>：3F Francfranc、4F Lattice・Olive des olive；B1 鎌倉襯衫、治一郎布丁</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏬 <b>高島屋 必逛</b>：5F 伊東屋文具（ZEBRA Miffy筆！）、B1 横浜バニラ</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏬 <b>SOGO 必買</b>：B2 小倉山莊、tulip rose 玫瑰花餅乾 ⭐⭐</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏬 <b>Lumine 必逛</b>：B2 cosme@、4F kastane・FREE'S MART</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍫 <b>Sils Maria 生巧克力</b>（馬車道本店）可可霜淇淋¥500，生巧克力精選</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍫 <b>Belle Plage 巧克力</b>（元町）袋裝送同事超划算，10:30–19:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍞 <b>Hamabread Bakery</b>（元町）紅茶乳酪麵包¥280，11:00–17:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🪭 <b>香炉庵 黑糖銅鑼燒</b>¥275，可放2–3天，買給姑姑姑丈，9:00–18:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍵 <b>La Théière 紅茶専門店</b>（元町）橫濱元町デュエット ⭐必去</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🧺 <b>Huffnagel 蘭姆葡萄夾心</b>（紅磚倉庫2F）冷藏¥430–450，11:00–20:00</span></div>
+
+  <div class="stitle">合羽橋（Day 6 週四）</div>
+  <div class="sitem"><div class="sdot"></div><span>🔪 <b>釜淺商店</b> 水果刀¥1,900，<b>可免費刻字⭐</b>，11:00–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🔪 <b>鍔屋菜刀店</b> 水果刀¥1,822，10:00–17:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🧁 <b>馬嶋屋菓子道具店</b> 烘焙模具，9:30–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍵 <b>ZAKA Kappabashi</b> 茶筅立、抹茶碗，10:00–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🖌️ <b>金屋毛刷店 Kanaya Brush</b> 繪筆2号丸¥209，10:30–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏺 <b>田窯（でんがま）</b> 和食器，10:00–18:00（合羽橋入口第一站）</span></div>
+  <div class="sitem"><div class="sdot"></div><span>⚙️ <b>飯田屋</b> 不鏽鋼茶篩濾茶網</span></div>
+
+  <div class="stitle">鎌倉（Day 7 週五）</div>
+  <div class="sitem"><div class="sdot"></div><span>🕊️ <b>豊島屋</b>（鎌倉本店）鳩サブレー 8入¥1,220，9:00–19:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍵 <b>八十八鎌倉抹茶</b>（Hatoya Kamakura）10:00–18:00 ⭐必吃</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🌿 <b>arbre noir</b> 抹茶燒¥90/個（當天保存）、盒裝4–5天，11:00–18:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>💍 <b>Beller 平價銀飾</b>，10:30–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>👔 <b>鎌倉襯衫 Maker's Shirt KAMAKURA</b>，11:00–18:00 ⭐必去</span></div>
+
+  <div class="stitle">藤澤（Day 7/8）</div>
+  <div class="sitem"><div class="sdot"></div><span>👗 <b>Uniqlo（LUMIRE 6F）</b>週五特價！5/15 週五 ⭐，10:00–20:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🛒 <b>無印良品（OPA 7F）</b>，10:00–21:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🪙 <b>3coins（JR藤沢駅商場 3F）</b>，10:00–21:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🛍️ <b>Seria（OPA 4F）</b>，10:00–21:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🖥️ <b>Bic Camera 藤澤北口</b>，10:00–20:30</span></div>
+
+  <div class="stitle">成田機場免稅（Day 8）</div>
+  <div class="sitem"><div class="sdot"></div><span>💄 <b>DECORTÉ 肌膚之鑰</b></span></div>
+  <div class="sitem"><div class="sdot"></div><span>💄 <b>資生堂 Elixir</b> 膠原A醇抗皺眼霜</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍰 <b>LeTAO 小樽起司蛋糕</b>（機場限定，冷藏）</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍫 <b>Royce' 生巧克力</b>（需冷藏）</span></div>
+</div>
+
+<!-- ══════ TIPS ══════ -->
+<div class="panel" id="panel-tips">
+  <div class="tipc warn">
+    <h4>⚠️ 天氣與必備物品</h4>
+    <p>5月藤澤・橫濱・鎌倉，白天20–25°C，早晚較涼，建議攜帶薄外套。5/9–16應無梅雨，但備折疊傘以防萬一。</p>
+  </div>
+  <div class="tipc blue">
+    <h4>🚃 票券總攻略</h4>
+    <p>• <b>N'EX來回票¥5,200</b>：同時劃好去程（NEX 38號 16:57）＋回程（NEX 39號 大船15:10）座位<br>
+    • <b>ICOCA/Suica</b>：兩張關東完全通用，帶手邊的就好<br>
+    • <b>江ノ電一日票¥800</b>：Day 5（和田塚→長谷→江之島→藤澤）必買，無限搭乘更省<br>
+    • Day 3 橫濱：刷Suica即可，不需買一日券<br>
+    • Day 4 橫濱：刷Suica即可，不需買一日券</p>
+  </div>
+  <div class="tipc">
+    <h4>💰 退稅策略</h4>
+    <p>• 同一店家同日消費<b>未稅¥5,000以上</b>可退稅，護照必備<br>
+    • 高島屋＋JOINUS 可合計計算退稅<br>
+    • SOGO B2 小倉山莊、tulip rose 必買⭐<br>
+    • 現金退稅手續費最低</p>
+  </div>
+  <div class="tipc grn">
+    <h4>🍩 I'm donut？最佳策略</h4>
+    <p>• Day 3（5/11 週一）去橫濱後第一件事就去，10:00到種類最齊<br>
+    • 買完去隔壁 dacō 點飲料，使用dacō座位區享用，海景座位極美<br>
+    • 刷 Cube 卡享 8% 日本賞</p>
+  </div>
+  <div class="tipc">
+    <h4>🌊 江之島攻略（Day 5）</h4>
+    <p>• 建議 7:00 從藤澤本町出發，早去人少<br>
+    • 江ノ電座位選右側靠海！<br>
+    • エスカー全程券¥360（上行手扶梯），建議買<br>
+    • シーキャンドルセット¥1,100（含電梯+展望燈塔）比分開買省¥60<br>
+    • 下坡走階梯，邊走邊逛小店最佳</p>
+  </div>
+  <div class="tipc warn">
+    <h4>⚠️ 重要提醒</h4>
+    <p>• Day 6 合羽橋多數店週日公休，週四完全沒問題<br>
+    • CONFECT-CONCEPT 10:30開，田窯10:00開，建議先逛田窯<br>
+    • 回程機場：<b>記得到稅關旁刷護照</b>，影響退稅紀錄！<br>
+    • Uniqlo：週二・週五有特價，Day 7（5/15 週五）⭐</p>
+  </div>
+  <div class="tipc grn">
+    <h4>🍱 Day 3 晚餐推薦：三浦三崎港 橫濱ポルタ店</h4>
+    <p>位在橫濱站東口地下街PORTA B2，三崎直送マグロ，品質好價格合理。<b>可在ホットペッパーグルメ預約</b>，避免排隊（連結見連結頁）。比活美登利天空大樓店更推薦。</p>
+  </div>
+</div>
+
+<!-- ══════ LINKS ══════ -->
+<div class="panel" id="panel-links">
+  <p style="font-size:.85rem;color:var(--muted);margin-bottom:.8rem;">出發前確認以下來源的最新資訊。</p>
+  <div style="overflow-x:auto;">
+  <table class="linktable">
+    <tr><th>項目</th><th>連結</th></tr>
+    <tr><td>N'EX 官方（繁中）</td><td><a href="https://www.jreast.co.jp/tc/nex/" target="_blank">www.jreast.co.jp/tc/nex/</a></td></tr>
+    <tr><td>JR東日本網路訂票</td><td><a href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank">eki-net.com（英文）</a></td></tr>
+    <tr><td>N'EX 大船→成田 時刻</td><td><a href="https://ekitan.com/timetable/railway/line-station/179-10/d1" target="_blank">ekitan.com（大船発）</a></td></tr>
+    <tr><td>N'EX 成田→大船 時刻</td><td><a href="https://www.navitime.co.jp/diagram/depArrTimeList?departure=00004637&arrival=00005672&line=00000161&updown=0" target="_blank">NAVITIME（成田発）</a></td></tr>
+    <tr><td>藤澤本町→藤澤 時刻</td><td><a href="https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006943&arrival=00006942&line=00000685&updown=1" target="_blank">NAVITIME（往藤澤方向）</a></td></tr>
+    <tr><td>藤澤→藤澤本町 時刻</td><td><a href="https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006942&arrival=00006943&line=00000685&updown=0" target="_blank">NAVITIME（往藤澤本町方向）</a></td></tr>
+    <tr><td>藤澤→橫濱 JR 時刻</td><td><a href="https://ekitan.com/timetable/railway/line-station/149-7/d1" target="_blank">ekitan（藤澤→橫濱 上り）</a></td></tr>
+    <tr><td>藤澤→鎌倉 JR 時刻</td><td><a href="https://transit.yahoo.co.jp/" target="_blank">Yahoo!路線（查詢）</a></td></tr>
+    <tr><td>江ノ電時刻表</td><td><a href="https://www.enoden.co.jp/train/timetable/" target="_blank">enoden.co.jp 公式</a></td></tr>
+    <tr><td>小田急時刻表（藤澤）</td><td><a href="https://www.odakyu.jp/station/fujisawa/timetable/" target="_blank">odakyu.jp 公式</a></td></tr>
+    <tr><td>港未來線 路線圖</td><td><a href="https://www.mm21railway.co.jp/global/chinese_han/" target="_blank">mm21railway.co.jp（繁中）</a></td></tr>
+    <tr><td>YOKOHAMA AIR CABIN 纜車</td><td><a href="https://yokohama-air-cabin.jp/" target="_blank">yokohama-air-cabin.jp</a></td></tr>
+    <tr><td>高德院（鎌倉大佛）</td><td><a href="https://www.kotoku-in.jp/" target="_blank">kotoku-in.jp</a></td></tr>
+    <tr><td>江之島エスカー</td><td><a href="https://enoshima-seacandle.com/facilities/escar/" target="_blank">enoshima-seacandle.com</a></td></tr>
+    <tr><td>三浦三崎港 橫濱ポルタ 預約</td><td><a href="https://www.hotpepper.jp/strJ004025844/yoyaku/" target="_blank">ホットペッパーグルメ</a></td></tr>
+    <tr><td>乗換案内（Yahoo路線）</td><td><a href="https://transit.yahoo.co.jp/" target="_blank">transit.yahoo.co.jp</a></td></tr>
+  </table>
+  </div>
+</div>
+<script>
+// ══════════════════════════════════════════
+// TAB CONTROLLER — defined first, no hoisting issues
+// ══════════════════════════════════════════
+function showTab(t){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tbtn').forEach(function(b){b.classList.remove('active');});
+  var el = document.getElementById('panel-'+t);
+  if(el) el.classList.add('active');
+  var tabs=['overview','itinerary','transport','nex','donut','shopping','tips','links'];
+  var i=tabs.indexOf(t);
+  var btns=document.querySelectorAll('.tbtn');
+  if(i>=0 && btns[i]) btns[i].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ══════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════
+var days=[
+  {n:1,date:'5/9 (六)',title:'抵達日本！',sub:'成田機場 → 大船 → 藤澤本町 → OK超市',
+   tags:['tp','ta'],weather:{sky:'陰天陣雨',temp:'17–20°C',rain:'70%'},tid:'t1',
+   tl:[
+    {t:'10:40',tx:'從台北桃園機場出發（JX802）',c:'must'},
+    {t:'15:05',tx:'抵達成田機場第2航廈（T2）入境'},
+    {t:'15:05–16:00',tx:'通關、取行李，往 B1「JR東日本旅行服務中心」辦票',c:'must',
+     n:'• 購 N\'EX 來回票¥5,200（14天有效，需出示護照）\n• <b>同時劃好去程 NEX 38號（16:57）＋回程 NEX 39號（大船15:10）</b>\n• 左側2、3、5號自動售票機可插護照'},
+    {t:'16:57',tx:'搭 N\'EX 38號 往大船（最推薦班次）',c:'must',
+     n:'全車指定席，行李放車廂端部大型行李架\n車內有 Wi-Fi 和插座\n⚠️ 注意大船方向車廂，東京站後分流'},
+    {t:'18:51',tx:'抵大船站，持 N\'EX 套票免出站直轉 JR 東海道線',
+     n:'JR 東海道線往藤澤（熱海/小田原方向）\n2站約9分，N\'EX套票含蓋此段免費'},
+    {t:'19:00',tx:'抵藤澤站，換小田急江ノ島線往藤澤本町',
+     n:'走連絡改札換小田急，往相模大野方向\n1站約2–3分，¥136（需另購票）'},
+    {t:'19:05',tx:'抵藤澤本町！聯絡姑姑接送或步行',c:'must'},
+    {t:'19:30',tx:'安頓後前往 OK超市採買（09:00–23:00）',c:'must',
+     n:'鮮奶、優格、瓶裝茶、點心'},
+    {t:'晚上',tx:'與姑姑一起用晚餐，聊天休息',c:'must'}
+   ],
+   note:'📌 第一天不安排觀光，以安頓聊天採購為主。降雨機率70%，記得帶傘。'},
+
+  {n:2,date:'5/10 (日)',title:'小田原一日遊',sub:'麵包→蕎麥麵→小田原城→報徳神社→海邊→晚餐',
+   tags:['tf','tp','ts'],weather:{sky:'多雲',temp:'14–22°C',rain:'60%'},tid:'t2',
+   tl:[
+    {t:'08:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR 東海道線→小田原',c:'must',
+     n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→小田原 JR東海道線約40分¥590'},
+    {t:'09:45',tx:'抵小田原站'},
+    {t:'10:00',tx:'🥐 パン工房ブンブン Plus ミナカ小田原店',c:'must',
+     n:'爆餡紅豆麵包¥194，10:00–20:00\n趁新鮮，買給姑姑的也在這裡選'},
+    {t:'10:15',tx:'🍡 甘味喫茶 岡西 御荻¥400、團子¥220',c:'must',
+     n:'外帶送姑姑姑丈，10:00–20:00，傳統和菓子'},
+    {t:'11:00',tx:'🍜 午餐：三層究極のそば 天婦羅蕎麥麵¥1,800',c:'must',
+     n:'11:00–14:00，11:30前到，現炸天婦羅超值'},
+    {t:'12:45',tx:'🍦 Studio すてら 義式冰淇淋（甜點）',c:'opt'},
+    {t:'13:20',tx:'🏯 小田原城天守閣（大人¥510）+ 報徳二宮神社',c:'must',
+     n:'報徳二宮神社：祈求財運、事業、學業'},
+    {t:'15:00',tx:'🍰 Vagabond Pastry Shop 甜點¥300起（11:00–19:00）',c:'opt'},
+    {t:'15:30',tx:'🏖️ 御幸の浜 海邊散步（可看相模灣）',c:'opt'},
+    {t:'16:00',tx:'🐟 籠清 魚板（10:00–20:00）',c:'opt',n:'新鮮魚板帶回當天點心'},
+    {t:'17:30',tx:'🍱 晚餐：一膳飯屋 八起 生魚片+炸竹莢魚定食¥1,650',c:'must'},
+    {t:'19:00',tx:'回程：小田原→藤澤（JR約40分）→小田急→藤澤本町'},
+    {t:'20:00',tx:'藤澤南口輕逛：OPA無印¥5,000退稅、Seria 4F、3coins 3F',c:'opt'}
+   ],
+   note:'☂️ 降雨機率60%，記得帶折疊傘。'},
+
+  {n:3,date:'5/11 (一)',title:'橫濱 Day 1 + 🍩 I\'m donut！',sub:'寄行李→I\'m donut→百貨→牛鍋晚餐→入住飯店',
+   tags:['tf','ts','ta'],weather:{sky:'晴天',temp:'20–24°C'},tid:'t3',
+   tl:[
+    {t:'09:00',tx:'從藤澤本町出發，搭小田急→藤澤→JR→橫濱',c:'must'},
+    {t:'09:30',tx:'橫濱站：轉 JR 根岸線 1站→ 櫻木町站，步行至飯店3F寄行李',c:'must',
+     n:'JR根岸線/京浜東北線 橫濱→櫻木町 1站3分¥160\nJR EAST METS Premier 橫濱櫻木町大廳在3F'},
+    {t:'10:00',tx:'🍩 去 I\'m donut？！（優先第一件事）',c:'donut',
+     n:'橫濱站搭港未來線→みなとみらい駅（¥210，4分）→ 2番出口出站步行約13分\n沿海濱步道，見木玻璃建築「横浜ティンバーワーフ」即是\n⭐ 買完去隔壁 dacō 座位區享用，靠窗海景座位！'},
+    {t:'11:30',tx:'搭港未來線回橫濱站（¥210，4分）',c:'trans'},
+    {t:'11:45',tx:'🛍️ 逛 JOINUS百貨（橫濱站西口直連）',c:'must',
+     n:'必逛：3F Francfranc、4F Lattice・Olive des olive\n有時間：B1 鎌倉襯衫、治一郎布丁、2F Niko and'},
+    {t:'',tx:'🏬 逛高島屋（西口）',c:'must',
+     n:'必逛：5F 伊東屋文具（ZEBRA Miffy筆！）、B1 横浜バニラ'},
+    {t:'15:30',tx:'🍲 晚餐前：逛 SOGO',c:'must',
+     n:'必買：B2 小倉山莊⭐、tulip rose 玫瑰花餅乾⭐'},
+    {t:'15:30',tx:'🥩 晚餐：荒井屋牛鍋（SOGO B2）16:00前商業午餐！',c:'must',
+     n:'お手軽牛鍋¥2,750+10%=¥3,025，建議15:30前入座\n11:00–22:00'},
+    {t:'',tx:'🍵 甜點（SOGO内）：KYO HAYASHIYA抹茶聖代 or TAKANASHI霜淇淋',c:'opt'},
+    {t:'',tx:'🛍️ 逛 Lumine百貨（東口）',c:'opt',
+     n:'B2 cosme@、4F kastane・FREE\'S MART\nB1 淺野屋輕井澤麵包、1F HARBS蛋糕'},
+    {t:'18:30',tx:'🍣 晚餐備案：三浦三崎港 橫濱ポルタ（PORTA B2）',c:'opt',
+     n:'建議提前在ホットペッパーグルメ預約！11:00–23:00'},
+    {t:'19:30',tx:'🛒 Summit Store 桜木町店 買宵夜（飯店附近5分鐘）',c:'opt'},
+    {t:'20:00',tx:'搭 JR 根岸線 橫濱→櫻木町（1站¥160），飯店 Check-in！',c:'must'}
+   ],
+   note:'🏨 今晚住 JR EAST METS Premier 橫濱櫻木町（唯一不住親戚家的夜晚）。記得先去飯店寄行李！'},
+
+  {n:4,date:'5/12 (二)',title:'橫濱 Day 2 深度遊',sub:'馬車道・元町・山下公園・紅磚倉庫→纜車回飯店→藤澤本町',
+   tags:['tf','ts'],weather:{sky:'晴天'},tid:'t4',
+   tl:[
+    {t:'09:00',tx:'飯店早餐＋寄放行李（check-out，下午取）',c:'must'},
+    {t:'09:30',tx:'☕ Gooz 銀杏並木通店 平價拿鐵¥200（早餐咖啡）',c:'opt'},
+    {t:'10:00',tx:'🏛️ 横浜市開港記念会館（免費）大正紅磚建築，10:00–16:00',c:'opt'},
+    {t:'11:00',tx:'🍳 午餐：CAESAR 蛋包飯（關內站步行5分）¥2,500',c:'must',
+     n:'蛋包飯佐漢堡排，11:00–22:00，建議提前預訂'},
+    {t:'12:30',tx:'🍫 Sils Maria シルスマリア 馬車道本店',c:'must',
+     n:'生巧克力、可可霜淇淋¥500，可內用'},
+    {t:'13:00',tx:'🍫 Belle Plage 巧克力（10:30–19:00）袋裝送同事',c:'must'},
+    {t:'13:30',tx:'🚶 步行至元町商店街（約15分）'},
+    {t:'14:00',tx:'🛍️ 元町商店街採購',c:'must',
+     n:'• La Théière 紅茶専門店⭐必去\n• 香炉庵 黑糖銅鑼燒¥275 買給姑姑姑丈\n• Hamabread Bakery 紅茶乳酪麵包¥280（11:00–17:00）\n• Tef tef、歐洲航路小店'},
+    {t:'15:30',tx:'🏠 Berrick Hall 散步參觀美麗洋房（元町丘公園）',c:'opt'},
+    {t:'16:00',tx:'🌹 山下公園（玫瑰花季！）',c:'must',n:'5月玫瑰盛開，背景橫濱灣'},
+    {t:'16:30',tx:'🐘 象鼻公園',c:'must'},
+    {t:'17:00',tx:'🧺 紅磚倉庫：Huffnagel 蘭姆葡萄夾心餅乾¥430–450',c:'must',
+     n:'11:00–20:00，冷藏，今天吃！'},
+    {t:'17:30',tx:'🍜 晚餐：味奈登庵 蕎麥麵總本店（至22:00）平價份量大',c:'opt'},
+    {t:'18:00',tx:'🚡 搭 YOKOHAMA AIR CABIN 纜車回飯店（⭐強烈推薦！）',c:'must',
+     n:'運河パーク→桜木町，單程¥1,000，約5分\n40m高空俯瞰港未來，傍晚光線最漂亮\n備案：港未來線（馬車道→桜木町，¥210）'},
+    {t:'18:30',tx:'🛍️ Colette Mare 商場（桜木町旁）',c:'opt',
+     n:'2F andST⭐必去、1F Francfranc'},
+    {t:'19:30',tx:'飯店取行李，回藤澤本町！',c:'must',
+     n:'JR根岸線 桜木町→橫濱（1站¥160）\n＋JR東海道線 橫濱→藤澤（約20分¥440）\n＋小田急 藤澤→藤澤本町（2–3分¥136）'}
+   ],
+   note:'🚡 纜車 YOKOHAMA AIR CABIN 週二平日傍晚人少，強烈推薦體驗一次！'},
+
+  {n:5,date:'5/13 (三)',title:'和田塚・長谷・江之島',sub:'早餐→長谷大佛→江之島三社巡禮→夕陽→鰻魚飯',
+   tags:['tp','tf'],weather:{sky:'晴天',temp:'16–25°C'},tid:'t5',
+   tl:[
+    {t:'07:00',tx:'從藤澤本町出發，搭小田急→藤澤→江ノ電（買一日票¥800）',c:'must',
+     n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→和田塚 江ノ電往鎌倉方向約10分¥260\n⭐ 座位選右側靠海！'},
+    {t:'07:30',tx:'🐟 早餐：ヨリドコロ（和田塚，7:00–17:00）',c:'must',
+     n:'烤魚定食¥1,020–¥1,300，鎌倉當地人愛店'},
+    {t:'08:30',tx:'長谷站下車，周邊散策',c:'must',
+     n:'• Boulangerie Ensemble 法國麵包（7:00–17:00）\n• Takeya 大福¥200、糰子¥150、蕨餅¥320，免費送熱茶⭐\n• 力餅家 和菓子（9:00–18:00）\n• 雷神堂長谷大仏店 仙貝（10:00–18:00）'},
+    {t:'10:00',tx:'🗿 鎌倉大佛（高徳院）大人¥300，建議10:00前到',c:'must',
+     n:'8:00–17:30（5月旺季），拍照空間較充裕\n佛像内部可入（+¥20）'},
+    {t:'11:30',tx:'🍽️ 午餐（選1）',c:'must',
+     n:'A：洋食ボンベック 炸蝦蛋包飯¥1,560（11:30–15:00/17:00–21:00）\nB：鎌倉おうどん玉うさぎ 烏龍麵'},
+    {t:'13:00',tx:'搭江ノ電→江ノ島站（往藤澤方向，約10分）',c:'trans'},
+    {t:'13:30',tx:'🏝️ 江之島！',c:'must',
+     n:'⭐ 購エスカー全程券¥360（上行手扶梯，省力！）\n或シーキャンドルセット¥1,100（電梯+展望燈塔，比分開買省¥60）\n路線：仲見世通→邊津宮→中津宮（求美/財）→洗錢白龍王→奧津宮→稚兒之淵\n章魚仙貝（Asahi Honten）¥700–¥1,100\nEnoshima Pudding 藍蓋布丁¥450、霜淇淋¥450\n下坡走階梯，邊走邊逛小店最佳'},
+    {t:'18:00',tx:'夕陽！稚兒之淵（5月日落約18:00–18:15）',c:'must'},
+    {t:'18:30',tx:'搭江ノ電 江ノ島→藤澤（約15分）→小田急→藤澤本町'},
+    {t:'19:30',tx:'🦈 晚餐：Unaginonaruse 鰻魚飯（藤澤，11:00–14:00/17:00–21:00）',c:'must'},
+    {t:'20:30',tx:'Bic Camera 藤澤北口（10:00–20:30）、大創',c:'opt'}
+   ],
+   note:'⭐ 今天全天使用江ノ電一日票¥800，比單次買票省！5月平日，遊客少，非常舒適。'},
+
+  {n:6,date:'5/14 (四)',title:'合羽橋・淺草・藏前 → 表參道',sub:'廚房道具採購→淺草老街→藏前文青區→表參道',
+   tags:['ts','tf'],tid:'t6',
+   tl:[
+    {t:'08:00',tx:'從藤澤本町出發（越早越好！）',c:'must',
+     n:'小田急→藤澤→JR 東海道線→品川→都営浅草線→稲荷町\n總約75分，¥136+¥550+¥310=¥996'},
+    {t:'09:15',tx:'抵稲荷町站，步行5分到合羽橋道具街'},
+    {t:'09:30',tx:'🏺 田窯（でんがま）10:00–18:00（合羽橋入口第一站）',c:'must',
+     n:'和食器，質感陶瓷餐具，合理價位'},
+    {t:'10:00',tx:'🔪 鍔屋菜刀店 水果刀¥1,822（10:00–17:00）',c:'must'},
+    {t:'10:30',tx:'🎂 CONFECT-CONCEPT 甜點外帶（10:30–18:30）¥310起',c:'must',
+     n:'買完後可在附近矮牆廣場享用\n或田窯門口附近稍作休息'},
+    {t:'11:00',tx:'🔪 釜淺商店 水果刀¥1,900，<b>可免費刻字⭐</b>（11:00–17:30）',c:'must'},
+    {t:'',tx:'🍵 ZAKA Kappabashi 茶筅立、抹茶碗（10:00–17:30）',c:'must'},
+    {t:'',tx:'🖌️ 金屋毛刷店 繪筆2号丸¥209（10:30–17:30）',c:'must'},
+    {t:'',tx:'🧁 馬嶋屋菓子道具店 烘焙模具（9:30–17:30）',c:'must'},
+    {t:'',tx:'⚙️ 飯田屋 不鏽鋼茶篩濾茶網',c:'opt'},
+    {t:'',tx:'🍳 Kajiwara Kitchen Supply 抹茶工具（2F有廁所）',c:'opt'},
+    {t:'13:00',tx:'🍜 午餐：尾張屋蕎麥麵（合羽橋附近，11:30–20:00）',c:'must'},
+    {t:'14:00',tx:'步行→淺草（約15分）'},
+    {t:'14:15',tx:'淺草散策',c:'must',
+     n:'杵屋仙貝（割煎，9:00–18:45）\n壽壽喜園 抹茶冰淇淋\n和泉屋 貓咪仙貝¥300–350（11:00–18:00）'},
+    {t:'15:00',tx:'步行→藏前（約15分）'},
+    {t:'15:15',tx:'🧁 藏前文青區',c:'must',
+     n:'KURAMAE CANNELE 霜淇淋+可麗露¥680（11:00–18:00）\nmarble 蔵前 布丁、巴斯克乳酪¥680（9:00–19:00）\n菓子屋 手工點心（12:00–19:00）\nPlushie Shop foo.. 娃娃店（11:00–19:00）\nMizukiya Baba Shoten 竹製品（9:30–17:00）'},
+    {t:'17:00',tx:'移動至表參道（都営浅草線→東京Metro，約30分¥290）'},
+    {t:'17:30',tx:'🛍️ 表參道逛街',c:'opt',
+     n:'Flying Tiger Copenhagen\nSOU·SOU KYOTO 青山店'},
+    {t:'18:30',tx:'🍜 晚餐（表參道）：Ramen ROCK MOUNTAIN or Sweet Check',c:'must'},
+    {t:'20:00',tx:'回藤澤本町：小田急急行→藤澤→藤澤本町（約65分）',c:'trans',
+     n:'表參道→新宿（東京Metro千代田線→代々木上原→小田急）\n或表參道→渋谷→藤澤（東急→JR）\n⭐ 推薦：小田急急行 約65分'}
+   ],
+   note:'💡 合羽橋週四開門沒問題（多數店週日公休）。8:00前從藤澤本町出發，9:30搶早場。'},
+
+  {n:7,date:'5/15 (五)',title:'鎌倉 洗錢神社・小町通',sub:'早餐→洗錢神社→小町通→八幡宮→晚餐→Uniqlo特價',
+   tags:['tp','tf','ts'],weather:{sky:'晴天',temp:'16–25°C'},tid:'t7',
+   tl:[
+    {t:'07:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR横須賀線→鎌倉',c:'must',
+     n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→鎌倉 JR横須賀線直達約12分¥230\n⭐ 7:30出發，8:00前抵鎌倉，早去人少'},
+    {t:'08:00',tx:'🍞 BREAD IT BE 早餐（8:00–17:00）歐式麵包，店外有座位',c:'must'},
+    {t:'09:00',tx:'⛩️ 洗錢神社（銭洗弁財天宇賀福神社）',c:'must',
+     n:'祈求金錢運、事業運\n路線：鎌倉駅西口→步行約20分（上坡）或計程車\n竹簍+香+蠟燭 ¥200\n流程：點蠟燭→燃香→投5円→拜拜→洗錢'},
+    {t:'10:30',tx:'⚔️ Hatsune Antique Kamakura 初音美術（10:00–18:00）',c:'opt',
+     n:'武士刀、盔甲，古道具迷必去'},
+    {t:'10:30',tx:'🍵 八十八鎌倉抹茶（Hatoya Kamakura，10:00–18:00）⭐必吃',c:'must'},
+    {t:'11:00',tx:'☕ Cafe vivement dimanche',c:'must',
+     n:'10:30早到不用等！\n蛋包飯小份¥650、栗子布丁聖代¥950'},
+    {t:'12:00',tx:'🛍️ 小町通商店街採購',c:'must',
+     n:'🕊️ 豊島屋（鎌倉本店）鳩サブレー 8入¥1,220（9:00–19:00）\n🌿 arbre noir 抹茶燒¥90/個（11:00–18:00）\n💍 Beller 平價銀飾（10:30–17:30）\n📌 今天週五，鎌倉紅谷確定開門！'},
+    {t:'14:00',tx:'⛩️ 鶴岡八幡宮（門票¥300）',c:'must'},
+    {t:'15:00',tx:'👔 鎌倉襯衫 Maker\'s Shirt KAMAKURA（11:00–18:00）⭐必去',c:'must'},
+    {t:'17:00',tx:'🍜 晚餐選擇',c:'must',
+     n:'A：銀座 篝 鎌倉店 雞白湯拉麵¥1,380（17:00–20:00）\n   17:00開門前排隊\nB：回藤澤吃鰻魚飯（Unaginonaruse，17:00–21:00）'},
+    {t:'18:30',tx:'鎌倉→藤澤（JR横須賀線約12分¥230）'},
+    {t:'19:00',tx:'👗 Uniqlo 週五特價！（LUMIRE 6F，10:00–20:00）⭐',c:'must',
+     n:'今天5/15週五，Uniqlo特價日！¥5,000以上可退稅'}
+   ],
+   note:'✅ 今天5/15（週五）：鎌倉紅谷確定開門＋Uniqlo週五特價日，雙重好處！'},
+
+  {n:8,date:'5/16 (六)',title:'藤澤採買 → 成田機場 → 回台灣',sub:'採買→13:00出發→大船NEX→成田→JX805',
+   tags:['ts','tp'],tid:'t8',
+   tl:[
+    {t:'10:00',tx:'藤澤最後採買',c:'must',
+     n:'Uniqlo（LUMIRE 6F，10:00–20:00）\n無印良品（OPA 7F，10:00–21:00）\n3coins（JR藤沢駅商場 3F，10:00–21:00）\nOK超市（補飲料零食）'},
+    {t:'12:30',tx:'結束採買，回姑姑家拿行李',c:'must'},
+    {t:'13:00',tx:'⭐ 從藤澤本町出發！',c:'must',
+     n:'小田急→藤澤（2–3分¥136）\n→JR東海道線→大船（9分¥190）\n13:20前後抵大船，等 NEX 39號'},
+    {t:'15:10',tx:'⭐ NEX 39號 大船発！往成田機場',c:'must',
+     n:'大船15:10 → 橫濱15:21 → 成田T2 17:15\nN\'EX套票使用回程分（需提前到售票機兌換座位）'},
+    {t:'17:15',tx:'抵達成田機場T2',c:'must'},
+    {t:'17:15–20:00',tx:'機場免稅採購',c:'must',
+     n:'Fa-So-La 免稅店（T2 出境後）\nDECORTÉ 肌膚之鑰、資生堂 Elixir\nLeTAO 小樽起司蛋糕（冷藏，機場限定）\nRoyce\' 生巧克力（需冷藏）'},
+    {t:'19:00',tx:'⚠️ 稅關旁刷護照！退稅紀錄，千萬別忘！',c:'must'},
+    {t:'20:40',tx:'✈️ JX805 起飛！東京成田T2 → 台北桃園T1',c:'must'},
+    {t:'23:20',tx:'🏠 抵達台灣桃園機場T1，回家！',c:'must'}
+   ],
+   note:'💡 以「18:00前到機場」為目標，13:00準時從藤澤本町出發最安心。'}
+];
+
+// ══════════════════════════════════════════
+// TRANSPORT DATA（含詳細時刻表與藤澤本町↔藤澤）
+// ══════════════════════════════════════════
+var transData=[
+  {id:'t1',dn:1,date:'5/9 (六)',title:'成田機場T2 → 藤澤本町',
+   sum:'N\'EX 38號（大船）＋JR東海道線（藤澤）＋小田急（藤澤本町）',
+   steps:[
+    {tp:'home',ico:'🛬',lb:'成田機場第2航廈（T2）入境',meta:'往B1「JR東日本旅行服務中心」'},
+    {tp:'walk',ico:'🚶',lb:'步行至B1 JR售票機',meta:'約5分鐘，搭電梯下B1，沿指標走'},
+    {tp:'train',ico:'🚄',lb:'N\'EX 38號 成田特快',meta:'成田空港第2ビル → 大船',
+     tt:[{dep:'16:57',arr:'18:51',note:'⭐推薦（含蓋藤澤段）',cls:'rec'},
+         {dep:'15:57',arr:'17:51',note:'NEX 34號（若清關快）',cls:'alt'},
+         {dep:'17:57',arr:'19:51',note:'NEX 42號（備案，較晚）',cls:'alt'}],
+     fare:'N\'EX來回票¥5,200（14天有效，含大船→藤澤段免費轉乘）',
+     tip:'全車指定席，行李放車廂端部。東京站後分大船/新宿方向，請確認乘坐大船方向車廂。車內有Wi-Fi和插座。'},
+    {tp:'train',ico:'🚃',lb:'JR東海道線（免費轉乘）',meta:'大船 → 藤澤（熱海/小田原方向）',
+     tt:[{dep:'18:54頃',arr:'19:03',note:'每5–8分一班，2站約9分',cls:'rec'}],
+     fare:'N\'EX套票含蓋此段，不出站直接轉乘',
+     tip:'大船站依指標找「東海道線（下り・熱海・小田原方向）」月台'},
+    {tp:'walk',ico:'🚶',lb:'藤澤站 → 小田急改札',meta:'JR出口→走連絡改札→小田急南口，約3分'},
+    {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤 → 藤澤本町（往相模大野方向）',
+     tt:[{dep:'約毎5–7分',arr:'+2–3分',note:'各停 相模大野行 or 大和行，1駅2–3分',cls:'rec'},
+         {dep:'19:05頃',arr:'19:07–08',note:'★NEX 38號接駁（19:00藤澤着の場合）',cls:'rec'}],
+     fare:'¥136（需另購票，不含在N\'EX票内）',
+     tip:'藤澤本町は1つ目の停車站。改札を出て右手に出口。'},
+    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着！',meta:'姑姑家へ。OK超市採買後休息。'}
+   ],
+   total:'藤澤本町着 約19:05–19:10（NEX 38號利用の場合）',
+   fare:'N\'EX¥5,200＋JR含蓋＋小田急¥136',
+   srcs:[
+    {lb:'JR東日本 N\'EX 官方（繁中）',url:'https://www.jreast.co.jp/tc/nex/'},
+    {lb:'N\'EX 大船→成田 時刻（ekitan）',url:'https://ekitan.com/timetable/railway/line-station/179-10/d1'},
+    {lb:'N\'EX 成田→大船 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00004637&arrival=00005672&line=00000161&updown=0'},
+    {lb:'藤澤→藤澤本町 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006942&arrival=00006943&line=00000685&updown=0'}
+   ]},
+
+  {id:'t2',dn:2,date:'5/10 (日)',title:'藤澤本町 ⇄ 小田原',
+   sum:'小田急（藤澤本町→藤澤）＋JR東海道線（藤澤→小田原）往返',
+   steps:[
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'8:30頃'},
+    {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤本町 → 藤澤（片瀬江ノ島方向）',
+     tt:[{dep:'08:30頃',arr:'08:32–33',note:'各停 毎5–7分一班，1駅2–3分',cls:'rec'},
+         {dep:'08:36',arr:'08:38–39',note:'次班（参考）',cls:'alt'}],
+     fare:'¥136',
+     tip:'片瀬江ノ島方向（下り）に乗車。藤澤駅で降りる。'},
+    {tp:'walk',ico:'🚶',lb:'藤澤駅 乗換',meta:'小田急南口→JR藤澤駅改札，約3分'},
+    {tp:'train',ico:'🚃',lb:'JR東海道本線 普通',meta:'藤澤 → 小田原（熱海方向）',
+     tt:[{dep:'08:40頃',arr:'09:22',note:'普通 毎10–12分一班，約40分',cls:'rec'},
+         {dep:'08:52',arr:'09:34',note:'次班',cls:'alt'}],
+     fare:'¥590（Suica/ICOCA）',
+     tip:'快速アクティーに乗ると早い。小田原で終点まで乗車。'},
+    {tp:'dest',ico:'📍',lb:'小田原駅 着',meta:'西口出口から散策スタート'},
+    {tp:'train',ico:'🚃',lb:'帰り：JR東海道線→小田急',meta:'小田原→藤澤（約40分¥590）→藤澤本町（2–3分¥136）',
+     tt:[{dep:'19:00–19:30頃',arr:'20:15–20:45頃',note:'毎10–12分一班',cls:'rec'}],
+     fare:'¥590＋¥136'}
+   ],
+   total:'藤澤本町→小田原 約55分',
+   fare:'¥136（小田急）＋¥590（JR）＝¥726',
+   srcs:[
+    {lb:'藤澤本町→藤澤 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006943&arrival=00006942&line=00000685&updown=1'},
+    {lb:'藤澤→小田原 時刻（ekitan）',url:'https://ekitan.com/timetable/railway/line-station/149-7/d2'},
+    {lb:'Yahoo!路線 乗換案内',url:'https://transit.yahoo.co.jp/'}
+   ]},
+
+  {id:'t3',dn:3,date:'5/11 (一)',title:'藤澤本町 → 橫濱・みなとみらい（I\'m donut）→ 櫻木町飯店',
+   sum:'小田急→JR東海道線（橫濱）→JR根岸線（櫻木町）＋港未來線（みなとみらい）',
+   steps:[
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'09:00頃'},
+    {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤本町 → 藤澤',
+     tt:[{dep:'09:00頃',arr:'09:02–03',note:'各停 毎5–7分，1駅2–3分',cls:'rec'}],
+     fare:'¥136'},
+    {tp:'train',ico:'🚃',lb:'JR東海道本線（上り）',meta:'藤澤 → 橫濱（東京方向）',
+     tt:[{dep:'07:04',arr:'07:23',note:'（参考）普通',cls:'note'},
+         {dep:'07:15',arr:'07:32',note:'（参考）普通',cls:'note'},
+         {dep:'08:00',arr:'08:19',note:'（参考）普通',cls:'note'},
+         {dep:'08:20',arr:'08:39',note:'（参考）普通',cls:'note'},
+         {dep:'09:05頃',arr:'09:24',note:'毎7–10分一班，約19分',cls:'rec'}],
+     fare:'¥418（Suica）',
+     tip:'（参考班次為休日，以出發當日Yahoo路線查詢為準）\n快速アクティー or 普通どちらでも可。',
+     src:{lb:'藤澤→橫濱 時刻（ekitan）',url:'https://ekitan.com/timetable/railway/line-station/149-7/d1'}},
+    {tp:'train',ico:'🚃',lb:'JR根岸線/京浜東北線',meta:'橫濱 → 櫻木町（飯店）',
+     tt:[{dep:'09:26頃',arr:'09:29',note:'1站3分，毎5–8分一班',cls:'rec'}],
+     fare:'¥160（Suica）',
+     tip:'飯店JR EAST METS Premier大廳在3F，先辦寄行李'},
+    {tp:'dest',ico:'🏨',lb:'飯店寄行李後→去 I\'m donut？',meta:'輕裝出発'},
+    {tp:'walk',ico:'🚶',lb:'橫濱站 → 港未來線のりば',meta:'橫濱駅地下（みなとみらい線）約3分'},
+    {tp:'train',ico:'🚃',lb:'港未來線（みなとみらい線）',meta:'橫濱 → みなとみらい（2駅4分）',
+     tt:[{dep:'10:00頃',arr:'10:04',note:'毎5分一班，¥210',cls:'rec'}],
+     fare:'¥210（Suica）',
+     tip:'みなとみらい駅 2番出口出站，沿海濱步道步行約13分\n見木玻璃建築「横浜ティンバーワーフ」即是目的地'},
+    {tp:'donut',ico:'🍩',lb:'I\'m donut？ 横浜ティンバーワーフ店！',meta:'8:00–19:00（完売即關），建議10:00到'},
+    {tp:'walk',ico:'🚶',lb:'隔壁 dacō 座位區享用',meta:'約80座席，允許攜帶I\'m donut入座，靠窗海景⭐'},
+    {tp:'train',ico:'🚃',lb:'港未來線 みなとみらい → 橫濱（帰り）',meta:'4分',
+     tt:[{dep:'11:30頃',arr:'11:34',note:'¥210',cls:'rec'}],
+     fare:'¥210'},
+    {tp:'dest',ico:'📍',lb:'橫濱駅 → 各百貨購物',meta:'JOINUS→高島屋→SOGO→Lumine'}
+   ],
+   extra:{title:'Day 3 最後：橫濱→飯店（桜木町）→退房後回藤澤（Day4）',
+    rows:[
+     {dep:'19:00',arr:'19:04/19:05→19:24',note:'桜木町→橫濱(JR根岸線1站¥160)→藤澤(JR東海道線¥440)'},
+     {dep:'19:30',arr:'19:34/19:37→19:56',note:'（参考）'},
+     {dep:'20:00',arr:'20:04/20:07→20:26',note:'（参考）'},
+     {dep:'20:30',arr:'20:34/20:37→20:56',note:'（参考）'}
+    ]},
+   total:'藤澤本町→みなとみらい 約50分',
+   fare:'¥136＋¥418＋¥160（飯店）＋¥210×2（港未來線）',
+   srcs:[
+    {lb:'藤澤→橫濱 時刻（ekitan）',url:'https://ekitan.com/timetable/railway/line-station/149-7/d1'},
+    {lb:'港未來線 路線圖（繁中）',url:'https://www.mm21railway.co.jp/global/chinese_han/'},
+    {lb:'橫濱市→みなとみらい 乗換（NAVITIME）',url:'https://www.navitime.co.jp/'}
+   ]},
+
+  {id:'t4',dn:4,date:'5/12 (二)',title:'（飯店）桜木町 → 橫濱市内 → 藤澤本町',
+   sum:'步行（馬車道・元町）＋纜車or港未來線（→桜木町）＋JR根岸線＋JR東海道線',
+   steps:[
+    {tp:'home',ico:'🏨',lb:'飯店（桜木町）退房，寄放行李',meta:'步行圈内で観光'},
+    {tp:'walk',ico:'🚶',lb:'步行：桜木町→馬車道→元町（約1.5km）',meta:'沿途：馬車道・Sils Maria・Belle Plage・元町商店街'},
+    {tp:'walk',ico:'🚶',lb:'步行：元町→山下公園→象鼻公園→紅磚倉庫',meta:'約2km，沿海景散步'},
+    {tp:'train',ico:'🚃',lb:'纜車 YOKOHAMA AIR CABIN（⭐強烈推薦！）',meta:'運河パーク → 桜木町（5分）',
+     tt:[{dep:'17:30–18:00頃',arr:'+5分',note:'¥1,000 単程，40m高空俯瞰港未來',cls:'rec'}],
+     fare:'¥1,000',
+     tip:'傍晚光線最漂亮！週二平日人少。或備案：港未來線地鐵（馬車道→桜木町，¥210，3分）'},
+    {tp:'dest',ico:'🏨',lb:'桜木町：飯店取行李',meta:'Colette Mare 2F andST順路逛⭐'},
+    {tp:'train',ico:'🚃',lb:'JR根岸線/京浜東北線',meta:'桜木町 → 橫濱（1站3分）',
+     tt:[{dep:'19:00–21:30頃',arr:'+4分',note:'毎5–8分一班，¥160',cls:'rec'}],
+     fare:'¥160'},
+    {tp:'train',ico:'🚃',lb:'JR東海道線（下り）',meta:'橫濱 → 藤澤',
+     tt:[{dep:'19:05',arr:'19:24',note:'（参考）普通',cls:'note'},
+         {dep:'19:17',arr:'19:35',note:'（参考）普通',cls:'note'},
+         {dep:'19:27',arr:'19:46',note:'（参考）普通',cls:'note'},
+         {dep:'19:37',arr:'19:56',note:'（参考）普通',cls:'note'},
+         {dep:'20:07',arr:'20:26',note:'（参考）普通',cls:'note'},
+         {dep:'20:37',arr:'20:56',note:'（参考）普通',cls:'note'}],
+     fare:'¥440（Suica）',
+     tip:'（参考班次為休日，以出發當日查詢為準）',
+     src:{lb:'橫濱→藤澤 下り 時刻（Yahoo路線）',url:'https://transit.yahoo.co.jp/'}},
+    {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤 → 藤澤本町（往相模大野方向）',
+     tt:[{dep:'随時',arr:'+2–3分',note:'毎5–7分一班，¥136',cls:'rec'}],
+     fare:'¥136'},
+    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着！',meta:''}
+   ],
+   total:'桜木町→藤澤本町 約35–45分',
+   fare:'纜車¥1,000 or 地鐵¥210＋JR¥160＋JR¥440＋小田急¥136',
+   srcs:[
+    {lb:'YOKOHAMA AIR CABIN 纜車',url:'https://yokohama-air-cabin.jp/'},
+    {lb:'桜木町→橫濱→藤澤 時刻（Yahoo路線）',url:'https://transit.yahoo.co.jp/'},
+    {lb:'藤澤→藤澤本町 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006942&arrival=00006943&line=00000685&updown=0'}
+   ]},
+
+  {id:'t5',dn:5,date:'5/13 (三)',title:'藤澤本町 → 和田塚・長谷・江之島（江ノ電一日票）',
+   sum:'小田急（藤澤本町→藤澤）＋江ノ電一日票¥800（全日自由乗降）',
+   steps:[
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'07:00頃（越早越好！）'},
+    {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤本町 → 藤澤',
+     tt:[{dep:'07:00',arr:'07:02–03',note:'各停 毎5–7分一班',cls:'rec'},
+         {dep:'07:06',arr:'07:08–09',note:'次班',cls:'alt'}],
+     fare:'¥136'},
+    {tp:'walk',ico:'🚶',lb:'藤澤駅 → 江ノ電のりば',meta:'JR改札出て南口，江ノ電乗り場まで約3分。一日票購入！'},
+    {tp:'train',ico:'🚃',lb:'江ノ電 （往鎌倉方向）',meta:'藤澤 → 和田塚（早餐）',
+     tt:[{dep:'07:08',arr:'07:18',note:'約10分，¥260（一日票で乗車）',cls:'rec'},
+         {dep:'07:20',arr:'07:30',note:'次班（毎12分一班）',cls:'alt'},
+         {dep:'07:32',arr:'07:42',note:'次次班',cls:'alt'}],
+     fare:'江ノ電一日票¥800 購入（全日自由乘降）',
+     tip:'座席は右側（進行方向右＝海側）を選ぼう！腰越付近で路面電車区間あり。',
+     src:{lb:'江ノ電 公式時刻表',url:'https://www.enoden.co.jp/train/timetable/'}},
+    {tp:'dest',ico:'🍳',lb:'和田塚駅（7:00–17:00 ヨリドコロ）',meta:'早餐：烤魚定食¥1,020–¥1,300'},
+    {tp:'train',ico:'🚃',lb:'江ノ電 和田塚 → 長谷',meta:'（朝食後）',
+     tt:[{dep:'08:30頃',arr:'08:35',note:'約5分，¥200（一日票）',cls:'rec'}],
+     fare:'一日票乗車'},
+    {tp:'dest',ico:'🗿',lb:'長谷駅（大佛・周辺散策）',meta:'Takeya・Boulangerie Ensemble・高徳院¥300'},
+    {tp:'train',ico:'🚃',lb:'江ノ電 長谷 → 江ノ島',meta:'（午餐後，13:00頃）',
+     tt:[{dep:'13:00頃',arr:'13:10',note:'約10分（数駅），一日票',cls:'rec'}],
+     fare:'一日票乗車',
+     tip:'腰越駅付近で路面電車区間（道路上を走る！）。珍しい光景なので外を見よう。'},
+    {tp:'dest',ico:'🌊',lb:'江ノ島駅（→弁天橋まで徒步10分）',meta:'エスカー全程券¥360、三社巡禮'},
+    {tp:'train',ico:'🚃',lb:'江ノ電 江ノ島 → 藤澤（帰り）',meta:'（夕陽後，19:00頃）',
+     tt:[{dep:'19:00頃',arr:'19:15',note:'約15分，毎12分一班，一日票',cls:'rec'},
+         {dep:'19:12',arr:'19:27',note:'次班',cls:'alt'}],
+     fare:'一日票乗車（当日中有効）'},
+    {tp:'train',ico:'🚃',lb:'小田急 各停 藤澤 → 藤澤本町',meta:'',
+     tt:[{dep:'19:18頃',arr:'19:20–21',note:'¥136',cls:'rec'}],
+     fare:'¥136'},
+    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着！',meta:'晩ご飯：Unaginonaruse 鰻魚飯'}
+   ],
+   total:'藤澤本町→和田塚 約25分',
+   fare:'小田急¥136×2（往復）＋江ノ電一日票¥800',
+   srcs:[
+    {lb:'江ノ電 公式時刻表',url:'https://www.enoden.co.jp/train/timetable/'},
+    {lb:'藤澤本町→藤澤 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006943&arrival=00006942&line=00000685&updown=1'},
+    {lb:'江之島エスカー公式',url:'https://enoshima-seacandle.com/facilities/escar/'}
+   ]},
+
+  {id:'t6',dn:6,date:'5/14 (四)',title:'藤澤本町 → 稲荷町・淺草・藏前 → 表參道 → 藤澤本町',
+   sum:'小田急→JR東海道線（品川）→都営浅草線（稲荷町）→表參道→小田急急行帰宅',
+   steps:[
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'08:00 早めに！'},
+    {tp:'train',ico:'🚃',lb:'小田急 各停 → 藤澤',meta:'',
+     tt:[{dep:'08:00',arr:'08:02–03',note:'¥136',cls:'rec'}],fare:'¥136'},
+    {tp:'train',ico:'🚃',lb:'JR東海道本線（上り）',meta:'藤澤 → 品川',
+     tt:[{dep:'08:05頃',arr:'08:45',note:'普通 約40分，¥550（Suica）',cls:'rec'},
+         {dep:'08:17',arr:'08:57',note:'次班',cls:'alt'}],
+     fare:'¥550',
+     tip:'品川駅での乗換：JR改札出て、都営浅草線「品川」は同一大樓内，步行約3–5分'},
+    {tp:'train',ico:'🚃',lb:'都営浅草線',meta:'品川（A07）→ 稲荷町（A17）',
+     tt:[{dep:'08:50頃',arr:'09:18',note:'往押上方向，直通，約30分¥310',cls:'rec'}],
+     fare:'¥310（Suica）',
+     tip:'全程直通，不需換車。稲荷町はA17。合羽橋まで徒歩5分。'},
+    {tp:'dest',ico:'📍',lb:'稲荷町駅 → 合羽橋道具街',meta:'田窯10:00・釜淺11:00・CONFECT-CONCEPT 10:30'},
+    {tp:'walk',ico:'🚶',lb:'合羽橋→淺草（步行約15分）→藏前（步行約15分）',meta:''},
+    {tp:'train',ico:'🚃',lb:'移動：藏前→表參道',meta:'都営浅草線（A18蔵前）→東京Metro（乗換）→表參道（G02）',
+     tt:[{dep:'17:00頃',arr:'17:30頃',note:'約30分，¥290',cls:'rec'}],
+     fare:'¥290'},
+    {tp:'train',ico:'🚃',lb:'帰り：表參道 → 藤澤本町（小田急急行利用）',meta:'',
+     tt:[{dep:'20:00–21:00頃',arr:'+65分頃',note:'表參道→代々木上原→小田急急行→藤澤→藤澤本町',cls:'rec'}],
+     fare:'約¥800（Metro+小田急）',
+     tip:'表参道駅（千代田線）→代々木上原（乗換）→小田急急行→藤澤→小田急各停→藤澤本町。急行は藤澤直通あり！'},
+    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着',meta:''}
+   ],
+   total:'藤澤本町→稲荷町 約75分',
+   fare:'¥136＋¥550＋¥310（往路）帰路：Metro¥290＋小田急¥640＋¥136',
+   srcs:[
+    {lb:'藤澤本町→藤澤 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006943&arrival=00006942&line=00000685&updown=1'},
+    {lb:'都営浅草線 路線情報',url:'https://www.kotsu.metro.tokyo.jp/asakusa/'},
+    {lb:'小田急 藤澤→新宿方向 時刻表',url:'https://www.odakyu.jp/station/fujisawa/timetable/up/'},
+    {lb:'Yahoo!路線 乗換案内',url:'https://transit.yahoo.co.jp/'}
+   ]},
+
+  {id:'t7',dn:7,date:'5/15 (五)',title:'藤澤本町 → 鎌倉 → 藤澤本町',
+   sum:'小田急→JR横須賀線（藤澤→鎌倉）往返，刷Suica',
+   steps:[
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'07:30 早めに！'},
+    {tp:'train',ico:'🚃',lb:'小田急 各停 → 藤澤',meta:'',
+     tt:[{dep:'07:30',arr:'07:32–33',note:'¥136',cls:'rec'}],fare:'¥136'},
+    {tp:'walk',ico:'🚶',lb:'藤澤駅 → JR横須賀線のりば',meta:'南口からJR改札，約2分'},
+    {tp:'train',ico:'🚃',lb:'JR横須賀線（直達！）',meta:'藤澤 → 鎌倉',
+     tt:[{dep:'07:35頃',arr:'07:47',note:'直達！約12分¥230（毎20–30分一班）',cls:'rec'},
+         {dep:'07:56',arr:'08:08',note:'次班',cls:'alt'},
+         {dep:'08:20',arr:'08:32',note:'次次班',cls:'alt'}],
+     fare:'¥230（Suica）',
+     tip:'JR横須賀線は藤澤から鎌倉へ直達。逗子・久里浜方向に乗車。'},
+    {tp:'dest',ico:'📍',lb:'鎌倉駅 着（8:00前後）',meta:'西口：洗錢神社方向 / 東口：小町通方向'},
+    {tp:'train',ico:'🚃',lb:'帰り：JR横須賀線 鎌倉 → 藤澤',meta:'',
+     tt:[{dep:'18:30頃',arr:'18:42',note:'約12分¥230',cls:'rec'},
+         {dep:'18:57',arr:'19:09',note:'次班',cls:'alt'},
+         {dep:'19:20',arr:'19:32',note:'次次班',cls:'alt'}],
+     fare:'¥230',
+     tip:'鎌倉→藤澤はJR横須賀線 逗子・大船方面（久里浜方向）ではなく、平塚・小田原方向。注意乗車方向！'},
+    {tp:'train',ico:'🚃',lb:'小田急 各停 藤澤 → 藤澤本町',meta:'Uniqlo（LUMIRE 6F）寄道可',
+     tt:[{dep:'18:45頃',arr:'18:47–48',note:'¥136',cls:'rec'}],fare:'¥136'},
+    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着',meta:''}
+   ],
+   total:'藤澤本町→鎌倉 約20分',
+   fare:'¥136（小田急）＋¥230（JR横須賀線）',
+   srcs:[
+    {lb:'藤澤本町→藤澤 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006943&arrival=00006942&line=00000685&updown=1'},
+    {lb:'藤澤→鎌倉 JR横須賀線 時刻',url:'https://transit.yahoo.co.jp/'},
+    {lb:'鎌倉→藤澤 乗換案内（Yahoo路線）',url:'https://transit.yahoo.co.jp/'}
+   ]},
+
+  {id:'t8',dn:8,date:'5/16 (六)',title:'藤澤本町 → 大船 → 成田機場T2',
+   sum:'小田急（藤澤本町→藤澤）＋JR東海道線（藤澤→大船）＋NEX 39號（大船→成田T2）',
+   steps:[
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'13:00（最晚！）'},
+    {tp:'train',ico:'🚃',lb:'小田急 各停 → 藤澤',meta:'',
+     tt:[{dep:'13:00',arr:'13:02–03',note:'各停 毎5–7分一班，¥136',cls:'rec'},
+         {dep:'13:06',arr:'13:08–09',note:'次班（余裕あり）',cls:'alt'}],
+     fare:'¥136'},
+    {tp:'walk',ico:'🚶',lb:'藤澤駅 → JR東海道線のりば',meta:'約3分'},
+    {tp:'train',ico:'🚃',lb:'JR東海道本線（上り）',meta:'藤澤 → 大船',
+     tt:[{dep:'13:02',arr:'13:11',note:'（参考）週六普通 2停9分',cls:'rec'},
+         {dep:'13:10',arr:'13:19',note:'（参考）',cls:'alt'},
+         {dep:'13:20',arr:'13:29',note:'（参考）',cls:'alt'},
+         {dep:'13:30',arr:'13:39',note:'（参考）',cls:'alt'}],
+     fare:'¥190（Suica）',
+     tip:'大船は東海道線の主要駅，普通・快速どちらでも停車。13:20頃大船着で十分。'},
+    {tp:'dest',ico:'📍',lb:'大船駅 着（13:20頃）',meta:'NEX 39號（15:10）まで約110分の余裕！駅ナカで休憩'},
+    {tp:'train',ico:'🚄',lb:'⭐ N\'EX 39號 成田特快',meta:'大船 → 橫濱 → 成田空港第2ビル',
+     tt:[{dep:'15:10',arr:'17:15',note:'⭐最推薦，橫濱15:21発',cls:'rec'},
+         {dep:'14:10',arr:'16:15',note:'NEX 35號（太早）',cls:'note'},
+         {dep:'16:10',arr:'18:15',note:'NEX 43號（緊急備案）',cls:'alt'}],
+     fare:'N\'EX套票（帰路分），提前到售票機兌換回程座位',
+     tip:'NEX全車指定席！出発前に必ず大船駅の自動券売機でN\'EX套票の帰路分の座位を兌換すること。'},
+    {tp:'dest',ico:'✈️',lb:'成田空港第2ビル（T2）着 17:15',meta:'免稅採購→稅關刷護照→登機 JX805 20:40'}
+   ],
+   total:'藤澤本町→成田T2 約2時間（13:00発 NEX 39號利用）',
+   fare:'¥136（小田急）＋¥190（JR大船）＋N\'EX回程分',
+   srcs:[
+    {lb:'藤澤本町→藤澤 時刻（NAVITIME）',url:'https://www.navitime.co.jp/diagram/depArrTimeList?departure=00006943&arrival=00006942&line=00000685&updown=1'},
+    {lb:'藤澤→大船 JR 時刻',url:'https://transit.yahoo.co.jp/'},
+    {lb:'N\'EX 大船→成田 時刻（ekitan）',url:'https://ekitan.com/timetable/railway/line-station/179-10/d1'},
+    {lb:'JR東日本 N\'EX 官方（繁中）',url:'https://www.jreast.co.jp/tc/nex/'}
+   ]}
+];
+
+// ══════════════════════════════════════════
+// BUILD HELPERS
+// ══════════════════════════════════════════
+function tagH(t){
+  var m={tf:'<span class="tag tf">美食</span>',ts:'<span class="tag ts">購物</span>',tp:'<span class="tag tp">景點</span>',ta:'<span class="tag ta">住宿</span>',tkey:'<span class="tag tkey">⭐重點</span>'};
+  return m[t]||'';
+}
+function bdg(b){
+  if(!b)return '';
+  if(b==='must')return '<span class="pill pill-must">必去</span>';
+  if(b==='opt')return '<span class="pill pill-opt">選做</span>';
+  if(b==='donut')return '<span class="pill pill-donut">🍩</span>';
+  return '';
+}
+function esc(s){return s?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):'';} 
+
+function buildDay(d,mini){
+  var tlH=d.tl.map(function(t){
+    var nc=t.c==='donut'?'donut':t.c||'';
+    return '<div class="tli '+nc+'">'
+      +(t.t?'<div class="tltime">'+t.t+'</div>':'')
+      +'<div class="tltxt">'+t.tx+bdg(t.c)+'</div>'
+      +(t.n?'<div class="tlnote">'+t.n.replace(/\n/g,'<br>')+'</div>':'')
+      +'</div>';
+  }).join('');
+  var wH=d.weather?('<div class="stitle">天氣</div><div class="wrow">'
+    +'<span class="wchip">'+d.weather.sky+'</span>'
+    +(d.weather.temp?'<span class="wchip">'+d.weather.temp+'</span>':'')
+    +(d.weather.rain?'<span class="wchip rain">☔'+d.weather.rain+'</span>':'')
+    +'</div>'):'';
+  var tBtn='<button class="tlink" onclick="jumpT(\''+d.tid+'\',event)">🚃 當日交通指南</button>';
+  if(mini){
+    return '<div class="daycard"><div class="dayhead">'
+      +'<div class="daynum">D'+d.n+'</div>'
+      +'<div class="daysum"><div class="dtitle">'+d.date+'&emsp;'+d.title+'</div>'
+      +'<div class="dsub">'+d.sub+'</div>'
+      +'<div class="dtags">'+d.tags.map(tagH).join('')+'</div></div>'
+      +'</div></div>';
+  }
+  return '<div class="daycard" id="day-'+d.n+'">'
+    +'<div class="dayhead" onclick="toggleDay('+d.n+')">'
+    +'<div class="daynum">D'+d.n+'</div>'
+    +'<div class="daysum">'
+    +'<div class="dtitle">'+d.date+'&emsp;'+d.title+'</div>'
+    +'<div class="dsub">'+d.sub+'</div>'
+    +'<div class="dtags">'+d.tags.map(tagH).join('')+tBtn+'</div>'
+    +'</div><div class="daytog">▾</div></div>'
+    +'<div class="daydet">'
+    +wH
+    +(d.note?'<div class="ibox gold" style="margin-top:.7rem;">'+d.note+'</div>':'')
+    +'<div class="stitle">時間軸</div>'
+    +'<div class="tl">'+tlH+'</div>'
+    +'<div class="stitle">交通</div>'+tBtn
+    +renderDayMap(d.n)
+    +'</div></div>';
+}
+
+function rsIcon(tp){
+  var cls={walk:'walk',train:'train',bus:'bus',dest:'dest',home:'home',donut:'donut'}[tp]||'';
+  return '<div class="rsicon '+cls+'">'+({walk:'🚶',train:'🚃',bus:'🚌',dest:'📍',home:'🏠',donut:'🍩'}[tp]||'📌')+'</div>';
+}
+function buildTrans(t){
+  var stps=t.steps.map(function(s,i){
+    var isLast=(i===t.steps.length-1);
+    var ttH='';
+    if(s.tt&&s.tt.length){
+      ttH='<div class="ttwrap"><table class="tt"><tr><th>發車</th><th>到着</th><th>備考</th></tr>'
+        +s.tt.map(function(r){
+          return '<tr><td class="'+r.cls+'">'+r.dep+'</td><td class="'+r.cls+'">'+r.arr+'</td><td class="'+r.cls+' note">'+r.note+'</td></tr>';
+        }).join('')
+        +'</table></div>';
+    }
+    var srcH=s.src?'<div class="srcbox" style="margin-top:.3rem;"><a href="'+s.src.url+'" target="_blank">📎 '+s.src.lb+'</a></div>':'';
+    return '<div class="rstep">'
+      +'<div class="rsleft">'+rsIcon(s.tp)+(isLast?'':'<div class="rsline"></div>')+'</div>'
+      +'<div class="rsbody">'
+      +'<strong>'+s.lb+(s.fare?'<span class="rsfare">'+s.fare+'</span>':'')+'</strong>'
+      +'<div class="rsmeta">'+s.meta+'</div>'
+      +ttH
+      +(s.tip?'<div class="rstip">💡 '+s.tip+'</div>':'')
+      +srcH
+      +'</div></div>';
+  }).join('');
+
+  var extH='';
+  if(t.extra){
+    extH='<div class="stitle">'+t.extra.title+'</div>'
+      +'<div class="ttwrap"><table class="tt"><tr><th>出発</th><th>経由→到着</th></tr>'
+      +t.extra.rows.map(function(r){return '<tr><td>'+r.dep+'</td><td class="note">'+r.arr+'</td></tr>';}).join('')
+      +'</table></div>';
+  }
+
+  var srcs=t.srcs.map(function(s){return '<a href="'+s.url+'" target="_blank">🔗 '+s.lb+'</a>';}).join('');
+  return '<div class="dtblock" id="trans-'+t.id+'">'
+    +'<div class="dth" onclick="toggleT(\''+t.id+'\')">'
+    +'<div class="dthnum">D'+t.dn+'</div>'
+    +'<div class="dthsum"><div class="dthtitle">'+t.date+'&emsp;'+t.title+'</div>'
+    +'<div class="dthsub">'+t.sum+'</div></div>'
+    +'<div class="dthtog">▾</div></div>'
+    +'<div class="dthbody">'
+    +'<div class="stitle">Step-by-Step 路線</div>'
+    +stps+extH
+    +'<div class="ibox" style="margin-top:.5rem;font-size:.81rem;">'
+    +'<strong>⏱ 總時間：</strong>'+t.total+'&emsp;<strong>💴 總費用：</strong>'+t.fare
+    +'</div>'
+    +'<div class="srcbox"><div class="srct">📎 時刻表參考來源</div>'+srcs+'</div>'
+    +'</div></div>';
+}
+
+
+// ══════════════════════════════════════════
+// DAY MAPS DATA & RENDERER
+// ══════════════════════════════════════════
+var dayMaps = {
+  1: {
+    tabs: ['路線概覽'],
+    views: [{ type:'svg', title:'成田→大船→藤澤→藤澤本町', svg: `
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="560" height="260" fill="#f8f4f0" rx="10"/>
+  <!-- rail line -->
+  <line x1="30" y1="130" x2="530" y2="130" stroke="#2055a0" stroke-width="4" stroke-dasharray="8,4"/>
+  <!-- stations -->
+  <!-- Narita -->
+  <circle cx="50" cy="130" r="16" fill="#c43b1e"/>
+  <text x="50" y="134" text-anchor="middle" fill="white" font-size="9" font-weight="bold">成田</text>
+  <text x="50" y="158" text-anchor="middle" fill="#555" font-size="9">T2</text>
+  <!-- Ofuna -->
+  <circle cx="200" cy="130" r="16" fill="#2055a0"/>
+  <text x="200" y="134" text-anchor="middle" fill="white" font-size="9" font-weight="bold">大船</text>
+  <text x="200" y="158" text-anchor="middle" fill="#555" font-size="9">NEX終</text>
+  <!-- branch arrow -->
+  <path d="M200 114 L200 80" stroke="#3d6b45" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Fujisawa -->
+  <circle cx="310" cy="130" r="16" fill="#2055a0"/>
+  <text x="310" y="134" text-anchor="middle" fill="white" font-size="9" font-weight="bold">藤澤</text>
+  <text x="310" y="158" text-anchor="middle" fill="#555" font-size="9">JR東海道</text>
+  <!-- Fujisawa-Honmachi -->
+  <circle cx="420" cy="130" r="18" fill="#3d6b45"/>
+  <text x="420" y="128" text-anchor="middle" fill="white" font-size="8" font-weight="bold">藤澤</text>
+  <text x="420" y="140" text-anchor="middle" fill="white" font-size="8" font-weight="bold">本町</text>
+  <text x="420" y="158" text-anchor="middle" fill="#555" font-size="9">🏠小田急</text>
+  <!-- OK supermarket -->
+  <rect x="370" y="175" width="80" height="26" rx="4" fill="#e8c060" stroke="#b8882a"/>
+  <text x="410" y="192" text-anchor="middle" fill="#18130e" font-size="10" font-weight="bold">OK超市 採買</text>
+  <line x1="420" y1="148" x2="410" y2="175" stroke="#b8882a" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- labels -->
+  <text x="120" y="108" text-anchor="middle" fill="#2055a0" font-size="10" font-weight="bold">N'EX 38號</text>
+  <text x="120" y="120" text-anchor="middle" fill="#2055a0" font-size="9">16:57→18:51</text>
+  <text x="255" y="108" text-anchor="middle" fill="#2055a0" font-size="10" font-weight="bold">JR東海道線</text>
+  <text x="255" y="120" text-anchor="middle" fill="#2055a0" font-size="9">9分 ¥190</text>
+  <text x="365" y="108" text-anchor="middle" fill="#3d6b45" font-size="10" font-weight="bold">小田急 各停</text>
+  <text x="365" y="120" text-anchor="middle" fill="#3d6b45" font-size="9">3分 ¥136</text>
+  <!-- defs -->
+  <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3d6b45"/></marker></defs>
+  <!-- home icon -->
+  <text x="420" y="70" text-anchor="middle" font-size="24">🏠</text>
+  <text x="420" y="88" text-anchor="middle" fill="#3d6b45" font-size="10" font-weight="bold">親戚家</text>
+</svg>`}]
+  },
+
+  2: {
+    tabs: ['小田原市區地圖', '小田原城周邊'],
+    views: [
+      { type:'svg', title:'小田原站周邊徒步路線', svg:`
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="560" height="340" fill="#f0ede8" rx="10"/>
+  <!-- roads -->
+  <rect x="0" y="155" width="560" height="14" fill="#e0d8cc" rx="2"/>
+  <rect x="120" y="0" width="14" height="340" fill="#e0d8cc" rx="2"/>
+  <rect x="280" y="0" width="14" height="340" fill="#e0d8cc" rx="2"/>
+  <!-- station -->
+  <rect x="100" y="130" width="50" height="50" rx="6" fill="#2055a0"/>
+  <text x="125" y="150" text-anchor="middle" fill="white" font-size="9" font-weight="bold">小田原</text>
+  <text x="125" y="163" text-anchor="middle" fill="white" font-size="8">JR/小田急</text>
+  <text x="125" y="175" text-anchor="middle" fill="white" font-size="8">ミナカ1F↑</text>
+  <!-- ミナカ (BunBun+岡西) -->
+  <rect x="90" y="60" width="70" height="45" rx="5" fill="#c43b1e"/>
+  <text x="125" y="77" text-anchor="middle" fill="white" font-size="9" font-weight="bold">ミナカ小田原</text>
+  <text x="125" y="89" text-anchor="middle" fill="white" font-size="8">🥐ブンブン</text>
+  <text x="125" y="100" text-anchor="middle" fill="white" font-size="8">🍡岡西</text>
+  <line x1="125" y1="105" x2="125" y2="130" stroke="#c43b1e" stroke-width="2" stroke-dasharray="3,2"/>
+  <!-- Soba -->
+  <rect x="185" y="120" width="75" height="36" rx="5" fill="#c43b1e"/>
+  <text x="222" y="134" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🍜三層究極のそば</text>
+  <text x="222" y="147" text-anchor="middle" fill="white" font-size="8">徒歩5分</text>
+  <line x1="150" y1="162" x2="185" y2="145" stroke="#666" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- Castle -->
+  <rect x="260" y="100" width="70" height="44" rx="5" fill="#b8882a"/>
+  <text x="295" y="117" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🏯小田原城</text>
+  <text x="295" y="129" text-anchor="middle" fill="white" font-size="8">¥510</text>
+  <text x="295" y="140" text-anchor="middle" fill="white" font-size="8">徒歩15分</text>
+  <line x1="150" y1="162" x2="260" y2="122" stroke="#666" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- 報徳神社 -->
+  <rect x="260" y="155" width="70" height="36" rx="5" fill="#3d6b45"/>
+  <text x="295" y="170" text-anchor="middle" fill="white" font-size="9" font-weight="bold">報徳二宮神社</text>
+  <text x="295" y="183" text-anchor="middle" fill="white" font-size="8">城内　選做</text>
+  <line x1="295" y1="144" x2="295" y2="155" stroke="#3d6b45" stroke-width="1.5"/>
+  <!-- 御幸の浜 -->
+  <rect x="185" y="240" width="90" height="36" rx="5" fill="#87a0c8"/>
+  <text x="230" y="256" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🏖御幸の浜</text>
+  <text x="230" y="268" text-anchor="middle" fill="white" font-size="8">徒歩20分 選做</text>
+  <line x1="150" y1="175" x2="200" y2="240" stroke="#87a0c8" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- 八起 -->
+  <rect x="100" y="240" width="70" height="36" rx="5" fill="#c43b1e"/>
+  <text x="135" y="256" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🍱八起 晚餐</text>
+  <text x="135" y="268" text-anchor="middle" fill="white" font-size="8">17:30～</text>
+  <line x1="125" y1="180" x2="128" y2="240" stroke="#c43b1e" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- legend -->
+  <rect x="380" y="20" width="165" height="90" rx="6" fill="white" opacity="0.85"/>
+  <text x="463" y="38" text-anchor="middle" fill="#18130e" font-size="10" font-weight="bold">圖例</text>
+  <rect x="390" y="46" width="10" height="10" fill="#c43b1e" rx="2"/>
+  <text x="407" y="55" fill="#18130e" font-size="9">必去景點/餐廳</text>
+  <rect x="390" y="62" width="10" height="10" fill="#b8882a" rx="2"/>
+  <text x="407" y="71" fill="#18130e" font-size="9">觀光景點</text>
+  <rect x="390" y="78" width="10" height="10" fill="#3d6b45" rx="2"/>
+  <text x="407" y="87" fill="#18130e" font-size="9">選做景點</text>
+  <rect x="390" y="94" width="10" height="10" fill="#87a0c8" rx="2"/>
+  <text x="407" y="103" fill="#18130e" font-size="9">選做(海邊)</text>
+  <!-- north arrow -->
+  <text x="500" y="290" text-anchor="middle" fill="#555" font-size="22">↑</text>
+  <text x="500" y="310" text-anchor="middle" fill="#555" font-size="10">北</text>
+  <text x="20" y="325" fill="#888" font-size="9">※ 相對位置示意圖，非精確比例</text>
+</svg>`},
+      { type:'svg', title:'小田原城・報徳神社 位置關係', svg:`
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="400" height="280" fill="#eef4e8" rx="10"/>
+  <!-- castle moat -->
+  <ellipse cx="200" cy="140" rx="90" ry="70" fill="none" stroke="#87a0c8" stroke-width="3" stroke-dasharray="6,3"/>
+  <text x="200" y="40" text-anchor="middle" fill="#87a0c8" font-size="9">（護城河）</text>
+  <!-- castle -->
+  <rect x="170" y="108" width="60" height="50" rx="6" fill="#b8882a"/>
+  <polygon points="200,90 178,110 222,110" fill="#8a6020"/>
+  <text x="200" y="127" text-anchor="middle" fill="white" font-size="10" font-weight="bold">🏯天守閣</text>
+  <text x="200" y="140" text-anchor="middle" fill="white" font-size="8">¥510</text>
+  <text x="200" y="152" text-anchor="middle" fill="white" font-size="8">入場 ↑</text>
+  <!-- 報徳神社 -->
+  <rect x="100" y="158" width="70" height="40" rx="5" fill="#3d6b45"/>
+  <text x="135" y="174" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⛩報徳二宮</text>
+  <text x="135" y="186" text-anchor="middle" fill="white" font-size="8">神社 選做</text>
+  <line x1="170" y1="158" x2="170" y2="178" stroke="#3d6b45" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- entrance -->
+  <rect x="175" y="205" width="50" height="28" rx="4" fill="#2055a0"/>
+  <text x="200" y="223" text-anchor="middle" fill="white" font-size="9">城址公園</text>
+  <text x="200" y="234" text-anchor="middle" fill="white" font-size="8">入口</text>
+  <!-- walk from station -->
+  <rect x="5" y="220" width="70" height="30" rx="4" fill="#2055a0"/>
+  <text x="40" y="237" text-anchor="middle" fill="white" font-size="9" font-weight="bold">小田原駅</text>
+  <path d="M75 235 Q130 235 175 218" stroke="#2055a0" stroke-width="2" fill="none" marker-end="url(#arr2)" stroke-dasharray="5,3"/>
+  <text x="125" y="248" text-anchor="middle" fill="#2055a0" font-size="9">徒歩約15分</text>
+  <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2055a0"/></marker></defs>
+  <!-- vagabond -->
+  <rect x="295" y="140" width="90" height="36" rx="5" fill="#8a6020"/>
+  <text x="340" y="155" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Vagabond</text>
+  <text x="340" y="167" text-anchor="middle" fill="white" font-size="8">Pastry 選做</text>
+  <line x1="260" y1="158" x2="295" y2="158" stroke="#8a6020" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="20" y="270" fill="#888" font-size="9">※ 相對位置示意圖</text>
+</svg>`}
+    ]
+  },
+
+  3: {
+    tabs: ['橫濱總覽', 'みなとみらい', '橫濱站百貨樓層'],
+    views: [
+      { type:'svg', title:'Day 3 橫濱全日路線圖', svg:`
+<svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="580" height="360" fill="#f0ede8" rx="10"/>
+  <!-- sea -->
+  <rect x="350" y="0" width="230" height="360" fill="#ddeefa" rx="0"/>
+  <text x="465" y="30" text-anchor="middle" fill="#5588aa" font-size="11">橫濱灣・港未來</text>
+  <!-- station area -->
+  <rect x="40" y="130" width="70" height="45" rx="6" fill="#2055a0"/>
+  <text x="75" y="148" text-anchor="middle" fill="white" font-size="9" font-weight="bold">橫濱站</text>
+  <text x="75" y="162" text-anchor="middle" fill="white" font-size="8">JR/小田急</text>
+  <text x="75" y="172" text-anchor="middle" fill="white" font-size="8">港未來線</text>
+  <!-- Sakuragacho (hotel) -->
+  <rect x="40" y="225" width="70" height="40" rx="6" fill="#3d6b45"/>
+  <text x="75" y="242" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🏨桜木町</text>
+  <text x="75" y="255" text-anchor="middle" fill="white" font-size="8">JR METS</text>
+  <line x1="75" y1="175" x2="75" y2="225" stroke="#3d6b45" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="93" y="205" fill="#3d6b45" font-size="8">JR 3分</text>
+  <!-- Timber Wharf / I'm donut -->
+  <rect x="370" y="80" width="110" height="45" rx="6" fill="#b8882a"/>
+  <text x="425" y="97" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🍩I'm donut?</text>
+  <text x="425" y="109" text-anchor="middle" fill="white" font-size="8">ティンバーワーフ</text>
+  <text x="425" y="120" text-anchor="middle" fill="white" font-size="8">8:00–19:00</text>
+  <!-- daco -->
+  <rect x="370" y="140" width="110" height="32" rx="5" fill="#8a6020"/>
+  <text x="425" y="155" text-anchor="middle" fill="white" font-size="9" font-weight="bold">dacō（隔壁享用）</text>
+  <text x="425" y="165" text-anchor="middle" fill="white" font-size="8">海景座位⭐</text>
+  <line x1="425" y1="125" x2="425" y2="140" stroke="#8a6020" stroke-width="1.5"/>
+  <!-- mm line station -->
+  <rect x="270" y="130" width="85" height="35" rx="5" fill="#5e3a9c"/>
+  <text x="312" y="147" text-anchor="middle" fill="white" font-size="9" font-weight="bold">みなとみらい駅</text>
+  <text x="312" y="159" text-anchor="middle" fill="white" font-size="8">港未來線 ¥210</text>
+  <line x1="312" y1="130" x2="370" y2="105" stroke="#b8882a" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="345" y="115" text-anchor="middle" fill="#b8882a" font-size="8">步行13分</text>
+  <line x1="110" y1="152" x2="270" y2="148" stroke="#5e3a9c" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="190" y="143" text-anchor="middle" fill="#5e3a9c" font-size="9">港未來線 4分</text>
+  <!-- JOINUS/Takashimaya (station building) -->
+  <rect x="40" y="60" width="80" height="50" rx="5" fill="#c43b1e"/>
+  <text x="80" y="76" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🏬JOINUS</text>
+  <text x="80" y="88" text-anchor="middle" fill="white" font-size="8">高島屋</text>
+  <text x="80" y="100" text-anchor="middle" fill="white" font-size="8">Lumine SOGO</text>
+  <line x1="75" y1="110" x2="75" y2="130" stroke="#c43b1e" stroke-width="1.5"/>
+  <!-- SOGO/荒井屋 -->
+  <rect x="140" y="60" width="80" height="50" rx="5" fill="#c43b1e"/>
+  <text x="180" y="76" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🏬SOGO</text>
+  <text x="180" y="88" text-anchor="middle" fill="white" font-size="8">B2 小倉山莊⭐</text>
+  <text x="180" y="100" text-anchor="middle" fill="white" font-size="8">B2 荒井屋牛鍋</text>
+  <line x1="120" y1="85" x2="140" y2="85" stroke="#c43b1e" stroke-width="1.5"/>
+  <!-- walk line to Colette -->
+  <rect x="130" y="225" width="80" height="36" rx="5" fill="#b8882a"/>
+  <text x="170" y="242" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Colette Mare</text>
+  <text x="170" y="254" text-anchor="middle" fill="white" font-size="8">andST⭐</text>
+  <line x1="110" y1="245" x2="130" y2="245" stroke="#b8882a" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- legend -->
+  <rect x="20" y="290" width="160" height="60" rx="6" fill="white" opacity="0.85"/>
+  <text x="100" y="307" text-anchor="middle" fill="#18130e" font-size="10" font-weight="bold">圖例</text>
+  <rect x="28" y="314" width="10" height="10" fill="#c43b1e" rx="2"/>
+  <text x="44" y="323" fill="#18130e" font-size="9">必去</text>
+  <rect x="80" y="314" width="10" height="10" fill="#b8882a" rx="2"/>
+  <text x="96" y="323" fill="#18130e" font-size="9">推薦</text>
+  <rect x="28" y="330" width="10" height="10" fill="#3d6b45" rx="2"/>
+  <text x="44" y="339" fill="#18130e" font-size="9">飯店</text>
+  <rect x="80" y="330" width="10" height="10" fill="#5e3a9c" rx="2"/>
+  <text x="96" y="339" fill="#18130e" font-size="9">地鐵</text>
+  <text x="20" y="356" fill="#888" font-size="9">※ 相對位置示意圖</text>
+</svg>`},
+      { type:'svg', title:'みなとみらい I\'m donut？ 步行路線', svg:`
+<svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="480" height="280" fill="#ddeefa" rx="10"/>
+  <rect x="0" y="0" width="200" height="280" fill="#eef2e8" rx="0"/>
+  <!-- road -->
+  <rect x="0" y="130" width="480" height="12" fill="#ccc8c0" rx="1"/>
+  <rect x="195" y="0" width="12" height="280" fill="#ccc8c0" rx="1"/>
+  <!-- MM station -->
+  <rect x="120" y="108" width="75" height="45" rx="6" fill="#5e3a9c"/>
+  <text x="157" y="126" text-anchor="middle" fill="white" font-size="9" font-weight="bold">みなとみらい駅</text>
+  <text x="157" y="138" text-anchor="middle" fill="white" font-size="8">2番出口→</text>
+  <text x="157" y="149" text-anchor="middle" fill="white" font-size="8">步行13分</text>
+  <!-- walk path -->
+  <path d="M207 142 Q280 142 290 100 Q310 60 370 80" stroke="#b8882a" stroke-width="3" fill="none" stroke-dasharray="6,3" marker-end="url(#ma)"/>
+  <!-- Timber Wharf -->
+  <rect x="360" y="55" width="105" height="50" rx="6" fill="#b8882a"/>
+  <text x="412" y="72" text-anchor="middle" fill="white" font-size="10" font-weight="bold">🍩I'm donut?</text>
+  <text x="412" y="84" text-anchor="middle" fill="white" font-size="9">ティンバーワーフ</text>
+  <text x="412" y="95" text-anchor="middle" fill="white" font-size="8">1F</text>
+  <!-- daco -->
+  <rect x="360" y="118" width="105" height="32" rx="5" fill="#8a6020"/>
+  <text x="412" y="133" text-anchor="middle" fill="white" font-size="9" font-weight="bold">dacō（隔壁）</text>
+  <text x="412" y="145" text-anchor="middle" fill="white" font-size="8">坐下來吃⭐</text>
+  <line x1="412" y1="105" x2="412" y2="118" stroke="#8a6020" stroke-width="2"/>
+  <!-- sea -->
+  <rect x="350" y="165" width="120" height="50" rx="5" fill="#4488bb" opacity="0.4"/>
+  <text x="410" y="195" text-anchor="middle" fill="#2055a0" font-size="10" font-weight="bold">臨港パーク</text>
+  <text x="410" y="207" text-anchor="middle" fill="#2055a0" font-size="8">海邊芝生廣場</text>
+  <!-- distance labels -->
+  <text x="290" y="80" fill="#8a5010" font-size="9" font-weight="bold">步行13分（約1km）</text>
+  <text x="290" y="92" fill="#8a5010" font-size="8">沿海濱步道前行</text>
+  <!-- BAYSIDE BLUE note -->
+  <rect x="10" y="200" width="160" height="45" rx="5" fill="#2e8a5e"/>
+  <text x="90" y="218" text-anchor="middle" fill="white" font-size="9" font-weight="bold">或搭 BAYSIDE BLUE</text>
+  <text x="90" y="230" text-anchor="middle" fill="white" font-size="8">橫濱駅東口乗車</text>
+  <text x="90" y="241" text-anchor="middle" fill="white" font-size="8">¥220，約10分</text>
+  <defs><marker id="ma" markerWidth="7" markerHeight="7" refX="3" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#b8882a"/></marker></defs>
+  <text x="10" y="272" fill="#888" font-size="9">※ 相對位置示意圖</text>
+</svg>`},
+      { type:'floor', title:'橫濱站周邊百貨樓層', floors:[
+        { name:'JOINUS（西口直連）', color:'#c43b1e', items:[
+          {fl:'B2',txt:'cosme@、淺野屋輕井澤麵包'},
+          {fl:'B1',txt:'鎌倉襯衫・治一郎布丁'},
+          {fl:'3F',txt:'Francfranc'},
+          {fl:'4F',txt:'Lattice・Olive des olive'},
+        ]},
+        { name:'高島屋（西口）', color:'#8a3015', items:[
+          {fl:'B1',txt:'横浜バニラ費南雪・和菓子'},
+          {fl:'5F',txt:'伊東屋文具 ZEBRA Miffy筆⭐'},
+          {fl:'7F',txt:'横浜001 橫濱特色商品'},
+        ]},
+        { name:'SOGO（東口）', color:'#2055a0', items:[
+          {fl:'B2',txt:'小倉山莊⭐・tulip rose玫瑰餅⭐・荒井屋牛鍋'},
+          {fl:'10F',txt:'荒井屋（晚餐）'},
+        ]},
+        { name:'Lumine（東口）', color:'#5e3a9c', items:[
+          {fl:'B2',txt:'cosme@⭐'},
+          {fl:'4F',txt:'kastane・FREE\'S MART'},
+          {fl:'B1',txt:'HARBS蛋糕'},
+        ]},
+      ]}
+    ]
+  },
+
+  4: {
+    tabs: ['Day4 橫濱路線', '元町・港區'],
+    views: [
+      { type:'svg', title:'Day 4 橫濱遊覽路線', svg:`
+<svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="560" height="320" fill="#f0ede8" rx="10"/>
+  <rect x="340" y="0" width="220" height="320" fill="#ddeefa"/>
+  <text x="450" y="25" text-anchor="middle" fill="#5588aa" font-size="10">橫濱灣</text>
+  <!-- route arrow (numbered path) -->
+  <path d="M80 160 L150 100 L230 100 L290 120 L360 100 L430 140 L430 200 L360 230 L230 230 L150 200 L80 160" fill="none" stroke="#c43b1e" stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- 1 桜木町/飯店 -->
+  <rect x="20" y="135" width="75" height="45" rx="5" fill="#3d6b45"/>
+  <text x="57" y="152" text-anchor="middle" fill="white" font-size="8" font-weight="bold">①🏨桜木町</text>
+  <text x="57" y="164" text-anchor="middle" fill="white" font-size="8">退房・取行李</text>
+  <text x="57" y="174" text-anchor="middle" fill="white" font-size="8">Colette andST</text>
+  <!-- 2 馬車道 -->
+  <rect x="120" y="75" width="80" height="40" rx="5" fill="#c43b1e"/>
+  <text x="160" y="91" text-anchor="middle" fill="white" font-size="9" font-weight="bold">②馬車道</text>
+  <text x="160" y="104" text-anchor="middle" fill="white" font-size="8">Sils Maria・Bell Plage</text>
+  <text x="90" y="118" fill="#666" font-size="8">步行10分→</text>
+  <!-- 3 CAESAR/関内 -->
+  <rect x="220" y="75" width="80" height="40" rx="5" fill="#c43b1e"/>
+  <text x="260" y="91" text-anchor="middle" fill="white" font-size="9" font-weight="bold">③CAESAR</text>
+  <text x="260" y="104" text-anchor="middle" fill="white" font-size="8">關內・蛋包飯¥2,500</text>
+  <!-- 4 元町 -->
+  <rect x="285" y="98" width="75" height="40" rx="5" fill="#c43b1e"/>
+  <text x="322" y="114" text-anchor="middle" fill="white" font-size="9" font-weight="bold">④元町</text>
+  <text x="322" y="126" text-anchor="middle" fill="white" font-size="8">La Théière・香炉庵</text>
+  <!-- 5 山下公園 -->
+  <rect x="365" y="78" width="90" height="38" rx="5" fill="#b8882a"/>
+  <text x="410" y="94" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⑤山下公園</text>
+  <text x="410" y="106" text-anchor="middle" fill="white" font-size="8">玫瑰花季⭐</text>
+  <!-- 6 象鼻公園 -->
+  <rect x="390" y="128" width="85" height="35" rx="5" fill="#b8882a"/>
+  <text x="432" y="144" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⑥象鼻公園</text>
+  <text x="432" y="157" text-anchor="middle" fill="white" font-size="8">地標</text>
+  <!-- 7 紅磚倉庫 -->
+  <rect x="355" y="210" width="95" height="40" rx="5" fill="#c43b1e"/>
+  <text x="402" y="226" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⑦紅磚倉庫</text>
+  <text x="402" y="239" text-anchor="middle" fill="white" font-size="8">Huffnagel¥430</text>
+  <!-- 8 纜車 -->
+  <rect x="210" y="210" width="120" height="38" rx="5" fill="#5e3a9c"/>
+  <text x="270" y="226" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⑧纜車 AIR CABIN</text>
+  <text x="270" y="239" text-anchor="middle" fill="white" font-size="8">運河パーク→桜木町 ¥1,000</text>
+  <!-- walk labels -->
+  <text x="175" y="70" fill="#888" font-size="8">步行5分</text>
+  <text x="285" y="80" fill="#888" font-size="8">步行15分</text>
+  <text x="360" y="80" fill="#888" font-size="8">步行10分</text>
+  <text x="445" y="180" fill="#888" font-size="8">步行5分↓</text>
+  <text x="320" y="205" fill="#888" font-size="8">步行10分←</text>
+  <text x="20" y="310" fill="#888" font-size="9">※ 數字代表建議行程順序，相對位置示意圖</text>
+</svg>`},
+      { type:'svg', title:'元町商店街 & 山下公園周邊', svg:`
+<svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="460" height="260" fill="#f0ede8" rx="10"/>
+  <rect x="290" y="0" width="170" height="260" fill="#ddeefa"/>
+  <!-- 元町 shopping street (linear) -->
+  <rect x="30" y="110" width="260" height="16" fill="#d0c8b8" rx="2"/>
+  <text x="160" y="100" text-anchor="middle" fill="#555" font-size="9">元町商店街（全長約600m）</text>
+  <!-- shops along street -->
+  <rect x="35" y="130" width="55" height="32" rx="4" fill="#c43b1e"/>
+  <text x="62" y="145" text-anchor="middle" fill="white" font-size="8" font-weight="bold">La Théière</text>
+  <text x="62" y="155" text-anchor="middle" fill="white" font-size="7">紅茶⭐</text>
+  <rect x="100" y="130" width="55" height="32" rx="4" fill="#c43b1e"/>
+  <text x="127" y="145" text-anchor="middle" fill="white" font-size="8" font-weight="bold">香炉庵</text>
+  <text x="127" y="155" text-anchor="middle" fill="white" font-size="7">銅鑼燒¥275</text>
+  <rect x="165" y="130" width="60" height="32" rx="4" fill="#c43b1e"/>
+  <text x="195" y="145" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Hamabread</text>
+  <text x="195" y="155" text-anchor="middle" fill="white" font-size="7">紅茶乳酪麵包</text>
+  <rect x="235" y="130" width="55" height="32" rx="4" fill="#8a3015"/>
+  <text x="262" y="145" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Belle Plage</text>
+  <text x="262" y="155" text-anchor="middle" fill="white" font-size="7">巧克力</text>
+  <!-- Yamashita park -->
+  <rect x="295" y="80" width="120" height="55" rx="6" fill="#4a9a60"/>
+  <text x="355" y="100" text-anchor="middle" fill="white" font-size="10" font-weight="bold">🌹山下公園</text>
+  <text x="355" y="114" text-anchor="middle" fill="white" font-size="8">玫瑰花季⭐</text>
+  <text x="355" y="125" text-anchor="middle" fill="white" font-size="8">橫濱灣景</text>
+  <!-- Zouhana park -->
+  <rect x="310" y="148" width="90" height="35" rx="5" fill="#3d6b45"/>
+  <text x="355" y="164" text-anchor="middle" fill="white" font-size="9" font-weight="bold">象鼻公園</text>
+  <text x="355" y="176" text-anchor="middle" fill="white" font-size="8">步行5分</text>
+  <line x1="355" y1="135" x2="355" y2="148" stroke="#3d6b45" stroke-width="1.5"/>
+  <!-- red brick -->
+  <rect x="295" y="196" width="120" height="38" rx="5" fill="#c43b1e"/>
+  <text x="355" y="213" text-anchor="middle" fill="white" font-size="9" font-weight="bold">紅磚倉庫</text>
+  <text x="355" y="225" text-anchor="middle" fill="white" font-size="8">Huffnagel¥430↑</text>
+  <line x1="355" y1="183" x2="355" y2="196" stroke="#c43b1e" stroke-width="1.5"/>
+  <!-- walk from motomachi to yamashita -->
+  <path d="M290 126 Q295 76 295 82" stroke="#555" stroke-width="1.5" stroke-dasharray="3,2" fill="none"/>
+  <text x="18" y="250" fill="#888" font-size="9">※ 示意圖，元町至山下公園步行約10分</text>
+</svg>`}
+    ]
+  },
+
+  5: {
+    tabs: ['江ノ電路線', '江之島地圖'],
+    views: [
+      { type:'svg', title:'藤澤→和田塚→長谷→江之島 江ノ電路線', svg:`
+<svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="560" height="200" fill="#f0ede8" rx="10"/>
+  <!-- rail -->
+  <line x1="30" y1="100" x2="530" y2="100" stroke="#c43b1e" stroke-width="5"/>
+  <!-- sea area -->
+  <rect x="0" y="130" width="560" height="70" fill="#ddeefa" rx="0"/>
+  <text x="280" y="165" text-anchor="middle" fill="#5588aa" font-size="10">相模湾（坐右側靠海！）</text>
+  <!-- stations -->
+  <circle cx="50" cy="100" r="14" fill="#2055a0"/>
+  <text x="50" y="104" text-anchor="middle" fill="white" font-size="8" font-weight="bold">藤澤</text>
+  <text x="50" y="122" text-anchor="middle" fill="#555" font-size="8">出発</text>
+  <circle cx="150" cy="100" r="14" fill="#c43b1e"/>
+  <text x="150" y="104" text-anchor="middle" fill="white" font-size="8" font-weight="bold">和田塚</text>
+  <text x="150" y="122" text-anchor="middle" fill="#c43b1e" font-size="7">🍳早餐</text>
+  <circle cx="250" cy="100" r="14" fill="#c43b1e"/>
+  <text x="250" y="104" text-anchor="middle" fill="white" font-size="8" font-weight="bold">長谷</text>
+  <text x="250" y="122" text-anchor="middle" fill="#c43b1e" font-size="7">🗿大佛</text>
+  <!-- road section (Yuigahama-Inamuragasaki) -->
+  <rect x="290" y="88" width="80" height="24" rx="3" fill="#e8c060"/>
+  <text x="330" y="104" text-anchor="middle" fill="#18130e" font-size="7" font-weight="bold">路面電車区間</text>
+  <circle cx="400" cy="100" r="14" fill="#b8882a"/>
+  <text x="400" y="104" text-anchor="middle" fill="white" font-size="8" font-weight="bold">腰越</text>
+  <text x="400" y="122" text-anchor="middle" fill="#888" font-size="7">路面電車!</text>
+  <circle cx="500" cy="100" r="16" fill="#3d6b45"/>
+  <text x="500" y="97" text-anchor="middle" fill="white" font-size="8" font-weight="bold">江ノ島</text>
+  <text x="500" y="109" text-anchor="middle" fill="white" font-size="7">🌊終点</text>
+  <text x="500" y="122" text-anchor="middle" fill="#3d6b45" font-size="7">步行10分→島</text>
+  <!-- time labels -->
+  <text x="100" y="78" text-anchor="middle" fill="#555" font-size="8">約10分</text>
+  <text x="200" y="78" text-anchor="middle" fill="#555" font-size="8">約8分</text>
+  <text x="460" y="78" text-anchor="middle" fill="#555" font-size="8">約10分</text>
+  <text x="280" y="65" text-anchor="middle" fill="#b8882a" font-size="8">路面電車（稀有！）</text>
+  <!-- one day ticket -->
+  <rect x="170" y="15" width="200" height="28" rx="5" fill="#b8882a"/>
+  <text x="270" y="33" text-anchor="middle" fill="white" font-size="10" font-weight="bold">江ノ電一日票 ¥800 全線自由乗降</text>
+  <text x="20" y="190" fill="#888" font-size="9">※ 相對位置示意圖，各站距離非精確比例</text>
+</svg>`},
+      { type:'svg', title:'江之島 三社巡禮 & 景點路線', svg:`
+<svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="440" height="320" fill="#ddeefa" rx="10"/>
+  <!-- island outline -->
+  <ellipse cx="260" cy="165" rx="155" ry="110" fill="#e8e4d8" stroke="#aaa" stroke-width="1.5"/>
+  <!-- bridge -->
+  <rect x="60" y="158" width="60" height="14" rx="3" fill="#c8c0b0"/>
+  <text x="90" y="152" text-anchor="middle" fill="#555" font-size="8">弁天橋 徒步10分</text>
+  <!-- main path -->
+  <path d="M135 165 L165 155 L200 150 L235 148 L265 148 L300 152 L330 160 L350 172 L355 185" stroke="#c43b1e" stroke-width="2.5" fill="none" stroke-dasharray="5,2"/>
+  <!-- 1 仲見世通 -->
+  <rect x="130" y="140" width="65" height="30" rx="4" fill="#c43b1e"/>
+  <text x="162" y="155" text-anchor="middle" fill="white" font-size="8" font-weight="bold">①仲見世通</text>
+  <text x="162" y="165" text-anchor="middle" fill="white" font-size="7">美食・小店</text>
+  <!-- 2 邊津宮 -->
+  <rect x="200" y="128" width="60" height="30" rx="4" fill="#c43b1e"/>
+  <text x="230" y="143" text-anchor="middle" fill="white" font-size="8" font-weight="bold">②邊津宮</text>
+  <text x="230" y="154" text-anchor="middle" fill="white" font-size="7">エスカー↑</text>
+  <!-- 3 中津宮 -->
+  <rect x="265" y="125" width="60" height="30" rx="4" fill="#c43b1e"/>
+  <text x="295" y="140" text-anchor="middle" fill="white" font-size="8" font-weight="bold">③中津宮</text>
+  <text x="295" y="151" text-anchor="middle" fill="white" font-size="7">求美求財</text>
+  <!-- 4 奧津宮 -->
+  <rect x="315" y="140" width="60" height="30" rx="4" fill="#c43b1e"/>
+  <text x="345" y="155" text-anchor="middle" fill="white" font-size="8" font-weight="bold">④奧津宮</text>
+  <text x="345" y="166" text-anchor="middle" fill="white" font-size="7">龍戀之鐘</text>
+  <!-- 5 稚兒之淵 -->
+  <rect x="340" y="195" width="80" height="38" rx="4" fill="#b8882a"/>
+  <text x="380" y="211" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⑤稚兒之淵</text>
+  <text x="380" y="223" text-anchor="middle" fill="white" font-size="7">🌅夕陽⭐ 18:00</text>
+  <text x="380" y="233" text-anchor="middle" fill="white" font-size="7">最終地點</text>
+  <!-- Escar -->
+  <rect x="155" y="198" width="80" height="30" rx="4" fill="#5e3a9c"/>
+  <text x="195" y="213" text-anchor="middle" fill="white" font-size="8" font-weight="bold">エスカー¥360</text>
+  <text x="195" y="223" text-anchor="middle" fill="white" font-size="7">上り手扶梯⭐</text>
+  <!-- Sea Candle -->
+  <rect x="240" y="185" width="80" height="30" rx="4" fill="#5e3a9c"/>
+  <text x="280" y="200" text-anchor="middle" fill="white" font-size="8" font-weight="bold">シーキャンドル</text>
+  <text x="280" y="211" text-anchor="middle" fill="white" font-size="7">¥1,100 set</text>
+  <!-- Enoshima station -->
+  <rect x="40" y="153" width="55" height="32" rx="5" fill="#2055a0"/>
+  <text x="67" y="168" text-anchor="middle" fill="white" font-size="8" font-weight="bold">江ノ島駅</text>
+  <text x="67" y="179" text-anchor="middle" fill="white" font-size="7">江ノ電</text>
+  <!-- snack -->
+  <rect x="145" y="230" width="80" height="30" rx="4" fill="#8a6020"/>
+  <text x="185" y="245" text-anchor="middle" fill="white" font-size="8" font-weight="bold">章魚仙貝⭐</text>
+  <text x="185" y="255" text-anchor="middle" fill="white" font-size="7">¥700–1,100</text>
+  <text x="20" y="310" fill="#888" font-size="9">※ 相對位置示意圖。下坡走階梯，邊走邊逛。</text>
+</svg>`}
+    ]
+  },
+
+  6: {
+    tabs: ['合羽橋地圖', '淺草・藏前'],
+    views: [
+      { type:'svg', title:'合羽橋道具街 主要店家位置', svg:`
+<svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="480" height="320" fill="#f0ede8" rx="10"/>
+  <!-- Main street -->
+  <rect x="200" y="0" width="20" height="320" fill="#d8d0c0" rx="1"/>
+  <text x="210" y="16" text-anchor="middle" fill="#555" font-size="9" transform="rotate(-90,210,16)" style="transform-origin:210px 16px">合羽橋道具街（南北約800m）</text>
+  <!-- cross roads -->
+  <rect x="0" y="90" width="480" height="10" fill="#e0d8c8" rx="1"/>
+  <rect x="0" y="190" width="480" height="10" fill="#e0d8c8" rx="1"/>
+  <!-- Inaricho station (south) -->
+  <rect x="160" y="280" width="100" height="30" rx="5" fill="#5e3a9c"/>
+  <text x="210" y="299" text-anchor="middle" fill="white" font-size="9" font-weight="bold">稲荷町駅（銀座線）</text>
+  <!-- shops west side -->
+  <rect x="30" y="60" width="155" height="35" rx="5" fill="#c43b1e"/>
+  <text x="107" y="76" text-anchor="middle" fill="white" font-size="9" font-weight="bold">田窯（でんがま）</text>
+  <text x="107" y="88" text-anchor="middle" fill="white" font-size="8">和食器 10:00開⭐</text>
+  <line x1="185" y1="78" x2="200" y2="78" stroke="#c43b1e" stroke-width="1.5"/>
+  <rect x="30" y="105" width="155" height="35" rx="5" fill="#c43b1e"/>
+  <text x="107" y="121" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鍔屋菜刀店</text>
+  <text x="107" y="133" text-anchor="middle" fill="white" font-size="8">水果刀¥1,822 10:00</text>
+  <line x1="185" y1="122" x2="200" y2="122" stroke="#c43b1e" stroke-width="1.5"/>
+  <rect x="30" y="150" width="155" height="35" rx="5" fill="#c43b1e"/>
+  <text x="107" y="166" text-anchor="middle" fill="white" font-size="9" font-weight="bold">釜淺商店</text>
+  <text x="107" y="178" text-anchor="middle" fill="white" font-size="8">水果刀¥1,900 免費刻字⭐</text>
+  <line x1="185" y1="167" x2="200" y2="167" stroke="#c43b1e" stroke-width="1.5"/>
+  <rect x="30" y="198" width="155" height="35" rx="5" fill="#8a6020"/>
+  <text x="107" y="214" text-anchor="middle" fill="white" font-size="9" font-weight="bold">CONFECT-CONCEPT</text>
+  <text x="107" y="226" text-anchor="middle" fill="white" font-size="8">甜點 10:30開</text>
+  <line x1="185" y1="216" x2="200" y2="216" stroke="#8a6020" stroke-width="1.5"/>
+  <!-- shops east side -->
+  <rect x="230" y="60" width="155" height="35" rx="5" fill="#c43b1e"/>
+  <text x="307" y="76" text-anchor="middle" fill="white" font-size="9" font-weight="bold">ZAKA Kappabashi</text>
+  <text x="307" y="88" text-anchor="middle" fill="white" font-size="8">茶筅・抹茶碗 10:00</text>
+  <line x1="220" y1="78" x2="230" y2="78" stroke="#c43b1e" stroke-width="1.5"/>
+  <rect x="230" y="105" width="155" height="35" rx="5" fill="#c43b1e"/>
+  <text x="307" y="121" text-anchor="middle" fill="white" font-size="9" font-weight="bold">金屋毛刷店</text>
+  <text x="307" y="133" text-anchor="middle" fill="white" font-size="8">繪筆 ¥209 10:30</text>
+  <line x1="220" y1="122" x2="230" y2="122" stroke="#c43b1e" stroke-width="1.5"/>
+  <rect x="230" y="150" width="155" height="35" rx="5" fill="#c43b1e"/>
+  <text x="307" y="166" text-anchor="middle" fill="white" font-size="9" font-weight="bold">馬嶋屋菓子道具店</text>
+  <text x="307" y="178" text-anchor="middle" fill="white" font-size="8">烘焙模具 9:30開⭐</text>
+  <line x1="220" y1="167" x2="230" y2="167" stroke="#c43b1e" stroke-width="1.5"/>
+  <rect x="230" y="198" width="155" height="35" rx="5" fill="#3d6b45"/>
+  <text x="307" y="214" text-anchor="middle" fill="white" font-size="9" font-weight="bold">飯田屋 / 其他</text>
+  <text x="307" y="226" text-anchor="middle" fill="white" font-size="8">廚房工具 選做</text>
+  <line x1="220" y1="216" x2="230" y2="216" stroke="#3d6b45" stroke-width="1.5"/>
+  <!-- North marker -->
+  <text x="455" y="30" text-anchor="middle" fill="#555" font-size="18">↑</text>
+  <text x="455" y="46" text-anchor="middle" fill="#555" font-size="9">北(淺草)</text>
+  <text x="455" y="290" text-anchor="middle" fill="#555" font-size="9">南(稲荷町)</text>
+  <text x="20" y="312" fill="#888" font-size="9">※ 相對位置示意圖，實際街道南北走向</text>
+</svg>`},
+      { type:'svg', title:'淺草・藏前 文青路線', svg:`
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="480" height="300" fill="#f0ede8" rx="10"/>
+  <!-- river -->
+  <rect x="240" y="0" width="30" height="300" fill="#b8d8f0" rx="2"/>
+  <text x="255" y="150" text-anchor="middle" fill="#5588aa" font-size="8" transform="rotate(-90,255,150)" style="transform-origin:255px 150px">隅田川</text>
+  <!-- road -->
+  <rect x="0" y="140" width="480" height="10" fill="#e0d8c8" rx="1"/>
+  <!-- Asakusa area -->
+  <rect x="20" y="40" width="100" height="45" rx="6" fill="#b8882a"/>
+  <text x="70" y="58" text-anchor="middle" fill="white" font-size="9" font-weight="bold">浅草寺・雷門</text>
+  <text x="70" y="70" text-anchor="middle" fill="white" font-size="8">杵屋仙貝</text>
+  <text x="70" y="81" text-anchor="middle" fill="white" font-size="8">和泉屋貓咪仙貝</text>
+  <!-- 壽壽喜園 -->
+  <rect x="20" y="100" width="100" height="35" rx="5" fill="#3d6b45"/>
+  <text x="70" y="115" text-anchor="middle" fill="white" font-size="9" font-weight="bold">壽壽喜園</text>
+  <text x="70" y="127" text-anchor="middle" fill="white" font-size="8">抹茶冰淇淋</text>
+  <!-- walk asakusa to kuramae -->
+  <path d="M120 85 Q185 85 185 155 Q185 170 185 180" stroke="#888" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <text x="145" y="132" fill="#888" font-size="8">步行15分</text>
+  <!-- Kuramae area -->
+  <rect x="140" y="185" width="100" height="35" rx="5" fill="#c43b1e"/>
+  <text x="190" y="200" text-anchor="middle" fill="white" font-size="9" font-weight="bold">KURAMAE CANNELE</text>
+  <text x="190" y="212" text-anchor="middle" fill="white" font-size="8">可麗露¥680</text>
+  <rect x="140" y="228" width="100" height="35" rx="5" fill="#c43b1e"/>
+  <text x="190" y="243" text-anchor="middle" fill="white" font-size="9" font-weight="bold">marble 蔵前</text>
+  <text x="190" y="255" text-anchor="middle" fill="white" font-size="8">布丁・巴斯克¥680</text>
+  <rect x="280" y="185" width="100" height="35" rx="5" fill="#8a6020"/>
+  <text x="330" y="200" text-anchor="middle" fill="white" font-size="9" font-weight="bold">foo.. 娃娃店</text>
+  <text x="330" y="212" text-anchor="middle" fill="white" font-size="8">Plushie</text>
+  <rect x="280" y="228" width="100" height="35" rx="5" fill="#8a6020"/>
+  <text x="330" y="243" text-anchor="middle" fill="white" font-size="9" font-weight="bold">菓子屋シノノメ</text>
+  <text x="330" y="255" text-anchor="middle" fill="white" font-size="8">手工點心</text>
+  <!-- station markers -->
+  <rect x="20" y="155" width="75" height="26" rx="4" fill="#c43b1e"/>
+  <text x="57" y="172" text-anchor="middle" fill="white" font-size="8" font-weight="bold">浅草駅</text>
+  <rect x="385" y="185" width="75" height="26" rx="4" fill="#5e3a9c"/>
+  <text x="422" y="202" text-anchor="middle" fill="white" font-size="8" font-weight="bold">蔵前駅</text>
+  <!-- caption -->
+  <text x="280" y="160" fill="#888" font-size="8">（蔵前駅エリア）</text>
+  <text x="20" y="292" fill="#888" font-size="9">※ 相對位置示意圖，淺草→藏前步行約15分</text>
+</svg>`}
+    ]
+  },
+
+  7: {
+    tabs: ['鎌倉路線圖', '小町通・八幡宮'],
+    views: [
+      { type:'svg', title:'Day 7 鎌倉全日路線', svg:`
+<svg viewBox="0 0 540 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="540" height="300" fill="#f0ede8" rx="10"/>
+  <!-- JR line -->
+  <line x1="30" y1="250" x2="510" y2="250" stroke="#2055a0" stroke-width="3" stroke-dasharray="8,4"/>
+  <text x="270" y="268" text-anchor="middle" fill="#2055a0" font-size="8">JR横須賀線</text>
+  <!-- stations on JR -->
+  <circle cx="80" cy="250" r="12" fill="#2055a0"/>
+  <text x="80" y="254" text-anchor="middle" fill="white" font-size="8" font-weight="bold">藤澤</text>
+  <circle cx="480" cy="250" r="12" fill="#2055a0"/>
+  <text x="480" y="254" text-anchor="middle" fill="white" font-size="8" font-weight="bold">鎌倉</text>
+  <text x="280" y="240" text-anchor="middle" fill="#2055a0" font-size="9">直達 約12分 ¥230</text>
+  <!-- walk paths from Kamakura station -->
+  <!-- West side: Zeniarai -->
+  <path d="M480 238 L420 160 L380 120" stroke="#c43b1e" stroke-width="2" fill="none" stroke-dasharray="5,2"/>
+  <rect x="325" y="95" width="90" height="38" rx="5" fill="#c43b1e"/>
+  <text x="370" y="111" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⛩洗錢神社</text>
+  <text x="370" y="123" text-anchor="middle" fill="white" font-size="8">徒步20分</text>
+  <!-- Bread it be (breakfast) -->
+  <rect x="440" y="195" width="90" height="38" rx="5" fill="#c43b1e"/>
+  <text x="485" y="211" text-anchor="middle" fill="white" font-size="9" font-weight="bold">BREAD IT BE</text>
+  <text x="485" y="223" text-anchor="middle" fill="white" font-size="8">早餐 8:00–</text>
+  <line x1="485" y1="233" x2="485" y2="250" stroke="#c43b1e" stroke-width="1.5"/>
+  <!-- East side: Komachi/Hachimangu -->
+  <path d="M480 238 L480 100" stroke="#b8882a" stroke-width="2" fill="none" stroke-dasharray="5,2"/>
+  <rect x="435" y="75" width="95" height="38" rx="5" fill="#b8882a"/>
+  <text x="482" y="91" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鶴岡八幡宮</text>
+  <text x="482" y="103" text-anchor="middle" fill="white" font-size="8">¥300 徒步10分</text>
+  <!-- Komachi-dori -->
+  <rect x="365" y="155" width="100" height="55" rx="6" fill="#c43b1e"/>
+  <text x="415" y="171" text-anchor="middle" fill="white" font-size="9" font-weight="bold">小町通</text>
+  <text x="415" y="184" text-anchor="middle" fill="white" font-size="8">豊島屋(鳩サブレー)</text>
+  <text x="415" y="196" text-anchor="middle" fill="white" font-size="8">arbre noir・Beller</text>
+  <text x="415" y="207" text-anchor="middle" fill="white" font-size="8">Hatoya 抹茶⭐</text>
+  <line x1="435" y1="113" x2="420" y2="155" stroke="#b8882a" stroke-width="1.5"/>
+  <!-- Maker shirt -->
+  <rect x="245" y="155" width="105" height="38" rx="5" fill="#c43b1e"/>
+  <text x="297" y="171" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鎌倉襯衫</text>
+  <text x="297" y="183" text-anchor="middle" fill="white" font-size="8">Maker's Shirt 11:00–</text>
+  <line x1="365" y1="183" x2="350" y2="183" stroke="#c43b1e" stroke-width="1.5"/>
+  <!-- dinner -->
+  <rect x="245" y="205" width="105" height="38" rx="5" fill="#8a3015"/>
+  <text x="297" y="221" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🍜銀座 篝 鎌倉</text>
+  <text x="297" y="233" text-anchor="middle" fill="white" font-size="8">雞白湯 ¥1,380</text>
+  <line x1="297" y1="193" x2="297" y2="205" stroke="#8a3015" stroke-width="1.5"/>
+  <!-- Kamakura station box -->
+  <rect x="450" y="225" width="60" height="28" rx="5" fill="#2055a0"/>
+  <text x="480" y="243" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鎌倉駅</text>
+  <text x="20" y="292" fill="#888" font-size="9">※ 相對位置示意圖</text>
+</svg>`},
+      { type:'svg', title:'小町通商店街 & 鶴岡八幡宮', svg:`
+<svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="420" height="300" fill="#eef4e8" rx="10"/>
+  <!-- Wakamiya Oji (main path) -->
+  <rect x="185" y="20" width="20" height="270" fill="#e0d8c8" rx="2"/>
+  <text x="35" y="18" fill="#888" font-size="8">←小町通 （東側）</text>
+  <text x="230" y="18" fill="#888" font-size="8">若宮大路（参道）</text>
+  <!-- Hachimangu -->
+  <rect x="145" y="25" width="120" height="55" rx="7" fill="#b8882a"/>
+  <polygon points="205,15 165,30 245,30" fill="#8a6020"/>
+  <text x="205" y="47" text-anchor="middle" fill="white" font-size="10" font-weight="bold">鶴岡八幡宮</text>
+  <text x="205" y="60" text-anchor="middle" fill="white" font-size="8">¥300 本宮は山上</text>
+  <text x="205" y="72" text-anchor="middle" fill="white" font-size="8">↑石段を登る</text>
+  <!-- Komachi street shops (linear, going south) -->
+  <rect x="20" y="90" width="160" height="28" rx="4" fill="#8a3015"/>
+  <text x="100" y="109" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鎌倉駅（JR）東口</text>
+  <line x1="180" y1="104" x2="185" y2="104" stroke="#888" stroke-width="1"/>
+  <!-- shops east side of komachi -->
+  <rect x="20" y="130" width="155" height="30" rx="4" fill="#c43b1e"/>
+  <text x="97" y="149" text-anchor="middle" fill="white" font-size="9" font-weight="bold">豊島屋 鳩サブレー¥1,220⭐</text>
+  <rect x="20" y="168" width="155" height="30" rx="4" fill="#c43b1e"/>
+  <text x="97" y="187" text-anchor="middle" fill="white" font-size="9" font-weight="bold">八十八鎌倉抹茶（Hatoya）⭐</text>
+  <rect x="20" y="206" width="155" height="30" rx="4" fill="#c43b1e"/>
+  <text x="97" y="225" text-anchor="middle" fill="white" font-size="9" font-weight="bold">arbre noir 抹茶燒¥90</text>
+  <rect x="20" y="244" width="155" height="30" rx="4" fill="#3d6b45"/>
+  <text x="97" y="263" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Beller 銀飾 選做</text>
+  <!-- Maker shirt (west of JR) -->
+  <rect x="245" y="130" width="140" height="35" rx="5" fill="#c43b1e"/>
+  <text x="315" y="145" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鎌倉襯衫</text>
+  <text x="315" y="157" text-anchor="middle" fill="white" font-size="8">Maker's Shirt 11:00–18:00</text>
+  <line x1="215" y1="104" x2="250" y2="147" stroke="#c43b1e" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- Café dim dim -->
+  <rect x="245" y="180" width="140" height="35" rx="5" fill="#8a6020"/>
+  <text x="315" y="195" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Cafe vivement</text>
+  <text x="315" y="207" text-anchor="middle" fill="white" font-size="8">dimanche 蛋包飯</text>
+  <!-- arrows -->
+  <text x="100" y="120" text-anchor="middle" fill="#888" font-size="8">←往鎌倉駅 200m以内</text>
+  <text x="20" y="290" fill="#888" font-size="9">※ 相對位置示意圖，小町通由北（八幡宮側）向南（駅側）</text>
+</svg>`}
+    ]
+  },
+
+  8: {
+    tabs: ['最終日路線'],
+    views: [{ type:'svg', title:'藤澤→大船→成田 回程路線', svg:`
+<svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="560" height="200" fill="#f8f4f0" rx="10"/>
+  <!-- rail -->
+  <line x1="30" y1="100" x2="530" y2="100" stroke="#2055a0" stroke-width="4" stroke-dasharray="8,4"/>
+  <!-- 藤澤本町 -->
+  <circle cx="50" cy="100" r="16" fill="#3d6b45"/>
+  <text x="50" y="97" text-anchor="middle" fill="white" font-size="8" font-weight="bold">藤澤</text>
+  <text x="50" y="108" text-anchor="middle" fill="white" font-size="7">本町</text>
+  <text x="50" y="126" text-anchor="middle" fill="#555" font-size="8">13:00発</text>
+  <!-- 藤澤 -->
+  <circle cx="150" cy="100" r="14" fill="#2055a0"/>
+  <text x="150" y="104" text-anchor="middle" fill="white" font-size="8" font-weight="bold">藤澤</text>
+  <text x="150" y="122" text-anchor="middle" fill="#555" font-size="8">JR乗換</text>
+  <text x="100" y="82" text-anchor="middle" fill="#555" font-size="8">小田急3分¥136</text>
+  <!-- 大船 -->
+  <circle cx="280" cy="100" r="16" fill="#c43b1e"/>
+  <text x="280" y="97" text-anchor="middle" fill="white" font-size="9" font-weight="bold">大船</text>
+  <text x="280" y="109" text-anchor="middle" fill="white" font-size="7">NEX乗車</text>
+  <text x="280" y="126" text-anchor="middle" fill="#c43b1e" font-size="8">15:10発⭐</text>
+  <text x="215" y="82" text-anchor="middle" fill="#555" font-size="8">JR東海道 9分¥190</text>
+  <!-- 横浜 -->
+  <circle cx="380" cy="100" r="13" fill="#2055a0"/>
+  <text x="380" y="104" text-anchor="middle" fill="white" font-size="8" font-weight="bold">橫濱</text>
+  <text x="380" y="122" text-anchor="middle" fill="#555" font-size="8">15:21経由</text>
+  <!-- 成田T2 -->
+  <circle cx="510" cy="100" r="18" fill="#c43b1e"/>
+  <text x="510" y="97" text-anchor="middle" fill="white" font-size="9" font-weight="bold">成田</text>
+  <text x="510" y="109" text-anchor="middle" fill="white" font-size="7">T2 17:15着</text>
+  <text x="510" y="128" text-anchor="middle" fill="#c43b1e" font-size="8">JX805 20:40</text>
+  <text x="445" y="82" text-anchor="middle" fill="#555" font-size="9">N'EX 39號</text>
+  <!-- shopping note -->
+  <rect x="110" y="148" width="140" height="35" rx="5" fill="#3d6b45"/>
+  <text x="180" y="163" text-anchor="middle" fill="white" font-size="9" font-weight="bold">藤澤最後採買</text>
+  <text x="180" y="175" text-anchor="middle" fill="white" font-size="8">LUMIRE・OPA・Bic Camera</text>
+  <line x1="150" y1="114" x2="160" y2="148" stroke="#3d6b45" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <!-- Fa-So-La -->
+  <rect x="390" y="148" width="130" height="35" rx="5" fill="#b8882a"/>
+  <text x="455" y="163" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Fa-So-La免稅⭐</text>
+  <text x="455" y="175" text-anchor="middle" fill="white" font-size="8">DECORTÉ・LeTAO・Royce</text>
+  <line x1="510" y1="118" x2="480" y2="148" stroke="#b8882a" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="20" y="193" fill="#888" font-size="9">⚠️ 成田著後：記得稅關旁刷護照！</text>
+</svg>`}]
+  }
+};
+
+// ══════════════════════════════════════════
+// MAP RENDERER
+// ══════════════════════════════════════════
+function buildFloorMap(floors){
+  return floors.map(function(sec){
+    var rows = sec.items.map(function(it){
+      return '<tr><td style="background:'+sec.color+';color:#fff;font-weight:700;padding:.28rem .5rem;font-size:.8rem;white-space:nowrap;">'+it.fl+'</td>'
+        +'<td style="padding:.28rem .5rem;font-size:.82rem;background:#fff;">'+it.txt+'</td></tr>';
+    }).join('');
+    return '<div style="margin-bottom:.7rem;">'
+      +'<div style="background:'+sec.color+';color:#fff;font-size:.82rem;font-weight:700;padding:.3rem .6rem;border-radius:5px 5px 0 0;">'+sec.name+'</div>'
+      +'<table style="width:100%;border-collapse:collapse;border:1px solid #ddd0b8;border-top:none;">'+rows+'</table>'
+      +'</div>';
+  }).join('');
+}
+
+function renderDayMap(dayN){
+  var data = dayMaps[dayN];
+  if(!data) return '';
+  var tabsHtml = data.tabs.length > 1
+    ? '<div class="daymap-tabs">'
+      + data.tabs.map(function(t,i){
+          return '<button class="dmtab'+(i===0?' active':'')
+            +'" onclick="switchMapTab('+dayN+','+i+',this)">'+t+'</button>';
+        }).join('')
+      +'</div>'
+    : '';
+  var viewsHtml = data.views.map(function(v,i){
+    var inner = v.type === 'floor'
+      ? buildFloorMap(v.floors)
+      : '<div class="map-svg-wrap">'+v.svg+'</div>';
+    return '<div class="dmview'+(i===0?' active':'')
+      +'" id="dm-'+dayN+'-'+i+'">'
+      + inner
+      +'<p class="map-caption">📍 '+v.title+'</p>'
+      +'</div>';
+  }).join('');
+  return '<div class="daymap-wrap"><div class="stitle">地圖參考</div>'+tabsHtml+viewsHtml+'</div>';
+}
+
+function switchMapTab(dayN, idx, btn){
+  var wrap = btn.closest('.daymap-wrap');
+  wrap.querySelectorAll('.dmtab').forEach(function(b){b.classList.remove('active');});
+  wrap.querySelectorAll('.dmview').forEach(function(v){v.classList.remove('active');});
+  btn.classList.add('active');
+  var target = document.getElementById('dm-'+dayN+'-'+idx);
+  if(target) target.classList.add('active');
+}
+
+
+// ── INIT ──
+document.getElementById('ov-days').innerHTML=days.map(function(d){return buildDay(d,true);}).join('');
+document.getElementById('qnav').innerHTML=days.map(function(d){
+  return '<button class="qbtn" onclick="jumpDay('+d.n+')">D'+d.n+' '+d.date.split(' ')[0]+'</button>';
+}).join('');
+document.getElementById('itin-days').innerHTML=days.map(function(d){return buildDay(d,false);}).join('');
+document.getElementById('trans-days').innerHTML=transData.map(buildTrans).join('');
+
+// ── CONTROLS ──
+function toggleDay(n){
+  var el=document.getElementById('day-'+n);
+  if(el) el.classList.toggle('open');
+}
+function toggleT(id){
+  var el=document.getElementById('trans-'+id);
+  if(el) el.classList.toggle('open');
+}
+function jumpDay(n){
+  showTab('itinerary');
+  setTimeout(function(){
+    var el=document.getElementById('day-'+n);
+    if(el){el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('open');}
+  },80);
+}
+function jumpT(id,e){
+  if(e) e.stopPropagation();
+  showTab('transport');
+  setTimeout(function(){
+    var el=document.getElementById('trans-'+id);
+    if(el){el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.add('open');}
+  },80);
+}
+function expandAll(){document.querySelectorAll('#itin-days .daycard').forEach(function(c){c.classList.add('open');});}
+function collapseAll(){document.querySelectorAll('#itin-days .daycard').forEach(function(c){c.classList.remove('open');});}
+function expandAllT(){document.querySelectorAll('.dtblock').forEach(function(c){c.classList.add('open');});}
+function collapseAllT(){document.querySelectorAll('.dtblock').forEach(function(c){c.classList.remove('open');});}
+</script>
+</body>
+</html>
