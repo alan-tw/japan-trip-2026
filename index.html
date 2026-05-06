@@ -330,6 +330,17 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .linktable a:hover{text-decoration:underline;}
 
 
+
+/* ── GOOGLE MAPS LINKS ── */
+.gmap-link{
+  display:inline-flex;align-items:center;gap:.22rem;
+  color:var(--sky);font-size:.78rem;text-decoration:none;
+  background:#e8f0fb;border-radius:4px;padding:.06rem .32rem;
+  margin-left:.25rem;white-space:nowrap;
+}
+.gmap-link:hover{background:#c8d8f8;text-decoration:none;}
+.gmap-link::before{content:'📍';font-size:.72rem;}
+
 /* ── DAY MAPS ── */
 .daymap-wrap{margin-top:.9rem;}
 .daymap-tabs{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.6rem;}
@@ -391,7 +402,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   <div class="abox">
     <h3>住宿安排</h3>
     <div class="arow"><span class="atag">Day1–2, 4–8</span><span>🏠 藤澤本町 姑姑家</span></div>
-    <div class="arow"><span class="atag">Day3 (5/11 一) 夜</span><span>🏨 JR EAST METS Premier 橫濱櫻木町</span></div>
+    <div class="arow"><span class="atag">Day3 (5/11 一) 夜</span><span>🏨 JR EAST METS Premier<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/JR+EAST+METS+Premier+横浜+桜木町\" target=\"_blank\">地圖</a> 橫濱櫻木町</span></div>
   </div>
 
   <div class="icbox">
@@ -503,15 +514,15 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   <div class="stitle">Day 3（5/11 週一）橫濱ティンバーワーフ店</div>
   <div class="tipc grn">
     <h4>✅ 最佳時機：上午 10:00 開始排隊</h4>
-    <p>飯店辦理寄放行李後，從橫濱站搭港未來線→みなとみらい駅（¥210，4分）→ 2番出口出站步行約13分，沿海濱步道前行，見木玻璃建築「横浜ティンバーワーフ」即是。<b>建議 10:00 到，種類最齊，等候最少。</b></p>
+    <p>飯店辦理寄放行李後，從橫濱站搭港未來線→港未來站（¥210，4分）→ 2號出口出站步行約13分，沿海濱步道前行，見木玻璃建築「横浜ティンバーワーフ」即是。<b>建議 10:00 到，種類最齊，等候最少。</b></p>
   </div>
 
   <div class="dentry">
     <strong>店舗資訊</strong>
     📍 地址：横浜市西区みなとみらい1-1-5 横浜ティンバーワーフ 1F<br>
     🕐 營業：<b>8:00–19:00</b>（完售即打烊，11:00前後種類最豐富）<br>
-    🚇 交通A：港未來線「みなとみらい駅」2番出口 → 步行約13分<br>
-    🚇 交通B：横浜駅東口 → BAYSIDE BLUE巴士 →「ティンバーワーフ」站下車（¥220）<br>
+    🚇 交通A：港未來線「港未來站」2號出口 → 步行約13分<br>
+    🚇 交通B：橫濱站東口 → 海灣藍巴士（BAYSIDE BLUE）→「太平洋橫濱北（パシフィコ横浜ノース）」站下車（¥220），步行5分<br>
     💳 刷 Cube 卡享 8% 日本賞
   </div>
 
@@ -556,22 +567,22 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   <div class="stitle">橫濱（Day 3–4）</div>
   <div class="sitem"><div class="sdot"></div><span>🏬 <b>JOINUS 必逛</b>：3F Francfranc、4F Lattice・Olive des olive；B1 鎌倉襯衫、治一郎布丁</span></div>
   <div class="sitem"><div class="sdot"></div><span>🏬 <b>高島屋 必逛</b>：5F 伊東屋文具（ZEBRA Miffy筆！）、B1 横浜バニラ</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🏬 <b>SOGO 必買</b>：B2 小倉山莊、tulip rose 玫瑰花餅乾 ⭐⭐</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🏬 <b>Lumine 必逛</b>：B2 cosme@、4F kastane・FREE'S MART</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏬 <b>SOGO<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/横浜SOGO+横浜市\" target=\"_blank\">地圖</a> 必買</b>：B2 小倉山莊、tulip rose 玫瑰花餅乾 ⭐⭐</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏬 <b>Lumine 橫濱 必逛</b>：B2 @cosme STORE⭐、1F HARBS（蛋糕+咖啡）、6–7F 餐廳</span></div>
   <div class="sitem"><div class="sdot"></div><span>🍫 <b>Sils Maria 生巧克力</b>（馬車道本店）可可霜淇淋¥500，生巧克力精選</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🍫 <b>Belle Plage 巧克力</b>（元町）袋裝送同事超划算，10:30–19:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍫 <b>Belle Plage 巧克力<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Belle+Plage+元町+横浜\" target=\"_blank\">地圖</a></b>（元町）袋裝送同事超划算，10:30–19:00</span></div>
   <div class="sitem"><div class="sdot"></div><span>🍞 <b>Hamabread Bakery</b>（元町）紅茶乳酪麵包¥280，11:00–17:00</span></div>
   <div class="sitem"><div class="sdot"></div><span>🪭 <b>香炉庵 黑糖銅鑼燒</b>¥275，可放2–3天，買給姑姑姑丈，9:00–18:00</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🍵 <b>La Théière 紅茶専門店</b>（元町）橫濱元町デュエット ⭐必去</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🧺 <b>Huffnagel 蘭姆葡萄夾心</b>（紅磚倉庫2F）冷藏¥430–450，11:00–20:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍵 <b>La Théière 紅茶専門店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/La+Théière+紅茶+元町+横浜\" target=\"_blank\">地圖</a></b>（元町）橫濱元町デュエット ⭐必去</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🧺 <b>Huffnagel 蘭姆葡萄夾心</b>（紅磚倉庫<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/横浜赤レンガ倉庫+横浜市\" target=\"_blank\">地圖</a>2F）冷藏¥430–450，11:00–20:00</span></div>
 
   <div class="stitle">合羽橋（Day 6 週四）</div>
-  <div class="sitem"><div class="sdot"></div><span>🔪 <b>釜淺商店</b> 水果刀¥1,900，<b>可免費刻字⭐</b>，11:00–17:30</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🔪 <b>鍔屋菜刀店</b> 水果刀¥1,822，10:00–17:00</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🧁 <b>馬嶋屋菓子道具店</b> 烘焙模具，9:30–17:30</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🍵 <b>ZAKA Kappabashi</b> 茶筅立、抹茶碗，10:00–17:30</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🖌️ <b>金屋毛刷店 Kanaya Brush</b> 繪筆2号丸¥209，10:30–17:30</span></div>
-  <div class="sitem"><div class="sdot"></div><span>🏺 <b>田窯（でんがま）</b> 和食器，10:00–18:00（合羽橋入口第一站）</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🔪 <b>釜淺商店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/釜浅商店+合羽橋\" target=\"_blank\">地圖</a></b> 水果刀¥1,900，<b>可免費刻字⭐</b>，11:00–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🔪 <b>鍔屋菜刀店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/鍔屋菜刀店+合羽橋\" target=\"_blank\">地圖</a></b> 水果刀¥1,822，10:00–17:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🧁 <b>馬嶋屋菓子道具店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/馬嶋屋菓子道具店+合羽橋\" target=\"_blank\">地圖</a></b> 烘焙模具，9:30–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🍵 <b>ZAKA Kappabashi<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/ZAKA+Kappabashi+茶道具\" target=\"_blank\">地圖</a></b> 茶筅立、抹茶碗，10:00–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🖌️ <b>金屋毛刷店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/金屋毛刷店+合羽橋\" target=\"_blank\">地圖</a> Kanaya Brush</b> 繪筆2号丸¥209，10:30–17:30</span></div>
+  <div class="sitem"><div class="sdot"></div><span>🏺 <b>田窯（でんがま）<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/田窯+でんがま+合羽橋\" target=\"_blank\">地圖</a></b> 和食器，10:00–18:00（合羽橋入口第一站）</span></div>
   <div class="sitem"><div class="sdot"></div><span>⚙️ <b>飯田屋</b> 不鏽鋼茶篩濾茶網</span></div>
 
   <div class="stitle">鎌倉（Day 7 週五）</div>
@@ -582,7 +593,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   <div class="sitem"><div class="sdot"></div><span>👔 <b>鎌倉襯衫 Maker's Shirt KAMAKURA</b>，11:00–18:00 ⭐必去</span></div>
 
   <div class="stitle">藤澤（Day 7/8）</div>
-  <div class="sitem"><div class="sdot"></div><span>👗 <b>Uniqlo（LUMIRE 6F）</b>週五特價！5/15 週五 ⭐，10:00–20:00</span></div>
+  <div class="sitem"><div class="sdot"></div><span>👗 <b>Uniqlo（LUMINE 藤沢 5F）</b>週五特價！5/15 週五 ⭐，10:00–20:00</span></div>
   <div class="sitem"><div class="sdot"></div><span>🛒 <b>無印良品（OPA 7F）</b>，10:00–21:00</span></div>
   <div class="sitem"><div class="sdot"></div><span>🪙 <b>3coins（JR藤沢駅商場 3F）</b>，10:00–21:00</span></div>
   <div class="sitem"><div class="sdot"></div><span>🛍️ <b>Seria（OPA 4F）</b>，10:00–21:00</span></div>
@@ -633,12 +644,12 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   <div class="tipc warn">
     <h4>⚠️ 重要提醒</h4>
     <p>• Day 6 合羽橋多數店週日公休，週四完全沒問題<br>
-    • CONFECT-CONCEPT 10:30開，田窯10:00開，建議先逛田窯<br>
+    • CONFECT-CONCEPT<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/CONFECT-CONCEPT+合羽橋\" target=\"_blank\">地圖</a> 10:30開，田窯10:00開，建議先逛田窯<br>
     • 回程機場：<b>記得到稅關旁刷護照</b>，影響退稅紀錄！<br>
     • Uniqlo：週二・週五有特價，Day 7（5/15 週五）⭐</p>
   </div>
   <div class="tipc grn">
-    <h4>🍱 Day 3 晚餐推薦：三浦三崎港 橫濱ポルタ店</h4>
+    <h4>🍱 Day 3 晚餐推薦：三浦三崎港 橫濱ポルタ<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/三浦三崎港+横浜ポルタ\" target=\"_blank\">地圖</a>店</h4>
     <p>位在橫濱站東口地下街PORTA B2，三崎直送マグロ，品質好價格合理。<b>可在ホットペッパーグルメ預約</b>，避免排隊（連結見連結頁）。比活美登利天空大樓店更推薦。</p>
   </div>
 </div>
@@ -660,7 +671,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
     <tr><td>江ノ電時刻表</td><td><a href="https://www.enoden.co.jp/train/timetable/" target="_blank">enoden.co.jp 公式</a></td></tr>
     <tr><td>小田急時刻表（藤澤）</td><td><a href="https://www.odakyu.jp/station/fujisawa/timetable/" target="_blank">odakyu.jp 公式</a></td></tr>
     <tr><td>港未來線 路線圖</td><td><a href="https://www.mm21railway.co.jp/global/chinese_han/" target="_blank">mm21railway.co.jp（繁中）</a></td></tr>
-    <tr><td>YOKOHAMA AIR CABIN 纜車</td><td><a href="https://yokohama-air-cabin.jp/" target="_blank">yokohama-air-cabin.jp</a></td></tr>
+    <tr><td>YOKOHAMA AIR CABIN<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/YOKOHAMA+AIR+CABIN+横浜\" target=\"_blank\">地圖</a> 纜車</td><td><a href="https://yokohama-air-cabin.jp/" target="_blank">yokohama-air-cabin.jp</a></td></tr>
     <tr><td>高德院（鎌倉大佛）</td><td><a href="https://www.kotoku-in.jp/" target="_blank">kotoku-in.jp</a></td></tr>
     <tr><td>江之島エスカー</td><td><a href="https://enoshima-seacandle.com/facilities/escar/" target="_blank">enoshima-seacandle.com</a></td></tr>
     <tr><td>三浦三崎港 橫濱ポルタ 預約</td><td><a href="https://www.hotpepper.jp/strJ004025844/yoyaku/" target="_blank">ホットペッパーグルメ</a></td></tr>
@@ -714,19 +725,19 @@ var days=[
     {t:'08:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR 東海道線→小田原',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→小田原 JR東海道線約40分¥590'},
     {t:'09:45',tx:'抵小田原站'},
-    {t:'10:00',tx:'🥐 パン工房ブンブン Plus ミナカ小田原店',c:'must',
+    {t:'10:00',tx:'🥐 パン工房ブンブン Plus ミナカ小田原店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/パン工房ブンブンPlus+ミナカ小田原\" target=\"_blank\">地圖</a>',c:'must',
      n:'爆餡紅豆麵包¥194，10:00–20:00\n趁新鮮，買給姑姑的也在這裡選'},
-    {t:'10:15',tx:'🍡 甘味喫茶 岡西 御荻¥400、團子¥220',c:'must',
+    {t:'10:15',tx:'🍡 甘味喫茶 岡西 御荻<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/甘味喫茶岡西+小田原\" target=\"_blank\">地圖</a>¥400、團子¥220',c:'must',
      n:'外帶送姑姑姑丈，10:00–20:00，傳統和菓子'},
-    {t:'11:00',tx:'🍜 午餐：三層究極のそば 天婦羅蕎麥麵¥1,800',c:'must',
+    {t:'11:00',tx:'🍜 午餐：三層究極のそば<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/三層究極のそば+小田原\" target=\"_blank\">地圖</a> 天婦羅蕎麥麵¥1,800',c:'must',
      n:'11:00–14:00，11:30前到，現炸天婦羅超值'},
     {t:'12:45',tx:'🍦 Studio すてら 義式冰淇淋（甜點）',c:'opt'},
-    {t:'13:20',tx:'🏯 小田原城天守閣（大人¥510）+ 報徳二宮神社',c:'must',
+    {t:'13:20',tx:'🏯 小田原城天守閣<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/小田原城+天守閣\" target=\"_blank\">地圖</a>（大人¥510）+ 報徳二宮神社<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/報徳二宮神社+小田原\" target=\"_blank\">地圖</a>',c:'must',
      n:'報徳二宮神社：祈求財運、事業、學業'},
     {t:'15:00',tx:'🍰 Vagabond Pastry Shop 甜點¥300起（11:00–19:00）',c:'opt'},
-    {t:'15:30',tx:'🏖️ 御幸の浜 海邊散步（可看相模灣）',c:'opt'},
+    {t:'15:30',tx:'🏖️ 御幸の浜<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/御幸の浜+小田原\" target=\"_blank\">地圖</a> 海邊散步（可看相模灣）',c:'opt'},
     {t:'16:00',tx:'🐟 籠清 魚板（10:00–20:00）',c:'opt',n:'新鮮魚板帶回當天點心'},
-    {t:'17:30',tx:'🍱 晚餐：一膳飯屋 八起 生魚片+炸竹莢魚定食¥1,650',c:'must'},
+    {t:'17:30',tx:'🍱 晚餐：一膳飯屋 八起<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/一膳飯屋八起+小田原\" target=\"_blank\">地圖</a> 生魚片+炸竹莢魚定食¥1,650',c:'must'},
     {t:'19:00',tx:'回程：小田原→藤澤（JR約40分）→小田急→藤澤本町'},
     {t:'20:00',tx:'藤澤南口輕逛：OPA無印¥5,000退稅、Seria 4F、3coins 3F',c:'opt'}
    ],
@@ -737,21 +748,27 @@ var days=[
    tl:[
     {t:'09:00',tx:'從藤澤本町出發，搭小田急→藤澤→JR→橫濱',c:'must'},
     {t:'09:30',tx:'橫濱站：轉 JR 根岸線 1站→ 櫻木町站，步行至飯店3F寄行李',c:'must',
-     n:'JR根岸線/京浜東北線 橫濱→櫻木町 1站3分¥160\nJR EAST METS Premier 橫濱櫻木町大廳在3F'},
-    {t:'10:00',tx:'🍩 去 I\'m donut？！（優先第一件事）',c:'donut',
-     n:'橫濱站搭港未來線→みなとみらい駅（¥210，4分）→ 2番出口出站步行約13分\n沿海濱步道，見木玻璃建築「横浜ティンバーワーフ」即是\n⭐ 買完去隔壁 dacō 座位區享用，靠窗海景座位！'},
-    {t:'11:30',tx:'搭港未來線回橫濱站（¥210，4分）',c:'trans'},
-    {t:'11:45',tx:'🛍️ 逛 JOINUS百貨（橫濱站西口直連）',c:'must',
+     n:'JR根岸線/京濱東北線 橫濱→桜木町 1站3分¥160\nJR EAST METS Premier 橫濱，大廳在3樓，先辦行李寄放'},
+    {t:'10:00',tx:'🍩 去 I\'m donut？！<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Im+donut+横浜ティンバーワーフ\" target=\"_blank\">地圖</a>（優先第一件事）',c:'donut',
+     n:'🍩 10:00–19:00（完售即關）\n⭐ 買完去隔壁 dacō 座位區享用，靠窗海景座位！'},
+    {t:'',tx:'【前往路線A】港未來線電車（快速，¥210）',c:'trans',
+     n:'橫濱站→港未來線「港未來站」2號出口出站→步行約13分（1km）\n見木造玻璃建築「橫濱木材碼頭」即到'},
+    {t:'',tx:'【前往路線B】🚶 桜木町步行（強烈推薦！免費+港未來絕景）',c:'trans',
+     n:'✅ 完全可行，步行約15–20分（1.3km）\n\n步驟① 出飯店→1F→走至「桜木町車站前廣場」\n步驟② 找「電動步道（動く歩道）」入口→往地標塔方向\n步驟③ 上電動步道，全程直走：皇后廣場→地標塔旁\n步驟④ 出步道→港未來廣場→往「海邊/太平洋橫濱」方向或跟「臨港公園（臨港パーク）」指標\n步驟⑤ 抵達臨港公園→看到木造玻璃建築即是！\n🌟 沿途景色：日本丸・地標塔・大觀覽車・橫濱港\n⚠️ 出發前確認電動步道是否運行'},
+    {t:'11:30',tx:'搭港未來線回橫濱站（¥210，4分鐘）',c:'trans'},
+    {t:'12:30',tx:'🏔️ <a class="gmap-link" href="https://www.google.com/maps/search/カモシカスポーツ+山の店+横浜店" target="_blank">Kamoshika Sports 橫濱店</a><span class="pill pill-must">必逛</span>',c:'must',
+     n:'登山戶外用品專門店（1964年創業）\n地址：神奈川縣橫濱市西区高島2-6-32 横浜東口・ウィスポートビル1F\n營業：平日11:00–20:00、假日11:00–19:00 ／ TEL：045-440-0711\n\n【從 I\'m donut 前往的路線】\n\n方案A 巴士（省體力・¥220）：\n① ティンバーワーフ附近步行至「パシフィコ横浜ノース」巴士站\n② 搭 海灣藍巴士（BAYSIDE BLUE）往橫濱站方向\n③ 「横浜駅東口」下車，步行約5分抵ウィスポートビル1F\n預估時間：約20分\n\n方案B 步行（看體力・¥0・約20–25分）：\n① 出ティンバーワーフ→往北（橫濱站方向）沿みなとみらい大通り直走\n② 過マリノスタウン足球場→橫濱站東口方向\n③ 跨越「幸橋」→走「東口地下街ポルタ」方向\n④ 出地上沿高島通り步行約5分→ウィスポートビル1F\n距離約1.3km，步行約20–25分\n⭐ 體力夠的話走路沿途港灣景色不錯！'},
+    {t:'11:45',tx:'🛍️ 逛 JOINUS百貨<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/横浜JOINUS+横浜駅西口\" target=\"_blank\">地圖</a>（橫濱站西口直連）',c:'must',
      n:'必逛：3F Francfranc、4F Lattice・Olive des olive\n有時間：B1 鎌倉襯衫、治一郎布丁、2F Niko and'},
     {t:'',tx:'🏬 逛高島屋（西口）',c:'must',
      n:'必逛：5F 伊東屋文具（ZEBRA Miffy筆！）、B1 横浜バニラ'},
     {t:'15:30',tx:'🍲 晚餐前：逛 SOGO',c:'must',
      n:'必買：B2 小倉山莊⭐、tulip rose 玫瑰花餅乾⭐'},
-    {t:'15:30',tx:'🥩 晚餐：荒井屋牛鍋（SOGO B2）16:00前商業午餐！',c:'must',
-     n:'お手軽牛鍋¥2,750+10%=¥3,025，建議15:30前入座\n11:00–22:00'},
+    {t:'15:30',tx:'🥩 晚餐：荒井屋牛鍋<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/荒井屋+牛鍋+横浜SOGO\" target=\"_blank\">地圖</a>（SOGO B2）16:00前商業午餐！',c:'must',
+     n:'基本牛鍋套餐¥2,750+10%=¥3,025，建議15:30前入座\n11:00–22:00'},
     {t:'',tx:'🍵 甜點（SOGO内）：KYO HAYASHIYA抹茶聖代 or TAKANASHI霜淇淋',c:'opt'},
     {t:'',tx:'🛍️ 逛 Lumine百貨（東口）',c:'opt',
-     n:'B2 cosme@、4F kastane・FREE\'S MART\nB1 淺野屋輕井澤麵包、1F HARBS蛋糕'},
+     n:'B2 @cosme STORE⭐\n1F HARBS（蛋糕+咖啡）10:00-21:00\n6–7F 餐廳區'},
     {t:'18:30',tx:'🍣 晚餐備案：三浦三崎港 橫濱ポルタ（PORTA B2）',c:'opt',
      n:'建議提前在ホットペッパーグルメ預約！11:00–23:00'},
     {t:'19:30',tx:'🛒 Summit Store 桜木町店 買宵夜（飯店附近5分鐘）',c:'opt'},
@@ -759,7 +776,7 @@ var days=[
    ],
    note:'🏨 今晚住 JR EAST METS Premier 橫濱櫻木町（唯一不住親戚家的夜晚）。記得先去飯店寄行李！'},
 
-  {n:4,date:'5/12 (二)',title:'橫濱 Day 2 深度遊',sub:'馬車道・元町・山下公園・紅磚倉庫→纜車回飯店→藤澤本町',
+  {n:4,date:'5/12 (二)',title:'橫濱 Day 2 深度遊',sub:'馬車道・元町・山下公園<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/山下公園+横浜\" target=\"_blank\">地圖</a>・紅磚倉庫→纜車回飯店→藤澤本町',
    tags:['tf','ts'],weather:{sky:'晴天'},tid:'t4',
    tl:[
     {t:'09:00',tx:'飯店早餐＋寄放行李（check-out，下午取）',c:'must'},
@@ -767,7 +784,7 @@ var days=[
     {t:'10:00',tx:'🏛️ 横浜市開港記念会館（免費）大正紅磚建築，10:00–16:00',c:'opt'},
     {t:'11:00',tx:'🍳 午餐：CAESAR 蛋包飯（關內站步行5分）¥2,500',c:'must',
      n:'蛋包飯佐漢堡排，11:00–22:00，建議提前預訂'},
-    {t:'12:30',tx:'🍫 Sils Maria シルスマリア 馬車道本店',c:'must',
+    {t:'12:30',tx:'🍫 Sils Maria シルスマリア 馬車道本店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Sils+Maria+馬車道+横浜\" target=\"_blank\">地圖</a>',c:'must',
      n:'生巧克力、可可霜淇淋¥500，可內用'},
     {t:'13:00',tx:'🍫 Belle Plage 巧克力（10:30–19:00）袋裝送同事',c:'must'},
     {t:'13:30',tx:'🚶 步行至元町商店街（約15分）'},
@@ -775,13 +792,13 @@ var days=[
      n:'• La Théière 紅茶専門店⭐必去\n• 香炉庵 黑糖銅鑼燒¥275 買給姑姑姑丈\n• Hamabread Bakery 紅茶乳酪麵包¥280（11:00–17:00）\n• Tef tef、歐洲航路小店'},
     {t:'15:30',tx:'🏠 Berrick Hall 散步參觀美麗洋房（元町丘公園）',c:'opt'},
     {t:'16:00',tx:'🌹 山下公園（玫瑰花季！）',c:'must',n:'5月玫瑰盛開，背景橫濱灣'},
-    {t:'16:30',tx:'🐘 象鼻公園',c:'must'},
+    {t:'16:30',tx:'🐘 象鼻公園<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/象の鼻公園+横浜\" target=\"_blank\">地圖</a>',c:'must'},
     {t:'17:00',tx:'🧺 紅磚倉庫：Huffnagel 蘭姆葡萄夾心餅乾¥430–450',c:'must',
      n:'11:00–20:00，冷藏，今天吃！'},
     {t:'17:30',tx:'🍜 晚餐：味奈登庵 蕎麥麵總本店（至22:00）平價份量大',c:'opt'},
     {t:'18:00',tx:'🚡 搭 YOKOHAMA AIR CABIN 纜車回飯店（⭐強烈推薦！）',c:'must',
      n:'運河パーク→桜木町，單程¥1,000，約5分\n40m高空俯瞰港未來，傍晚光線最漂亮\n備案：港未來線（馬車道→桜木町，¥210）'},
-    {t:'18:30',tx:'🛍️ Colette Mare 商場（桜木町旁）',c:'opt',
+    {t:'18:30',tx:'🛍️ Colette Mare<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Colette+Mare+桜木町+横浜\" target=\"_blank\">地圖</a> 商場（桜木町旁）',c:'opt',
      n:'2F andST⭐必去、1F Francfranc'},
     {t:'19:30',tx:'飯店取行李，回藤澤本町！',c:'must',
      n:'JR根岸線 桜木町→橫濱（1站¥160）\n＋JR東海道線 橫濱→藤澤（約20分¥440）\n＋小田急 藤澤→藤澤本町（2–3分¥136）'}
@@ -793,20 +810,20 @@ var days=[
    tl:[
     {t:'07:00',tx:'從藤澤本町出發，搭小田急→藤澤→江ノ電（買一日票¥800）',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→和田塚 江ノ電往鎌倉方向約10分¥260\n⭐ 座位選右側靠海！'},
-    {t:'07:30',tx:'🐟 早餐：ヨリドコロ（和田塚，7:00–17:00）',c:'must',
+    {t:'07:30',tx:'🐟 早餐：ヨリドコロ<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/ヨリドコロ+和田塚+鎌倉\" target=\"_blank\">地圖</a>（和田塚，7:00–17:00）',c:'must',
      n:'烤魚定食¥1,020–¥1,300，鎌倉當地人愛店'},
     {t:'08:30',tx:'長谷站下車，周邊散策',c:'must',
      n:'• Boulangerie Ensemble 法國麵包（7:00–17:00）\n• Takeya 大福¥200、糰子¥150、蕨餅¥320，免費送熱茶⭐\n• 力餅家 和菓子（9:00–18:00）\n• 雷神堂長谷大仏店 仙貝（10:00–18:00）'},
-    {t:'10:00',tx:'🗿 鎌倉大佛（高徳院）大人¥300，建議10:00前到',c:'must',
+    {t:'10:00',tx:'🗿 鎌倉大佛（高徳院）<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/高徳院+鎌倉大仏\" target=\"_blank\">地圖</a>大人¥300，建議10:00前到',c:'must',
      n:'8:00–17:30（5月旺季），拍照空間較充裕\n佛像内部可入（+¥20）'},
     {t:'11:30',tx:'🍽️ 午餐（選1）',c:'must',
      n:'A：洋食ボンベック 炸蝦蛋包飯¥1,560（11:30–15:00/17:00–21:00）\nB：鎌倉おうどん玉うさぎ 烏龍麵'},
     {t:'13:00',tx:'搭江ノ電→江ノ島站（往藤澤方向，約10分）',c:'trans'},
-    {t:'13:30',tx:'🏝️ 江之島！',c:'must',
+    {t:'13:30',tx:'🏝️ 江之島！<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/江の島+藤沢\" target=\"_blank\">地圖</a>',c:'must',
      n:'⭐ 購エスカー全程券¥360（上行手扶梯，省力！）\n或シーキャンドルセット¥1,100（電梯+展望燈塔，比分開買省¥60）\n路線：仲見世通→邊津宮→中津宮（求美/財）→洗錢白龍王→奧津宮→稚兒之淵\n章魚仙貝（Asahi Honten）¥700–¥1,100\nEnoshima Pudding 藍蓋布丁¥450、霜淇淋¥450\n下坡走階梯，邊走邊逛小店最佳'},
-    {t:'18:00',tx:'夕陽！稚兒之淵（5月日落約18:00–18:15）',c:'must'},
+    {t:'18:37',tx:'🌅 夕陽！稚兒之淵 <a class="gmap-link" href="https://www.google.com/maps/search/稚児ケ淵+江の島" target="_blank">地圖</a>（2026/5/13 精確日落時間：<b>18:37</b>）',c:'must',n:'📎 資料來源：日本國立天文台暦計算室（橫濱市，2026年5月13日）https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1505.html\n建議 <b>18:15前</b>抵達稚兒之淵，搶好位置等夕陽\n日落後約15–20分是黃金薄暮時刻，天空由橘轉紅，更美！'},
     {t:'18:30',tx:'搭江ノ電 江ノ島→藤澤（約15分）→小田急→藤澤本町'},
-    {t:'19:30',tx:'🦈 晚餐：Unaginonaruse 鰻魚飯（藤澤，11:00–14:00/17:00–21:00）',c:'must'},
+    {t:'19:30',tx:'🦈 晚餐：Unaginonaruse 鰻魚飯<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Unaginonaruse+鰻+藤沢\" target=\"_blank\">地圖</a>（藤澤，11:00–14:00/17:00–21:00）',c:'must'},
     {t:'20:30',tx:'Bic Camera 藤澤北口（10:00–20:30）、大創',c:'opt'}
    ],
    note:'⭐ 今天全天使用江ノ電一日票¥800，比單次買票省！5月平日，遊客少，非常舒適。'},
@@ -828,13 +845,13 @@ var days=[
     {t:'',tx:'🧁 馬嶋屋菓子道具店 烘焙模具（9:30–17:30）',c:'must'},
     {t:'',tx:'⚙️ 飯田屋 不鏽鋼茶篩濾茶網',c:'opt'},
     {t:'',tx:'🍳 Kajiwara Kitchen Supply 抹茶工具（2F有廁所）',c:'opt'},
-    {t:'13:00',tx:'🍜 午餐：尾張屋蕎麥麵（合羽橋附近，11:30–20:00）',c:'must'},
+    {t:'13:00',tx:'🍜 午餐：尾張屋蕎麥麵<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/尾張屋+蕎麦+合羽橋\" target=\"_blank\">地圖</a>（合羽橋附近，11:30–20:00）',c:'must'},
     {t:'14:00',tx:'步行→淺草（約15分）'},
     {t:'14:15',tx:'淺草散策',c:'must',
      n:'杵屋仙貝（割煎，9:00–18:45）\n壽壽喜園 抹茶冰淇淋\n和泉屋 貓咪仙貝¥300–350（11:00–18:00）'},
     {t:'15:00',tx:'步行→藏前（約15分）'},
     {t:'15:15',tx:'🧁 藏前文青區',c:'must',
-     n:'KURAMAE CANNELE 霜淇淋+可麗露¥680（11:00–18:00）\nmarble 蔵前 布丁、巴斯克乳酪¥680（9:00–19:00）\n菓子屋 手工點心（12:00–19:00）\nPlushie Shop foo.. 娃娃店（11:00–19:00）\nMizukiya Baba Shoten 竹製品（9:30–17:00）'},
+     n:'KURAMAE CANNELE<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/KURAMAE+CANNELE+蔵前\" target=\"_blank\">地圖</a> 霜淇淋+可麗露¥680（11:00–18:00）\nmarble 蔵前<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/marble+蔵前+布丁\" target=\"_blank\">地圖</a> 布丁、巴斯克乳酪¥680（9:00–19:00）\n菓子屋 手工點心（12:00–19:00）\nPlushie Shop foo.. 娃娃店（11:00–19:00）\nMizukiya Baba Shoten 竹製品（9:30–17:00）'},
     {t:'17:00',tx:'移動至表參道（都営浅草線→東京Metro，約30分¥290）'},
     {t:'17:30',tx:'🛍️ 表參道逛街',c:'opt',
      n:'Flying Tiger Copenhagen\nSOU·SOU KYOTO 青山店'},
@@ -849,22 +866,22 @@ var days=[
    tl:[
     {t:'07:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR横須賀線→鎌倉',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→鎌倉 JR横須賀線直達約12分¥230\n⭐ 7:30出發，8:00前抵鎌倉，早去人少'},
-    {t:'08:00',tx:'🍞 BREAD IT BE 早餐（8:00–17:00）歐式麵包，店外有座位',c:'must'},
-    {t:'09:00',tx:'⛩️ 洗錢神社（銭洗弁財天宇賀福神社）',c:'must',
+    {t:'08:00',tx:'🍞 BREAD IT BE<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/BREAD+IT+BE+鎌倉\" target=\"_blank\">地圖</a> 早餐（8:00–17:00）歐式麵包，店外有座位',c:'must'},
+    {t:'09:00',tx:'⛩️ 洗錢神社（銭洗弁財天<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/銭洗弁財天+宇賀福神社+鎌倉\" target=\"_blank\">地圖</a>宇賀福神社）',c:'must',
      n:'祈求金錢運、事業運\n路線：鎌倉駅西口→步行約20分（上坡）或計程車\n竹簍+香+蠟燭 ¥200\n流程：點蠟燭→燃香→投5円→拜拜→洗錢'},
     {t:'10:30',tx:'⚔️ Hatsune Antique Kamakura 初音美術（10:00–18:00）',c:'opt',
      n:'武士刀、盔甲，古道具迷必去'},
-    {t:'10:30',tx:'🍵 八十八鎌倉抹茶（Hatoya Kamakura，10:00–18:00）⭐必吃',c:'must'},
-    {t:'11:00',tx:'☕ Cafe vivement dimanche',c:'must',
+    {t:'10:30',tx:'🍵 八十八鎌倉抹茶（Hatoya<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/八十八鎌倉抹茶+Hatoya+Kamakura\" target=\"_blank\">地圖</a> Kamakura，10:00–18:00）⭐必吃',c:'must'},
+    {t:'11:00',tx:'☕ Cafe vivement dimanche<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Cafe+vivement+dimanche+鎌倉\" target=\"_blank\">地圖</a>',c:'must',
      n:'10:30早到不用等！\n蛋包飯小份¥650、栗子布丁聖代¥950'},
     {t:'12:00',tx:'🛍️ 小町通商店街採購',c:'must',
-     n:'🕊️ 豊島屋（鎌倉本店）鳩サブレー 8入¥1,220（9:00–19:00）\n🌿 arbre noir 抹茶燒¥90/個（11:00–18:00）\n💍 Beller 平價銀飾（10:30–17:30）\n📌 今天週五，鎌倉紅谷確定開門！'},
-    {t:'14:00',tx:'⛩️ 鶴岡八幡宮（門票¥300）',c:'must'},
-    {t:'15:00',tx:'👔 鎌倉襯衫 Maker\'s Shirt KAMAKURA（11:00–18:00）⭐必去',c:'must'},
+     n:'🕊️ 豊島屋（鎌倉本店）鳩サブレー 8入¥1,220（9:00–19:00）\n🌿 arbre noir 抹茶燒<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/arbre+noir+抹茶燒+鎌倉\" target=\"_blank\">地圖</a>¥90/個（11:00–18:00）\n💍 Beller 平價銀飾（10:30–17:30）\n📌 今天週五，鎌倉紅谷確定開門！'},
+    {t:'14:00',tx:'⛩️ 鶴岡八幡宮<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/鶴岡八幡宮+鎌倉\" target=\"_blank\">地圖</a>（門票¥300）',c:'must'},
+    {t:'15:00',tx:'👔 鎌倉襯衫 Maker\'s Shirt<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/鎌倉シャツ+Makers+Shirt+KAMAKURA\" target=\"_blank\">地圖</a> KAMAKURA（11:00–18:00）⭐必去',c:'must'},
     {t:'17:00',tx:'🍜 晚餐選擇',c:'must',
-     n:'A：銀座 篝 鎌倉店 雞白湯拉麵¥1,380（17:00–20:00）\n   17:00開門前排隊\nB：回藤澤吃鰻魚飯（Unaginonaruse，17:00–21:00）'},
+     n:'A：銀座 篝 鎌倉<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/銀座篝+鎌倉店\" target=\"_blank\">地圖</a>店 雞白湯拉麵¥1,380（17:00–20:00）\n   17:00開門前排隊\nB：回藤澤吃鰻魚飯（Unaginonaruse，17:00–21:00）'},
     {t:'18:30',tx:'鎌倉→藤澤（JR横須賀線約12分¥230）'},
-    {t:'19:00',tx:'👗 Uniqlo 週五特價！（LUMIRE 6F，10:00–20:00）⭐',c:'must',
+    {t:'19:00',tx:'👗 Uniqlo 週五特價！<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/LUMINE+藤沢+Uniqlo+5F\" target=\"_blank\">地圖</a>（LUMINE 藤沢 5F，10:00–20:00）⭐',c:'must',
      n:'今天5/15週五，Uniqlo特價日！¥5,000以上可退稅'}
    ],
    note:'✅ 今天5/15（週五）：鎌倉紅谷確定開門＋Uniqlo週五特價日，雙重好處！'},
@@ -873,7 +890,7 @@ var days=[
    tags:['ts','tp'],tid:'t8',
    tl:[
     {t:'10:00',tx:'藤澤最後採買',c:'must',
-     n:'Uniqlo（LUMIRE 6F，10:00–20:00）\n無印良品（OPA 7F，10:00–21:00）\n3coins（JR藤沢駅商場 3F，10:00–21:00）\nOK超市（補飲料零食）'},
+     n:'Uniqlo（LUMINE 藤沢 5F，10:00–20:00）\n無印良品（OPA 7F，10:00–21:00）\n3coins（JR藤沢駅商場 3F，10:00–21:00）\nOK超市（補飲料零食）'},
     {t:'12:30',tx:'結束採買，回姑姑家拿行李',c:'must'},
     {t:'13:00',tx:'⭐ 從藤澤本町出發！',c:'must',
      n:'小田急→藤澤（2–3分¥136）\n→JR東海道線→大船（9分¥190）\n13:20前後抵大船，等 NEX 39號'},
@@ -905,16 +922,16 @@ var transData=[
      fare:'N\'EX來回票¥5,200（14天有效，含大船→藤澤段免費轉乘）',
      tip:'全車指定席，行李放車廂端部。東京站後分大船/新宿方向，請確認乘坐大船方向車廂。車內有Wi-Fi和插座。'},
     {tp:'train',ico:'🚃',lb:'JR東海道線（免費轉乘）',meta:'大船 → 藤澤（熱海/小田原方向）',
-     tt:[{dep:'18:54頃',arr:'19:03',note:'每5–8分一班，2站約9分',cls:'rec'}],
+     tt:[{dep:'18:54前後',arr:'19:03',note:'每5–8分一班，2站約9分',cls:'rec'}],
      fare:'N\'EX套票含蓋此段，不出站直接轉乘',
-     tip:'大船站依指標找「東海道線（下り・熱海・小田原方向）」月台'},
-    {tp:'walk',ico:'🚶',lb:'藤澤站 → 小田急改札',meta:'JR出口→走連絡改札→小田急南口，約3分'},
+     tip:'大船站依指標找「東海道線（下行・熱海・小田原方向）」月台'},
+    {tp:'walk',ico:'🚶',lb:'藤澤站 → 小田急閘口',meta:'JR出口→走換乘通道→小田急南口，約3分'},
     {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤 → 藤澤本町（往相模大野方向）',
-     tt:[{dep:'約毎5–7分',arr:'+2–3分',note:'各停 相模大野行 or 大和行，1駅2–3分',cls:'rec'},
-         {dep:'19:05頃',arr:'19:07–08',note:'★NEX 38號接駁（19:00藤澤着の場合）',cls:'rec'}],
+     tt:[{dep:'約每5–7分',arr:'+2–3分',note:'各站停車 相模大野方向或大和方向，1站2–3分',cls:'rec'},
+         {dep:'19:05前後',arr:'19:07–08',note:'★NEX 38號接駁（19:00抵藤澤的情況）',cls:'rec'}],
      fare:'¥136（需另購票，不含在N\'EX票内）',
-     tip:'藤澤本町は1つ目の停車站。改札を出て右手に出口。'},
-    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着！',meta:'姑姑家へ。OK超市採買後休息。'}
+     tip:'藤澤本町是第一站，下車後右側即出口。'},
+    {tp:'dest',ico:'🏠',lb:'藤澤本町 到着！',meta:'姑姑家。OK超市採買後休息。'}
    ],
    total:'藤澤本町着 約19:05–19:10（NEX 38號利用の場合）',
    fare:'N\'EX¥5,200＋JR含蓋＋小田急¥136',
@@ -928,21 +945,21 @@ var transData=[
   {id:'t2',dn:2,date:'5/10 (日)',title:'藤澤本町 ⇄ 小田原',
    sum:'小田急（藤澤本町→藤澤）＋JR東海道線（藤澤→小田原）往返',
    steps:[
-    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'8:30頃'},
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'8:30左右'},
     {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤本町 → 藤澤（片瀬江ノ島方向）',
-     tt:[{dep:'08:30頃',arr:'08:32–33',note:'各停 毎5–7分一班，1駅2–3分',cls:'rec'},
+     tt:[{dep:'08:30前後',arr:'08:32–33',note:'各停 每5–7分一班，1站2–3分',cls:'rec'},
          {dep:'08:36',arr:'08:38–39',note:'次班（参考）',cls:'alt'}],
      fare:'¥136',
-     tip:'片瀬江ノ島方向（下り）に乗車。藤澤駅で降りる。'},
-    {tp:'walk',ico:'🚶',lb:'藤澤駅 乗換',meta:'小田急南口→JR藤澤駅改札，約3分'},
+     tip:'搭片瀬江之島方向（下行），在藤澤站下車。'},
+    {tp:'walk',ico:'🚶',lb:'藤澤站 換乘',meta:'小田急南口→JR藤澤站改札，約3分'},
     {tp:'train',ico:'🚃',lb:'JR東海道本線 普通',meta:'藤澤 → 小田原（熱海方向）',
-     tt:[{dep:'08:40頃',arr:'09:22',note:'普通 毎10–12分一班，約40分',cls:'rec'},
+     tt:[{dep:'08:40前後',arr:'09:22',note:'普通 每10–12分一班，約40分',cls:'rec'},
          {dep:'08:52',arr:'09:34',note:'次班',cls:'alt'}],
      fare:'¥590（Suica/ICOCA）',
-     tip:'快速アクティーに乗ると早い。小田原で終点まで乗車。'},
+     tip:'快速アクティー更快。搭到終點小田原站下車。'},
     {tp:'dest',ico:'📍',lb:'小田原駅 着',meta:'西口出口から散策スタート'},
     {tp:'train',ico:'🚃',lb:'帰り：JR東海道線→小田急',meta:'小田原→藤澤（約40分¥590）→藤澤本町（2–3分¥136）',
-     tt:[{dep:'19:00–19:30頃',arr:'20:15–20:45頃',note:'毎10–12分一班',cls:'rec'}],
+     tt:[{dep:'19:00–19:30前後',arr:'20:15–20:45前後',note:'每10–12分一班',cls:'rec'}],
      fare:'¥590＋¥136'}
    ],
    total:'藤澤本町→小田原 約55分',
@@ -956,34 +973,37 @@ var transData=[
   {id:'t3',dn:3,date:'5/11 (一)',title:'藤澤本町 → 橫濱・みなとみらい（I\'m donut）→ 櫻木町飯店',
    sum:'小田急→JR東海道線（橫濱）→JR根岸線（櫻木町）＋港未來線（みなとみらい）',
    steps:[
-    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'09:00頃'},
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'09:00左右'},
     {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤本町 → 藤澤',
-     tt:[{dep:'09:00頃',arr:'09:02–03',note:'各停 毎5–7分，1駅2–3分',cls:'rec'}],
+     tt:[{dep:'09:00前後',arr:'09:02–03',note:'各停 每5–7分，1站2–3分',cls:'rec'}],
      fare:'¥136'},
     {tp:'train',ico:'🚃',lb:'JR東海道本線（上り）',meta:'藤澤 → 橫濱（東京方向）',
      tt:[{dep:'07:04',arr:'07:23',note:'（参考）普通',cls:'note'},
          {dep:'07:15',arr:'07:32',note:'（参考）普通',cls:'note'},
          {dep:'08:00',arr:'08:19',note:'（参考）普通',cls:'note'},
          {dep:'08:20',arr:'08:39',note:'（参考）普通',cls:'note'},
-         {dep:'09:05頃',arr:'09:24',note:'毎7–10分一班，約19分',cls:'rec'}],
+         {dep:'09:05前後',arr:'09:24',note:'毎7–10分一班，約19分',cls:'rec'}],
      fare:'¥418（Suica）',
      tip:'（参考班次為休日，以出發當日Yahoo路線查詢為準）\n快速アクティー or 普通どちらでも可。',
      src:{lb:'藤澤→橫濱 時刻（ekitan）',url:'https://ekitan.com/timetable/railway/line-station/149-7/d1'}},
     {tp:'train',ico:'🚃',lb:'JR根岸線/京浜東北線',meta:'橫濱 → 櫻木町（飯店）',
-     tt:[{dep:'09:26頃',arr:'09:29',note:'1站3分，毎5–8分一班',cls:'rec'}],
+     tt:[{dep:'09:26前後',arr:'09:29',note:'1站3分，每5–8分一班',cls:'rec'}],
      fare:'¥160（Suica）',
-     tip:'飯店JR EAST METS Premier大廳在3F，先辦寄行李'},
+     tip:'飯店JR EAST METS Premier 大廳在3樓，辦行李寄放'},
     {tp:'dest',ico:'🏨',lb:'飯店寄行李後→去 I\'m donut？',meta:'輕裝出発'},
     {tp:'walk',ico:'🚶',lb:'橫濱站 → 港未來線のりば',meta:'橫濱駅地下（みなとみらい線）約3分'},
     {tp:'train',ico:'🚃',lb:'港未來線（みなとみらい線）',meta:'橫濱 → みなとみらい（2駅4分）',
-     tt:[{dep:'10:00頃',arr:'10:04',note:'毎5分一班，¥210',cls:'rec'}],
+     tt:[{dep:'10:00前後',arr:'10:04',note:'每5分一班，¥210',cls:'rec'}],
      fare:'¥210（Suica）',
-     tip:'みなとみらい駅 2番出口出站，沿海濱步道步行約13分\n見木玻璃建築「横浜ティンバーワーフ」即是目的地'},
-    {tp:'donut',ico:'🍩',lb:'I\'m donut？ 横浜ティンバーワーフ店！',meta:'8:00–19:00（完売即關），建議10:00到'},
+     tip:'港未來線「みなとみらい」駅 2號出口出站，沿海濱步道步行約13分\n見木玻璃建築「横浜ティンバーワーフ」即是目的地'},
+    {tp:'donut',ico:'🍩',lb:'I\'m donut？ 横浜ティンバーワーフ店！',meta:'10:00–19:00（完售即關），建議10:00到'},
     {tp:'walk',ico:'🚶',lb:'隔壁 dacō 座位區享用',meta:'約80座席，允許攜帶I\'m donut入座，靠窗海景⭐'},
     {tp:'train',ico:'🚃',lb:'港未來線 みなとみらい → 橫濱（帰り）',meta:'4分',
-     tt:[{dep:'11:30頃',arr:'11:34',note:'¥210',cls:'rec'}],
+     tt:[{dep:'11:30前後',arr:'11:34',note:'¥210',cls:'rec'}],
      fare:'¥210'},
+    {tp:'dest',ico:'🏔️',lb:'Kamoshika Sports 橫濱店 <a class="gmap-link" href="https://www.google.com/maps/search/カモシカスポーツ+横浜+ウィスポートビル" target="_blank">地圖</a>',meta:'神奈川縣橫濱市西区高島2-6-32 ウィスポートビル1F / 平日11:00–20:00',
+     tt:[],
+     tip:'【從 I\'m donut 前往的路線】\n\n方案A 搭海灣藍巴士（BAYSIDE BLUE，¥220，約20分）\n① 步行至「パシフィコ横浜ノース」巴士站（I\'m donut店附近，步行3分）\n② 搭 BAYSIDE BLUE 往橫濱站方向\n③ 「横浜駅東口」下車，步行約5分至ウィスポートビル1F\n\n方案B 步行直達（¥0，約20–25分，1.3km）\n① 出ティンバーワーフ往北沿みなとみらい大通り直走\n② 過マリノスタウン足球場，繼續往橫濱站東口方向\n③ 跨越「幸橋」→ 走東口地下街ポルタ方向\n④ 出地上沿高島通り步行約5分→ ウィスポートビル1F\n⭐ 體力夠的話走路沿途港灣景色不錯！'},
     {tp:'dest',ico:'📍',lb:'橫濱駅 → 各百貨購物',meta:'JOINUS→高島屋→SOGO→Lumine'}
    ],
    extra:{title:'Day 3 最後：橫濱→飯店（桜木町）→退房後回藤澤（Day4）',
@@ -1008,12 +1028,12 @@ var transData=[
     {tp:'walk',ico:'🚶',lb:'步行：桜木町→馬車道→元町（約1.5km）',meta:'沿途：馬車道・Sils Maria・Belle Plage・元町商店街'},
     {tp:'walk',ico:'🚶',lb:'步行：元町→山下公園→象鼻公園→紅磚倉庫',meta:'約2km，沿海景散步'},
     {tp:'train',ico:'🚃',lb:'纜車 YOKOHAMA AIR CABIN（⭐強烈推薦！）',meta:'運河パーク → 桜木町（5分）',
-     tt:[{dep:'17:30–18:00頃',arr:'+5分',note:'¥1,000 単程，40m高空俯瞰港未來',cls:'rec'}],
+     tt:[{dep:'17:30–18:00前後',arr:'+5分',note:'¥1,000 単程，40m高空俯瞰港未來',cls:'rec'}],
      fare:'¥1,000',
      tip:'傍晚光線最漂亮！週二平日人少。或備案：港未來線地鐵（馬車道→桜木町，¥210，3分）'},
     {tp:'dest',ico:'🏨',lb:'桜木町：飯店取行李',meta:'Colette Mare 2F andST順路逛⭐'},
     {tp:'train',ico:'🚃',lb:'JR根岸線/京浜東北線',meta:'桜木町 → 橫濱（1站3分）',
-     tt:[{dep:'19:00–21:30頃',arr:'+4分',note:'毎5–8分一班，¥160',cls:'rec'}],
+     tt:[{dep:'19:00–21:30前後',arr:'+4分',note:'每5–8分一班，¥160',cls:'rec'}],
      fare:'¥160'},
     {tp:'train',ico:'🚃',lb:'JR東海道線（下り）',meta:'橫濱 → 藤澤',
      tt:[{dep:'19:05',arr:'19:24',note:'（参考）普通',cls:'note'},
@@ -1023,7 +1043,7 @@ var transData=[
          {dep:'20:07',arr:'20:26',note:'（参考）普通',cls:'note'},
          {dep:'20:37',arr:'20:56',note:'（参考）普通',cls:'note'}],
      fare:'¥440（Suica）',
-     tip:'（参考班次為休日，以出發當日查詢為準）',
+     tip:'（參考班次，以出發當日查詢為準）',
      src:{lb:'橫濱→藤澤 下り 時刻（Yahoo路線）',url:'https://transit.yahoo.co.jp/'}},
     {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤 → 藤澤本町（往相模大野方向）',
      tt:[{dep:'随時',arr:'+2–3分',note:'毎5–7分一班，¥136',cls:'rec'}],
@@ -1041,12 +1061,12 @@ var transData=[
   {id:'t5',dn:5,date:'5/13 (三)',title:'藤澤本町 → 和田塚・長谷・江之島（江ノ電一日票）',
    sum:'小田急（藤澤本町→藤澤）＋江ノ電一日票¥800（全日自由乗降）',
    steps:[
-    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'07:00頃（越早越好！）'},
+    {tp:'home',ico:'🏠',lb:'藤澤本町 出発',meta:'07:00（越早越好！）'},
     {tp:'train',ico:'🚃',lb:'小田急江ノ島線 各停',meta:'藤澤本町 → 藤澤',
      tt:[{dep:'07:00',arr:'07:02–03',note:'各停 毎5–7分一班',cls:'rec'},
          {dep:'07:06',arr:'07:08–09',note:'次班',cls:'alt'}],
      fare:'¥136'},
-    {tp:'walk',ico:'🚶',lb:'藤澤駅 → 江ノ電のりば',meta:'JR改札出て南口，江ノ電乗り場まで約3分。一日票購入！'},
+    {tp:'walk',ico:'🚶',lb:'藤澤站 → 江之電乘車處',meta:'出JR閘口往南口，江之電乘車處約3分。購入一日票！'},
     {tp:'train',ico:'🚃',lb:'江ノ電 （往鎌倉方向）',meta:'藤澤 → 和田塚（早餐）',
      tt:[{dep:'07:08',arr:'07:18',note:'約10分，¥260（一日票で乗車）',cls:'rec'},
          {dep:'07:20',arr:'07:30',note:'次班（毎12分一班）',cls:'alt'},
@@ -1055,21 +1075,21 @@ var transData=[
      tip:'座席は右側（進行方向右＝海側）を選ぼう！腰越付近で路面電車区間あり。',
      src:{lb:'江ノ電 公式時刻表',url:'https://www.enoden.co.jp/train/timetable/'}},
     {tp:'dest',ico:'🍳',lb:'和田塚駅（7:00–17:00 ヨリドコロ）',meta:'早餐：烤魚定食¥1,020–¥1,300'},
-    {tp:'train',ico:'🚃',lb:'江ノ電 和田塚 → 長谷',meta:'（朝食後）',
-     tt:[{dep:'08:30頃',arr:'08:35',note:'約5分，¥200（一日票）',cls:'rec'}],
+    {tp:'train',ico:'🚃',lb:'江ノ電 和田塚 → 長谷',meta:'（早餐後）',
+     tt:[{dep:'08:30前後',arr:'08:35',note:'約5分，¥200（一日票）',cls:'rec'}],
      fare:'一日票乗車'},
     {tp:'dest',ico:'🗿',lb:'長谷駅（大佛・周辺散策）',meta:'Takeya・Boulangerie Ensemble・高徳院¥300'},
-    {tp:'train',ico:'🚃',lb:'江ノ電 長谷 → 江ノ島',meta:'（午餐後，13:00頃）',
-     tt:[{dep:'13:00頃',arr:'13:10',note:'約10分（数駅），一日票',cls:'rec'}],
+    {tp:'train',ico:'🚃',lb:'江ノ電 長谷 → 江ノ島',meta:'（午餐後，13:00左右）',
+     tt:[{dep:'13:00前後',arr:'13:10',note:'約10分（数駅），一日票',cls:'rec'}],
      fare:'一日票乗車',
      tip:'腰越駅付近で路面電車区間（道路上を走る！）。珍しい光景なので外を見よう。'},
     {tp:'dest',ico:'🌊',lb:'江ノ島駅（→弁天橋まで徒步10分）',meta:'エスカー全程券¥360、三社巡禮'},
-    {tp:'train',ico:'🚃',lb:'江ノ電 江ノ島 → 藤澤（帰り）',meta:'（夕陽後，19:00頃）',
-     tt:[{dep:'19:00頃',arr:'19:15',note:'約15分，毎12分一班，一日票',cls:'rec'},
+    {tp:'train',ico:'🚃',lb:'江ノ電 江ノ島 → 藤澤（帰り）',meta:'（夕陽後，19:00左右）',
+     tt:[{dep:'19:00前後',arr:'19:15',note:'約15分，毎12分一班，一日票',cls:'rec'},
          {dep:'19:12',arr:'19:27',note:'次班',cls:'alt'}],
      fare:'一日票乗車（当日中有効）'},
     {tp:'train',ico:'🚃',lb:'小田急 各停 藤澤 → 藤澤本町',meta:'',
-     tt:[{dep:'19:18頃',arr:'19:20–21',note:'¥136',cls:'rec'}],
+     tt:[{dep:'19:18前後',arr:'19:20–21',note:'¥136',cls:'rec'}],
      fare:'¥136'},
     {tp:'dest',ico:'🏠',lb:'藤澤本町 到着！',meta:'晩ご飯：Unaginonaruse 鰻魚飯'}
    ],
@@ -1088,21 +1108,21 @@ var transData=[
     {tp:'train',ico:'🚃',lb:'小田急 各停 → 藤澤',meta:'',
      tt:[{dep:'08:00',arr:'08:02–03',note:'¥136',cls:'rec'}],fare:'¥136'},
     {tp:'train',ico:'🚃',lb:'JR東海道本線（上り）',meta:'藤澤 → 品川',
-     tt:[{dep:'08:05頃',arr:'08:45',note:'普通 約40分，¥550（Suica）',cls:'rec'},
+     tt:[{dep:'08:05前後',arr:'08:45',note:'普通 約40分，¥550（Suica）',cls:'rec'},
          {dep:'08:17',arr:'08:57',note:'次班',cls:'alt'}],
      fare:'¥550',
      tip:'品川駅での乗換：JR改札出て、都営浅草線「品川」は同一大樓内，步行約3–5分'},
     {tp:'train',ico:'🚃',lb:'都営浅草線',meta:'品川（A07）→ 稲荷町（A17）',
-     tt:[{dep:'08:50頃',arr:'09:18',note:'往押上方向，直通，約30分¥310',cls:'rec'}],
+     tt:[{dep:'08:50前後',arr:'09:18',note:'往押上方向，全程直通，約30分¥310',cls:'rec'}],
      fare:'¥310（Suica）',
-     tip:'全程直通，不需換車。稲荷町はA17。合羽橋まで徒歩5分。'},
+     tip:'全程直通，不需換車。稻荷町站是A17。走到合羽橋約5分鐘。'},
     {tp:'dest',ico:'📍',lb:'稲荷町駅 → 合羽橋道具街',meta:'田窯10:00・釜淺11:00・CONFECT-CONCEPT 10:30'},
     {tp:'walk',ico:'🚶',lb:'合羽橋→淺草（步行約15分）→藏前（步行約15分）',meta:''},
     {tp:'train',ico:'🚃',lb:'移動：藏前→表參道',meta:'都営浅草線（A18蔵前）→東京Metro（乗換）→表參道（G02）',
-     tt:[{dep:'17:00頃',arr:'17:30頃',note:'約30分，¥290',cls:'rec'}],
+     tt:[{dep:'17:00前後',arr:'17:30前後',note:'約30分，¥290',cls:'rec'}],
      fare:'¥290'},
     {tp:'train',ico:'🚃',lb:'帰り：表參道 → 藤澤本町（小田急急行利用）',meta:'',
-     tt:[{dep:'20:00–21:00頃',arr:'+65分頃',note:'表參道→代々木上原→小田急急行→藤澤→藤澤本町',cls:'rec'}],
+     tt:[{dep:'20:00–21:00前後',arr:'+約65分',note:'表參道→代々木上原→小田急急行→藤澤→藤澤本町',cls:'rec'}],
      fare:'約¥800（Metro+小田急）',
      tip:'表参道駅（千代田線）→代々木上原（乗換）→小田急急行→藤澤→小田急各停→藤澤本町。急行は藤澤直通あり！'},
     {tp:'dest',ico:'🏠',lb:'藤澤本町 到着',meta:''}
@@ -1124,20 +1144,20 @@ var transData=[
      tt:[{dep:'07:30',arr:'07:32–33',note:'¥136',cls:'rec'}],fare:'¥136'},
     {tp:'walk',ico:'🚶',lb:'藤澤駅 → JR横須賀線のりば',meta:'南口からJR改札，約2分'},
     {tp:'train',ico:'🚃',lb:'JR横須賀線（直達！）',meta:'藤澤 → 鎌倉',
-     tt:[{dep:'07:35頃',arr:'07:47',note:'直達！約12分¥230（毎20–30分一班）',cls:'rec'},
+     tt:[{dep:'07:35前後',arr:'07:47',note:'直達！約12分¥230（每20–30分一班）',cls:'rec'},
          {dep:'07:56',arr:'08:08',note:'次班',cls:'alt'},
          {dep:'08:20',arr:'08:32',note:'次次班',cls:'alt'}],
      fare:'¥230（Suica）',
      tip:'JR横須賀線は藤澤から鎌倉へ直達。逗子・久里浜方向に乗車。'},
     {tp:'dest',ico:'📍',lb:'鎌倉駅 着（8:00前後）',meta:'西口：洗錢神社方向 / 東口：小町通方向'},
     {tp:'train',ico:'🚃',lb:'帰り：JR横須賀線 鎌倉 → 藤澤',meta:'',
-     tt:[{dep:'18:30頃',arr:'18:42',note:'約12分¥230',cls:'rec'},
+     tt:[{dep:'18:30前後',arr:'18:42',note:'約12分¥230',cls:'rec'},
          {dep:'18:57',arr:'19:09',note:'次班',cls:'alt'},
          {dep:'19:20',arr:'19:32',note:'次次班',cls:'alt'}],
      fare:'¥230',
      tip:'鎌倉→藤澤はJR横須賀線 逗子・大船方面（久里浜方向）ではなく、平塚・小田原方向。注意乗車方向！'},
-    {tp:'train',ico:'🚃',lb:'小田急 各停 藤澤 → 藤澤本町',meta:'Uniqlo（LUMIRE 6F）寄道可',
-     tt:[{dep:'18:45頃',arr:'18:47–48',note:'¥136',cls:'rec'}],fare:'¥136'},
+    {tp:'train',ico:'🚃',lb:'小田急 各停 藤澤 → 藤澤本町',meta:'Uniqlo（LUMINE 藤沢 5F）寄道可',
+     tt:[{dep:'18:45前後',arr:'18:47–48',note:'¥136',cls:'rec'}],fare:'¥136'},
     {tp:'dest',ico:'🏠',lb:'藤澤本町 到着',meta:''}
    ],
    total:'藤澤本町→鎌倉 約20分',
@@ -1163,8 +1183,8 @@ var transData=[
          {dep:'13:20',arr:'13:29',note:'（参考）',cls:'alt'},
          {dep:'13:30',arr:'13:39',note:'（参考）',cls:'alt'}],
      fare:'¥190（Suica）',
-     tip:'大船は東海道線の主要駅，普通・快速どちらでも停車。13:20頃大船着で十分。'},
-    {tp:'dest',ico:'📍',lb:'大船駅 着（13:20頃）',meta:'NEX 39號（15:10）まで約110分の余裕！駅ナカで休憩'},
+     tip:'大船は東海道線の主要駅，普通・快速どちらでも停車。13:20前後抵大船就夠了。'},
+    {tp:'dest',ico:'📍',lb:'大船站 抵達（13:20前後）',meta:'等 NEX 39號（15:10）還有約110分！在車站內休息'},
     {tp:'train',ico:'🚄',lb:'⭐ N\'EX 39號 成田特快',meta:'大船 → 橫濱 → 成田空港第2ビル',
      tt:[{dep:'15:10',arr:'17:15',note:'⭐最推薦，橫濱15:21発',cls:'rec'},
          {dep:'14:10',arr:'16:15',note:'NEX 35號（太早）',cls:'note'},
@@ -1215,11 +1235,15 @@ function buildDay(d,mini){
     +'</div>'):'';
   var tBtn='<button class="tlink" onclick="jumpT(\''+d.tid+'\',event)">🚃 當日交通指南</button>';
   if(mini){
-    return '<div class="daycard"><div class="dayhead">'
+    return '<div class="daycard" style="cursor:pointer" onclick="jumpDay('+d.n+')">'
+      +'<div class="dayhead">'
       +'<div class="daynum">D'+d.n+'</div>'
       +'<div class="daysum"><div class="dtitle">'+d.date+'&emsp;'+d.title+'</div>'
       +'<div class="dsub">'+d.sub+'</div>'
-      +'<div class="dtags">'+d.tags.map(tagH).join('')+'</div></div>'
+      +'<div class="dtags">'+d.tags.map(tagH).join('')
+      +'<span style="font-size:.62rem;color:var(--muted);margin-left:.3rem;">→ 展開行程</span>'
+      +'</div></div>'
+      +'<div style="display:flex;align-items:center;padding:0 .65rem;color:var(--muted);font-size:.9rem;">▸</div>'
       +'</div></div>';
   }
   return '<div class="daycard" id="day-'+d.n+'">'
@@ -1478,7 +1502,7 @@ var dayMaps = {
   <text x="312" y="147" text-anchor="middle" fill="white" font-size="9" font-weight="bold">みなとみらい駅</text>
   <text x="312" y="159" text-anchor="middle" fill="white" font-size="8">港未來線 ¥210</text>
   <line x1="312" y1="130" x2="370" y2="105" stroke="#b8882a" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="345" y="115" text-anchor="middle" fill="#b8882a" font-size="8">步行13分</text>
+  <text x="345" y="110" text-anchor="middle" fill="#b8882a" font-size="8" font-weight="bold">步行13分／約1km</text>
   <line x1="110" y1="152" x2="270" y2="148" stroke="#5e3a9c" stroke-width="2" stroke-dasharray="5,3"/>
   <text x="190" y="143" text-anchor="middle" fill="#5e3a9c" font-size="9">港未來線 4分</text>
   <!-- JOINUS/Takashimaya (station building) -->
@@ -1509,9 +1533,17 @@ var dayMaps = {
   <text x="44" y="339" fill="#18130e" font-size="9">飯店</text>
   <rect x="80" y="330" width="10" height="10" fill="#5e3a9c" rx="2"/>
   <text x="96" y="339" fill="#18130e" font-size="9">地鐵</text>
+  <g transform="translate(545,45)">
+    <circle cx="0" cy="0" r="20" fill="white" stroke="#ccc" stroke-width="1" opacity="0.85"/>
+    <text x="0" y="-6" text-anchor="middle" fill="#c43b1e" font-size="10" font-weight="bold">N北</text>
+    <text x="0" y="14" text-anchor="middle" fill="#555" font-size="8">南</text>
+    <text x="13" y="4" text-anchor="middle" fill="#555" font-size="8">東</text>
+    <text x="-13" y="4" text-anchor="middle" fill="#555" font-size="8">西</text>
+    <line x1="0" y1="-4" x2="0" y2="-16" stroke="#c43b1e" stroke-width="2"/>
+  </g>
   <text x="20" y="356" fill="#888" font-size="9">※ 相對位置示意圖</text>
 </svg>`},
-      { type:'svg', title:'みなとみらい I\'m donut？ 步行路線', svg:`
+      { type:'svg', title:"みなとみらい I'm donut？ 步行路線", svg:`
 <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
   <rect width="480" height="280" fill="#ddeefa" rx="10"/>
   <rect x="0" y="0" width="200" height="280" fill="#eef2e8" rx="0"/>
@@ -1552,7 +1584,7 @@ var dayMaps = {
 </svg>`},
       { type:'floor', title:'橫濱站周邊百貨樓層', floors:[
         { name:'JOINUS（西口直連）', color:'#c43b1e', items:[
-          {fl:'B2',txt:'cosme@、淺野屋輕井澤麵包'},
+          {fl:'B2',txt:'餐廳區（銀座ライオン等）'},
           {fl:'B1',txt:'鎌倉襯衫・治一郎布丁'},
           {fl:'3F',txt:'Francfranc'},
           {fl:'4F',txt:'Lattice・Olive des olive'},
@@ -1567,9 +1599,9 @@ var dayMaps = {
           {fl:'10F',txt:'荒井屋（晚餐）'},
         ]},
         { name:'Lumine（東口）', color:'#5e3a9c', items:[
-          {fl:'B2',txt:'cosme@⭐'},
+          {fl:'B2',txt:'@cosme STORE⭐'},
           {fl:'4F',txt:'kastane・FREE\'S MART'},
-          {fl:'B1',txt:'HARBS蛋糕'},
+          {fl:'1F',txt:'HARBS（蛋糕+咖啡）'},
         ]},
       ]}
     ]
@@ -1620,9 +1652,9 @@ var dayMaps = {
   <text x="270" y="226" text-anchor="middle" fill="white" font-size="9" font-weight="bold">⑧纜車 AIR CABIN</text>
   <text x="270" y="239" text-anchor="middle" fill="white" font-size="8">運河パーク→桜木町 ¥1,000</text>
   <!-- walk labels -->
-  <text x="175" y="70" fill="#888" font-size="8">步行5分</text>
+  <text x="175" y="70" fill="#888" font-size="8">步行5分（約350m）</text>
   <text x="285" y="80" fill="#888" font-size="8">步行15分</text>
-  <text x="360" y="80" fill="#888" font-size="8">步行10分</text>
+  <text x="360" y="80" fill="#888" font-size="8">步行5分（約350m）</text>
   <text x="445" y="180" fill="#888" font-size="8">步行5分↓</text>
   <text x="320" y="205" fill="#888" font-size="8">步行10分←</text>
   <text x="20" y="310" fill="#888" font-size="9">※ 數字代表建議行程順序，相對位置示意圖</text>
@@ -1701,9 +1733,12 @@ var dayMaps = {
   <text x="500" y="109" text-anchor="middle" fill="white" font-size="7">🌊終点</text>
   <text x="500" y="122" text-anchor="middle" fill="#3d6b45" font-size="7">步行10分→島</text>
   <!-- time labels -->
-  <text x="100" y="78" text-anchor="middle" fill="#555" font-size="8">約10分</text>
-  <text x="200" y="78" text-anchor="middle" fill="#555" font-size="8">約8分</text>
-  <text x="460" y="78" text-anchor="middle" fill="#555" font-size="8">約10分</text>
+  <text x="100" y="72" text-anchor="middle" fill="#555" font-size="8">約10分</text>
+  <text x="100" y="82" text-anchor="middle" fill="#555" font-size="7">（約3km）</text>
+  <text x="200" y="72" text-anchor="middle" fill="#555" font-size="8">約8分</text>
+  <text x="200" y="82" text-anchor="middle" fill="#555" font-size="7">（約2km）</text>
+  <text x="460" y="72" text-anchor="middle" fill="#555" font-size="8">約10分</text>
+  <text x="460" y="82" text-anchor="middle" fill="#555" font-size="7">（約3km）</text>
   <text x="280" y="65" text-anchor="middle" fill="#b8882a" font-size="8">路面電車（稀有！）</text>
   <!-- one day ticket -->
   <rect x="170" y="15" width="200" height="28" rx="5" fill="#b8882a"/>
@@ -1757,7 +1792,16 @@ var dayMaps = {
   <rect x="145" y="230" width="80" height="30" rx="4" fill="#8a6020"/>
   <text x="185" y="245" text-anchor="middle" fill="white" font-size="8" font-weight="bold">章魚仙貝⭐</text>
   <text x="185" y="255" text-anchor="middle" fill="white" font-size="7">¥700–1,100</text>
-  <text x="20" y="310" fill="#888" font-size="9">※ 相對位置示意圖。下坡走階梯，邊走邊逛。</text>
+    <!-- Compass -->
+  <g transform="translate(405,15)">
+    <circle cx="0" cy="0" r="18" fill="white" stroke="#ccc" stroke-width="1" opacity="0.85"/>
+    <text x="0" y="-5" text-anchor="middle" fill="#c43b1e" font-size="9" font-weight="bold">N北</text>
+    <text x="0" y="13" text-anchor="middle" fill="#555" font-size="8">南</text>
+    <text x="12" y="4" text-anchor="middle" fill="#555" font-size="8">東</text>
+    <text x="-12" y="4" text-anchor="middle" fill="#555" font-size="8">西</text>
+    <line x1="0" y1="-4" x2="0" y2="-14" stroke="#c43b1e" stroke-width="2"/>
+  </g>
+  <text x="20" y="310" fill="#888" font-size="9">※ 路線全長約800m，走完全程需約1.5–2小時</text>
 </svg>`}
     ]
   },
@@ -1815,7 +1859,16 @@ var dayMaps = {
   <text x="455" y="30" text-anchor="middle" fill="#555" font-size="18">↑</text>
   <text x="455" y="46" text-anchor="middle" fill="#555" font-size="9">北(淺草)</text>
   <text x="455" y="290" text-anchor="middle" fill="#555" font-size="9">南(稲荷町)</text>
-  <text x="20" y="312" fill="#888" font-size="9">※ 相對位置示意圖，實際街道南北走向</text>
+    <!-- Compass -->
+  <g transform="translate(240,15)">
+    <circle cx="0" cy="0" r="18" fill="white" stroke="#ccc" stroke-width="1" opacity="0.85"/>
+    <text x="0" y="-5" text-anchor="middle" fill="#c43b1e" font-size="9" font-weight="bold">N北</text>
+    <text x="0" y="13" text-anchor="middle" fill="#555" font-size="8">南</text>
+    <text x="12" y="4" text-anchor="middle" fill="#555" font-size="8">東</text>
+    <text x="-12" y="4" text-anchor="middle" fill="#555" font-size="8">西</text>
+    <line x1="0" y1="-4" x2="0" y2="-14" stroke="#c43b1e" stroke-width="2"/>
+  </g>
+  <text x="20" y="312" fill="#888" font-size="9">※ 道具街全長約800m（南北走向），淺草→藏前步行約15分（1km）</text>
 </svg>`},
       { type:'svg', title:'淺草・藏前 文青路線', svg:`
 <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
@@ -1913,7 +1966,16 @@ var dayMaps = {
   <!-- Kamakura station box -->
   <rect x="450" y="225" width="60" height="28" rx="5" fill="#2055a0"/>
   <text x="480" y="243" text-anchor="middle" fill="white" font-size="9" font-weight="bold">鎌倉駅</text>
-  <text x="20" y="292" fill="#888" font-size="9">※ 相對位置示意圖</text>
+    <!-- Compass -->
+  <g transform="translate(525,15)">
+    <circle cx="0" cy="0" r="18" fill="white" stroke="#ccc" stroke-width="1" opacity="0.85"/>
+    <text x="0" y="-5" text-anchor="middle" fill="#c43b1e" font-size="9" font-weight="bold">N北</text>
+    <text x="0" y="13" text-anchor="middle" fill="#555" font-size="8">南</text>
+    <text x="12" y="4" text-anchor="middle" fill="#555" font-size="8">東</text>
+    <text x="-12" y="4" text-anchor="middle" fill="#555" font-size="8">西</text>
+    <line x1="0" y1="-4" x2="0" y2="-14" stroke="#c43b1e" stroke-width="2"/>
+  </g>
+  <text x="20" y="292" fill="#888" font-size="9">※ 相對位置示意圖，洗錢神社→鎌倉駅步行約20分（1.3km）</text>
 </svg>`},
       { type:'svg', title:'小町通商店街 & 鶴岡八幡宮', svg:`
 <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
@@ -1934,7 +1996,7 @@ var dayMaps = {
   <line x1="180" y1="104" x2="185" y2="104" stroke="#888" stroke-width="1"/>
   <!-- shops east side of komachi -->
   <rect x="20" y="130" width="155" height="30" rx="4" fill="#c43b1e"/>
-  <text x="97" y="149" text-anchor="middle" fill="white" font-size="9" font-weight="bold">豊島屋 鳩サブレー¥1,220⭐</text>
+  <text x="97" y="149" text-anchor="middle" fill="white" font-size="9" font-weight="bold">豊島屋 鳩サブレー<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/豊島屋+鎌倉+鳩サブレー\" target=\"_blank\">地圖</a>¥1,220⭐</text>
   <rect x="20" y="168" width="155" height="30" rx="4" fill="#c43b1e"/>
   <text x="97" y="187" text-anchor="middle" fill="white" font-size="9" font-weight="bold">八十八鎌倉抹茶（Hatoya）⭐</text>
   <rect x="20" y="206" width="155" height="30" rx="4" fill="#c43b1e"/>
@@ -1952,7 +2014,16 @@ var dayMaps = {
   <text x="315" y="207" text-anchor="middle" fill="white" font-size="8">dimanche 蛋包飯</text>
   <!-- arrows -->
   <text x="100" y="120" text-anchor="middle" fill="#888" font-size="8">←往鎌倉駅 200m以内</text>
-  <text x="20" y="290" fill="#888" font-size="9">※ 相對位置示意圖，小町通由北（八幡宮側）向南（駅側）</text>
+    <!-- Compass -->
+  <g transform="translate(395,15)">
+    <circle cx="0" cy="0" r="18" fill="white" stroke="#ccc" stroke-width="1" opacity="0.85"/>
+    <text x="0" y="-5" text-anchor="middle" fill="#c43b1e" font-size="9" font-weight="bold">N北</text>
+    <text x="0" y="13" text-anchor="middle" fill="#555" font-size="8">南</text>
+    <text x="12" y="4" text-anchor="middle" fill="#555" font-size="8">東</text>
+    <text x="-12" y="4" text-anchor="middle" fill="#555" font-size="8">西</text>
+    <line x1="0" y1="-4" x2="0" y2="-14" stroke="#c43b1e" stroke-width="2"/>
+  </g>
+  <text x="20" y="290" fill="#888" font-size="9">※ 小町通全長約350m（北→南），步行約5–8分</text>
 </svg>`}
     ]
   },
