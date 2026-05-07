@@ -282,6 +282,35 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .rsfare{display:inline-block;background:#fde4dc;color:var(--must);font-size:.7rem;font-weight:700;padding:.07rem .32rem;border-radius:3px;margin-left:.3rem;}
 .rstip{font-size:.78rem;background:#ddeefa;color:#1a3a60;border-radius:5px;padding:.2rem .4rem;margin-top:.18rem;line-height:1.45;}
 
+/* ── HISTORY STORY CARDS ── */
+.hstory{
+  background:linear-gradient(135deg,#1a1108 0%,#2d1e0e 100%);
+  border-radius:12px;padding:1rem 1.1rem;margin:0.9rem 0 0.5rem;
+  border:1px solid #5a3a10;position:relative;overflow:hidden;
+}
+.hstory::before{
+  content:'歷史';font-family:'Noto Serif TC',serif;font-weight:900;
+  font-size:5rem;color:rgba(184,136,42,.07);
+  position:absolute;right:-.5rem;top:-1rem;line-height:1;pointer-events:none;
+}
+.hstory-title{
+  font-family:'Noto Serif TC',serif;font-weight:700;font-size:.88rem;
+  color:var(--gold2);letter-spacing:.08em;margin-bottom:.55rem;
+  display:flex;align-items:center;gap:.45rem;
+}
+.hstory-title span{font-size:1rem;}
+.hstory-body{font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.75;}
+.hstory-body p{margin-bottom:.5rem;}
+.hstory-body p:last-child{margin-bottom:0;}
+.hstory-body b{color:var(--gold2);}
+.hstory-body em{color:#f0c080;font-style:normal;}
+.hstory-tip{
+  background:rgba(184,136,42,.15);border-left:2.5px solid var(--gold);
+  border-radius:0 5px 5px 0;padding:.3rem .55rem;margin-top:.6rem;
+  font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.6;
+}
+.hstory-tip b{color:var(--gold2);}
+
 /* ── TIMETABLE ── */
 .ttwrap{overflow-x:auto;margin-top:.45rem;border-radius:7px;border:1px solid var(--border);}
 .tt{border-collapse:collapse;font-size:.79rem;width:100%;min-width:300px;}
@@ -754,7 +783,21 @@ var days=[
     {t:'19:00',tx:'回程：小田原→藤澤（JR約40分）→小田急→藤澤本町'},
     {t:'20:00',tx:'藤澤南口<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/藤沢駅南口+OPA+ショッピング\" target=\"_blank\">地圖</a>輕逛：OPA無印¥5,000退稅、Seria 4F、3coins 3F',c:'opt'}
    ],
-   note:'☂️ 降雨機率60%，記得帶折疊傘。'},
+   note:'☂️ 降雨機率60%，記得帶折疊傘。',
+   history:`<div class="hstory">
+<div class="hstory-title"><span>⚔️</span>小田原城與北條五代——戰國關東霸主的百年傳奇</div>
+<div class="hstory-body">
+<p><b>🏯 從小城到「難攻不落」的巨城</b><br>
+西元1495年，一代梟雄<em>北條早雲</em>（本名伊勢宗瑞）從伊豆出兵，奪取了當時小城主大森氏的居城，開始了北條氏長達約一百年的關東霸業。他的五代子孫——氏綱、氏康、氏政、氏直——將這座城一代代擴建，最終建成總延長長達<em>9公里的「惣構」（總構）</em>，把整個城下町都包進防禦圈內。連戰無不勝的<em>上杉謙信</em>與<em>武田信玄</em>兩大名將，也分別在1561年和1569年攻打小田原城，卻都無功而返，小田原因此贏得了「難攻不落」的美譽。</p>
+<p><b>🌙 一夜城——秀吉的心理戰奇謀</b><br>
+1590年，豐臣秀吉率領約22萬大軍包圍小田原。然而比武力更精彩的，是一場心理戰：秀吉命人在城西南方僅3公里的石垣山上，悄悄在茂林遮蔽中動工建城，動員了近<em>4萬人</em>、費時<em>80天</em>。竣工當日，突然砍倒周圍所有樹木——一座白牆閃耀、氣勢宏偉的城廓就這樣「一夜之間」出現在北條軍眼前。城中守兵驚呼「關白殿下莫非是天狗？」，士氣瞬間崩潰。更諷刺的是，包圍期間秀吉還把愛妾淀君、茶人千利休統統召來，在陣中開茶會、辦宴席，彷彿這是一場悠閒的遠足而非戰爭。北條軍籠城約100天後，終於開城投降。</p>
+<p><b>💬 「小田原評定」——優柔寡斷的代名詞</b><br>
+籠城期間，北條家臣們就「死守」還是「投降」爭論不休、始終得不出結論，這場曠日廢時的會議，後來成為日語慣用語：<em>「小田原評定」</em>，專門用來形容「開了半天會卻什麼都決定不了」的情況。這個詞在日本職場至今仍在使用，站在城內，不妨想像一下那些武將在反覆激辯時的模樣。</p>
+<p><b>🌿 報德二宮神社——薪柴少年的傳奇人生</b><br>
+就在小田原城旁邊，供奉的是截然不同的一位英雄——<em>二宮尊德（金次郎）</em>。1787年他生於小田原農家，14歲喪父、16歲喪母，卻靠著「背柴讀書」的刻苦精神，一路自學成才，後來成為江戶幕府重用的農村復興專家，拯救了無數瀕臨破產的農村與藩政財政。神社拜殿的<em>礎石</em>，用的正是當年他說服藩主開倉賑災時的米倉地基石，意義深遠。</p>
+</div>
+<div class="hstory-tip">💡 <b>現場感受小貼士</b>：站在天守閣頂樓眺望時，試著找找西南方向的山丘——那就是當年秀吉「一夜城」的位置（石垣山，可遙遙望見）。天氣好時還能看到相模灣，與當年北條軍從城內望出去的景色幾乎一樣。</div>
+</div>`},
 
   {n:3,date:'5/11 (一)',title:'橫濱 Day 1 + 🍩 I\'m donut！',sub:'寄行李→I\'m donut→百貨→牛鍋晚餐→入住飯店',
    tags:['tf','ts','ta'],weather:{sky:'晴天',temp:'20–24°C'},tid:'t3',
@@ -1272,6 +1315,7 @@ function buildDay(d,mini){
     +'<div class="daydet">'
     +wH
     +(d.note?'<div class="ibox gold" style="margin-top:.7rem;">'+d.note+'</div>':'')
+    +(d.history?d.history:'')
     +'<div class="stitle">時間軸</div>'
     +'<div class="tl">'+tlH+'</div>'
     +'<div class="stitle">交通</div>'+tBtn
