@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <title>🇯🇵 2026 日本旅行攻略</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
@@ -381,7 +383,97 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 .map-svg-wrap svg{display:block;max-width:100%;height:auto;}
 .map-caption{font-size:.75rem;color:var(--muted);margin-top:.35rem;line-height:1.5;}
 
-/* ── RESPONSIVE TOUCH ── */
+/* ── MAP PANEL ── */
+#panel-map{padding:0!important;}
+.map-panel-wrap{display:flex;flex-direction:column;height:calc(100vh - 96px);position:relative;}
+.map-toolbar{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.5rem .85rem;background:var(--ink);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  flex-wrap:wrap;
+}
+.map-toolbar-title{font-size:.8rem;color:rgba(255,255,255,.6);flex:1;}
+.map-maximize-btn{
+  background:var(--red);color:#fff;border:none;border-radius:6px;
+  padding:.32rem .7rem;font-size:.75rem;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:background .15s;white-space:nowrap;
+}
+.map-maximize-btn:hover{background:var(--red2);}
+.map-body{display:flex;flex:1;overflow:hidden;min-height:0;}
+.map-sidebar{
+  width:280px;flex-shrink:0;background:var(--paper);
+  border-right:1px solid var(--border);
+  overflow-y:auto;scrollbar-width:thin;
+  scrollbar-color:var(--border) transparent;
+}
+.map-sidebar::-webkit-scrollbar{width:4px;}
+.map-sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+#leaflet-map{flex:1;z-index:1;}
+/* Fullscreen overlay */
+.map-fullscreen{
+  position:fixed;inset:0;z-index:9999;
+  display:none;flex-direction:column;background:#fff;
+}
+.map-fullscreen.active{display:flex;}
+.map-fullscreen .map-toolbar{flex-shrink:0;}
+.map-fullscreen .map-body{flex:1;min-height:0;}
+.map-fullscreen #leaflet-map-fs{flex:1;z-index:1;}
+.map-sidebar-day-header{
+  background:var(--ink);color:#fff;
+  padding:.6rem .9rem;position:sticky;top:0;z-index:10;
+}
+.map-sidebar-day-header h3{font-family:'Noto Serif TC',serif;font-size:.88rem;font-weight:700;}
+.map-sidebar-day-header p{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:.1rem;}
+.map-place-item{
+  padding:.58rem .9rem;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .15s;
+  display:flex;align-items:flex-start;gap:.55rem;
+}
+.map-place-item:hover{background:var(--warm);}
+.map-place-item.active{background:#fef3e8;border-left:3px solid var(--red);}
+.map-place-dot{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:800;color:#fff;
+  flex-shrink:0;margin-top:.1rem;
+  box-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+.map-place-info{flex:1;min-width:0;}
+.map-place-name{font-size:.81rem;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:.1rem;}
+.map-place-meta{font-size:.72rem;color:var(--muted);line-height:1.4;}
+/* day tabs in map panel */
+.map-day-tabs{
+  display:flex;overflow-x:auto;scrollbar-width:none;
+  background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08);
+}
+.map-day-tabs::-webkit-scrollbar{display:none;}
+.map-dtab{
+  flex-shrink:0;background:none;border:none;
+  color:rgba(255,255,255,.42);font-family:'DM Sans',sans-serif;
+  font-size:.78rem;font-weight:600;padding:.5rem .8rem;
+  cursor:pointer;border-bottom:2.5px solid transparent;
+  transition:all .2s;white-space:nowrap;
+}
+.map-dtab:hover{color:rgba(255,255,255,.75);}
+.map-dtab.active{color:var(--gold2);border-bottom-color:var(--red);}
+/* map legend */
+.map-legend{
+  position:absolute;bottom:28px;left:290px;z-index:900;
+  background:rgba(255,255,255,.93);backdrop-filter:blur(6px);
+  border:1px solid var(--border);border-radius:8px;
+  padding:.55rem .75rem;font-size:.73rem;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+.map-legend-row{display:flex;align-items:center;gap:.35rem;margin-bottom:.25rem;}
+.map-legend-row:last-child{margin-bottom:0;}
+.map-ldot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+@media(max-width:650px){
+  .map-sidebar{width:100%;max-height:200px;border-right:none;border-bottom:1px solid var(--border);}
+  .map-body{flex-direction:column;}
+  #leaflet-map{height:55vh;flex:none;}
+  .map-legend{left:10px;bottom:10px;}
+}
+
 @media(max-width:400px){
   .tbtn{font-size:.82rem;padding:.6rem .75rem;}
   .daynum{font-size:1.1rem;min-width:2.3rem;}
@@ -411,6 +503,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   <button class="tbtn" onclick="showTab('shopping')">購物</button>
   <button class="tbtn" onclick="showTab('tips')">💡 建議</button>
   <button class="tbtn" onclick="showTab('links')">🔗 連結</button>
+  <button class="tbtn" onclick="showTab('map')">🗺 地圖</button>
 </nav>
 
 <!-- ══════ OVERVIEW ══════ -->
@@ -721,6 +814,47 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   </table>
   </div>
 </div>
+
+<!-- ══════ MAP ══════ -->
+<div class="panel" id="panel-map">
+  <!-- Normal view -->
+  <div class="map-panel-wrap" id="map-normal-wrap">
+    <div class="map-toolbar" id="map-day-tabs-bar">
+      <div class="map-day-tabs" id="map-day-tabs-inline"></div>
+      <button class="map-maximize-btn" onclick="mapMaximize()">⛶ 最大化</button>
+    </div>
+    <div class="map-body">
+      <div class="map-sidebar" id="map-sidebar-normal"></div>
+      <div id="leaflet-map" style="position:relative;"></div>
+    </div>
+    <div class="map-legend" style="left:290px;">
+      <div class="map-legend-row"><div class="map-ldot" style="background:#c43b1e"></div>必去・餐廳・購物</div>
+      <div class="map-legend-row"><div class="map-ldot" style="background:#2055a0"></div>觀光景點・神社</div>
+      <div class="map-legend-row"><div class="map-ldot" style="background:#3d6b45"></div>公園・自然</div>
+      <div class="map-legend-row"><div class="map-ldot" style="background:#b8882a"></div>特別重點</div>
+      <div class="map-legend-row"><div class="map-ldot" style="background:#7a6b55"></div>車站</div>
+    </div>
+</div>
+
+<!-- Fullscreen map overlay -->
+<div class="map-fullscreen" id="map-fullscreen">
+  <div class="map-toolbar">
+    <div class="map-day-tabs" id="map-day-tabs-fs" style="flex:1;"></div>
+    <button class="map-maximize-btn" style="background:var(--sage);" onclick="mapMinimize()">✕ 收起</button>
+  </div>
+  <div class="map-body">
+    <div class="map-sidebar" id="map-sidebar-fs"></div>
+    <div id="leaflet-map-fs"></div>
+  </div>
+  <div class="map-legend" id="map-legend-fs">
+    <div class="map-legend-row"><div class="map-ldot" style="background:#c43b1e"></div>必去・餐廳・購物</div>
+    <div class="map-legend-row"><div class="map-ldot" style="background:#2055a0"></div>觀光景點・神社</div>
+    <div class="map-legend-row"><div class="map-ldot" style="background:#3d6b45"></div>公園・自然</div>
+    <div class="map-legend-row"><div class="map-ldot" style="background:#b8882a"></div>特別重點</div>
+    <div class="map-legend-row"><div class="map-ldot" style="background:#7a6b55"></div>車站</div>
+  </div>
+</div>
+
 <script>
 // ══════════════════════════════════════════
 // TAB CONTROLLER — defined first, no hoisting issues
@@ -730,10 +864,11 @@ function showTab(t){
   document.querySelectorAll('.tbtn').forEach(function(b){b.classList.remove('active');});
   var el = document.getElementById('panel-'+t);
   if(el) el.classList.add('active');
-  var tabs=['overview','itinerary','transport','nex','donut','shopping','tips','links'];
+  var tabs=['overview','itinerary','transport','nex','donut','shopping','tips','links','map'];
   var i=tabs.indexOf(t);
   var btns=document.querySelectorAll('.tbtn');
   if(i>=0 && btns[i]) btns[i].classList.add('active');
+  if(t==='map') setTimeout(initMapIfNeeded, 80);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -838,8 +973,8 @@ var days=[
     {t:'09:00',tx:'飯店早餐＋寄放行李（check-out，下午取）',c:'must'},
     {t:'09:30',tx:'☕ Gooz 銀杏並木通店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Gooz+銀杏並木通+横浜\" target=\"_blank\">地圖</a> 平價拿鐵¥200（早餐咖啡）',c:'opt'},
     {t:'10:00',tx:'🏛️ 横浜市開港記念会館<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/横浜市開港記念会館\" target=\"_blank\">地圖</a>（免費）大正紅磚建築，10:00–16:00',c:'opt'},
-    {t:'11:00',tx:'🍳 午餐：CAESAR 蛋包飯<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/CAESAR+オムライス+関内+横浜\" target=\"_blank\">地圖</a>（關內站步行5分）¥2,500',c:'must',
-     n:'蛋包飯佐漢堡排，11:00–22:00，建議提前預訂'},
+    {t:'11:00',tx:'🍳 午餐：CAESAR 蛋包飯<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/CAESAR+オムライス+関内+横浜\" target=\"_blank\">地圖</a>（關內站步行5分）¥2,500 <span class=\"pill pill-must\">已預訂 ✓</span>',c:'must',
+     n:'✅ 已預訂！預計 11:00 到達\n蛋包飯佐漢堡排，11:00–22:00'},
     {t:'12:30',tx:'🍫 Sils Maria シルスマリア 馬車道本店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Sils+Maria+馬車道+横浜\" target=\"_blank\">地圖</a>',c:'must',
      n:'生巧克力、可可霜淇淋¥500，可內用'},
     {t:'13:00',tx:'🍫 Belle Plage 巧克力<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Belle+Plage+元町+横浜\" target=\"_blank\">地圖</a>（10:30–19:00）袋裝送同事',c:'must'},
@@ -2187,6 +2322,408 @@ function expandAll(){document.querySelectorAll('#itin-days .daycard').forEach(fu
 function collapseAll(){document.querySelectorAll('#itin-days .daycard').forEach(function(c){c.classList.remove('open');});}
 function expandAllT(){document.querySelectorAll('.dtblock').forEach(function(c){c.classList.add('open');});}
 function collapseAllT(){document.querySelectorAll('.dtblock').forEach(function(c){c.classList.remove('open');});}
+</script>
+
+<!-- ══════════════════════════════════════════
+     LEAFLET MAP ENGINE
+══════════════════════════════════════════ -->
+<script>
+// ── MAP DATA ──
+var MAP_DAYS = [
+  {
+    id:'d2', label:'D2 小田原', date:'5/10 (日)',
+    desc:'小田原一日遊', center:[35.252,139.155], zoom:15,
+    places:[
+      {id:'A',name:'小田原駅・ミナカ小田原',lat:35.2551,lon:139.1560,cat:'交通',color:'#7a6b55',
+       note:'出發點｜パン工房ブンブン Plus 在此',time:'08:30',
+       gmap:'https://www.google.com/maps/search/ミナカ小田原'},
+      {id:'B',name:'甘味喫茶 岡西',lat:35.2548,lon:139.1548,cat:'甜點',color:'#c43b1e',
+       note:'御荻¥400・糰子¥220 外帶送姑姑',time:'10:15',
+       gmap:'https://www.google.com/maps/search/甘味喫茶岡西+小田原'},
+      {id:'C',name:'三層究極のそば',lat:35.2540,lon:139.1540,cat:'午餐',color:'#c43b1e',
+       note:'天婦羅蕎麥麵¥1,800 11:00–14:00',time:'11:00',
+       gmap:'https://www.google.com/maps/search/三層究極のそば+小田原'},
+      {id:'D',name:'小田原城 天守閣',lat:35.2509,lon:139.1535,cat:'景點',color:'#2055a0',
+       note:'入場¥510｜報徳二宮神社鄰近',time:'13:20',
+       gmap:'https://www.google.com/maps/search/小田原城+天守閣'},
+      {id:'E',name:'報徳二宮神社',lat:35.2500,lon:139.1528,cat:'神社',color:'#2055a0',
+       note:'祈求財運・事業・學業',time:'14:30',
+       gmap:'https://www.google.com/maps/search/報徳二宮神社+小田原'},
+      {id:'F',name:'御幸の浜',lat:35.2451,lon:139.1593,cat:'選做',color:'#3d6b45',
+       note:'海邊散步，可看相模灣（選做）',time:'15:30',
+       gmap:'https://www.google.com/maps/search/御幸の浜+小田原'},
+      {id:'G',name:'一膳飯屋 八起',lat:35.2541,lon:139.1555,cat:'晚餐',color:'#c43b1e',
+       note:'生魚片+炸竹莢魚定食¥1,650',time:'17:30',
+       gmap:'https://www.google.com/maps/search/一膳飯屋八起+小田原'},
+    ]
+  },
+  {
+    id:'d3', label:'D3 橫濱①', date:'5/11 (一)',
+    desc:'I\'m donut + 百貨購物 + 住飯店', center:[35.455,139.630], zoom:14,
+    places:[
+      {id:'A',name:'橫濱駅',lat:35.4660,lon:139.6221,cat:'交通',color:'#7a6b55',
+       note:'出發點｜JR・小田急・港未來線交會',time:'09:00',
+       gmap:'https://www.google.com/maps/search/横浜駅'},
+      {id:'B',name:'Kamoshika Sports（正確位置⭐）',lat:35.4619,lon:139.6230,cat:'必逛',color:'#c43b1e',
+       note:'登山戶外用品 ウィスポートビル1F\n新高島駅1番出口徒歩5分\n平日11:00–20:00（目標店）',time:'12:30',
+       gmap:'https://www.google.com/maps/search/カモシカスポーツ+横浜+高島'},
+      {id:'B2',name:'Kamoshika Sports（備案舊標記）',lat:35.4673,lon:139.6254,cat:'選做',color:'#7a6b55',
+       note:'原始標記位置（備案參考）',time:'',
+       gmap:'https://www.google.com/maps/search/カモシカスポーツ+横浜+ウィスポートビル'},
+      {id:'C',name:'I\'m donut？横浜',lat:35.4624,lon:139.6369,cat:'🍩甜甜圈',color:'#b8882a',
+       note:'横浜ティンバーワーフ1F｜8:00–19:00\n橫濱限定：マンハッタン・ドバイチョコ',time:'10:00',
+       gmap:'https://www.google.com/maps/search/Im+donut+横浜ティンバーワーフ'},
+      {id:'D',name:'JOINUS百貨',lat:35.4653,lon:139.6193,cat:'購物',color:'#c43b1e',
+       note:'B1 治一郎・鎌倉シャツ\n3F Francfranc｜4F Lattice',time:'11:45',
+       gmap:'https://www.google.com/maps/search/横浜JOINUS'},
+      {id:'E',name:'高島屋',lat:35.4656,lon:139.6199,cat:'購物',color:'#c43b1e',
+       note:'5F 伊東屋文具（ZEBRA Miffy筆！）\nB1 横浜バニラ｜1F 黛珂',time:'',
+       gmap:'https://www.google.com/maps/search/横浜高島屋'},
+      {id:'F',name:'SOGO',lat:35.4655,lon:139.6249,cat:'購物',color:'#c43b1e',
+       note:'7F Loft⭐｜B2 小倉山莊・tulip rose\n荒井屋牛鍋 B2（午餐）',time:'12:00',
+       gmap:'https://www.google.com/maps/search/横浜SOGO'},
+      {id:'G',name:'Lumine 橫濱',lat:35.4654,lon:139.6229,cat:'購物',color:'#c43b1e',
+       note:'B2 @cosme Store⭐｜1F HARBS蛋糕\n4F kastane・FREE\'S MART｜B1 淺野屋',time:'',
+       gmap:'https://www.google.com/maps/search/ルミネ横浜'},
+      {id:'H',name:'桜木町駅・JR METS',lat:35.4509,lon:139.6311,cat:'飯店',color:'#7a6b55',
+       note:'JR EAST METS Premier 橫濱\n今晚入住！',time:'20:00',
+       gmap:'https://www.google.com/maps/search/JR+EAST+METS+Premier+横浜+桜木町'},
+    ]
+  },
+  {
+    id:'d4', label:'D4 橫濱②', date:'5/12 (二)',
+    desc:'馬車道・元町・山下公園・纜車', center:[35.451,139.638], zoom:14,
+    places:[
+      {id:'A',name:'桜木町駅',lat:35.4509,lon:139.6311,cat:'交通',color:'#7a6b55',
+       note:'飯店退房，寄行李後出發',time:'09:00',
+       gmap:'https://www.google.com/maps/search/桜木町駅'},
+      {id:'B',name:'横浜市開港記念会館',lat:35.4482,lon:139.6405,cat:'景點',color:'#3d6b45',
+       note:'免費参観｜大正紅磚建築（選做）\n10:00–16:00',time:'10:00',
+       gmap:'https://www.google.com/maps/search/横浜市開港記念会館'},
+      {id:'C',name:'CAESAR 蛋包飯 ✅已預訂',lat:35.4479,lon:139.6391,cat:'午餐',color:'#c43b1e',
+       note:'✅ 已預訂！11:00 到達\n商業午餐¥2,500｜關內站步行5分',time:'11:00',
+       gmap:'https://www.google.com/maps/search/CAESAR+オムライス+関内+横浜'},
+      {id:'D',name:'Sils Maria 馬車道本店',lat:35.4485,lon:139.6362,cat:'甜點',color:'#c43b1e',
+       note:'生巧克力・可可霜淇淋¥500',time:'12:30',
+       gmap:'https://www.google.com/maps/search/シルスマリア+馬車道+横浜'},
+      {id:'E',name:'Belle Plage',lat:35.4405,lon:139.6486,cat:'購物',color:'#c43b1e',
+       note:'元町｜袋裝巧克力送同事\n10:30–19:00',time:'14:00',
+       gmap:'https://www.google.com/maps/search/Belle+Plage+元町+横浜'},
+      {id:'F',name:'La Théière 紅茶',lat:35.4426,lon:139.6537,cat:'購物',color:'#c43b1e',
+       note:'元町紅茶専門店⭐\n元町デュエット必買',time:'14:00',
+       gmap:'https://www.google.com/maps/search/La+Theiere+元町+横浜'},
+      {id:'G',name:'山下公園',lat:35.4458,lon:139.6498,cat:'景點',color:'#3d6b45',
+       note:'5月玫瑰花季！背景橫濱灣大景',time:'16:00',
+       gmap:'https://www.google.com/maps/search/山下公園+横浜'},
+      {id:'H',name:'象鼻公園',lat:35.4501,lon:139.6429,cat:'景點',color:'#3d6b45',
+       note:'特殊造型碼頭，橫濱地標',time:'16:30',
+       gmap:'https://www.google.com/maps/search/象の鼻公園+横浜'},
+      {id:'I',name:'橫濱紅磚倉庫',lat:35.4526,lon:139.6429,cat:'購物',color:'#c43b1e',
+       note:'Huffnagel 蘭姆葡萄夾心¥430–450\n今天吃！11:00–20:00',time:'17:00',
+       gmap:'https://www.google.com/maps/search/横浜赤レンガ倉庫'},
+      {id:'J',name:'AIR CABIN 纜車',lat:35.4514,lon:139.6314,cat:'體驗',color:'#b8882a',
+       note:'⭐強烈推薦！¥1,000単程\n40m高空俯瞰港未來，傍晚最美',time:'18:00',
+       gmap:'https://www.google.com/maps/search/YOKOHAMA+AIR+CABIN'},
+      {id:'K',name:'Colette Mare',lat:35.4522,lon:139.6307,cat:'購物',color:'#2055a0',
+       note:'1F Francfranc｜2F andST⭐\n3F Uniqlo・GU｜5F FORMA文具',time:'18:30',
+       gmap:'https://www.google.com/maps/search/Colette+Mare+横浜+桜木町'},
+    ]
+  },
+  {
+    id:'d5', label:'D5 江之島', date:'5/13 (三)',
+    desc:'和田塚・長谷大佛・江之島夕陽', center:[35.312,139.508], zoom:13,
+    places:[
+      {id:'A',name:'藤澤駅（出發）',lat:35.3389,lon:139.4875,cat:'交通',color:'#7a6b55',
+       note:'江之電 往鎌倉方向｜買一日票¥800',time:'07:00',
+       gmap:'https://www.google.com/maps/search/藤沢駅'},
+      {id:'B',name:'和田塚駅・ヨリドコロ',lat:35.3231,lon:139.5424,cat:'早餐',color:'#c43b1e',
+       note:'烤魚定食¥1,020–¥1,300\n7:00–17:00',time:'07:30',
+       gmap:'https://www.google.com/maps/search/ヨリドコロ+和田塚+鎌倉'},
+      {id:'C',name:'Kotori 文具店',lat:35.3215,lon:139.5338,cat:'購物',color:'#c43b1e',
+       note:'11:00–18:00⭐可愛文具聖地',time:'11:00',
+       gmap:'https://www.google.com/maps/search/Kotori+文具+長谷+鎌倉'},
+      {id:'D',name:'鎌倉大佛（高徳院）',lat:35.3168,lon:139.5357,cat:'景點',color:'#2055a0',
+       note:'入場¥300｜江之電一日票折¥100\n8:00–17:30',time:'10:00',
+       gmap:'https://www.google.com/maps/search/高徳院+鎌倉大仏'},
+      {id:'E',name:'Cafe vivement dimanche',lat:35.3204,lon:139.5512,cat:'午餐',color:'#c43b1e',
+       note:'蛋包飯¥650｜栗子布丁聖代¥950',time:'11:30',
+       gmap:'https://www.google.com/maps/search/Cafe+vivement+dimanche+鎌倉'},
+      {id:'F',name:'江之島駅',lat:35.3023,lon:139.4886,cat:'交通',color:'#7a6b55',
+       note:'→弁天橋步行10分到島上\n購エスカー全程¥360',time:'13:00',
+       gmap:'https://www.google.com/maps/search/江ノ島駅'},
+      {id:'G',name:'江之島 入口（弁天橋）',lat:35.3003,lon:139.4815,cat:'景點',color:'#2055a0',
+       note:'三社巡禮路線起點\n仲見世通→邊津宮→中津宮→奧津宮',time:'13:15',
+       gmap:'https://www.google.com/maps/search/江の島+弁天橋'},
+      {id:'H',name:'稚兒之淵',lat:35.2986,lon:139.4770,cat:'夕陽',color:'#b8882a',
+       note:'🌅 精確日落：18:37⭐\n建議18:15前到位！',time:'18:15',
+       gmap:'https://www.google.com/maps/search/稚児ケ淵+江の島'},
+    ]
+  },
+  {
+    id:'d6', label:'D6 合羽橋', date:'5/14 (四)',
+    desc:'合羽橋・淺草・藏前', center:[35.710,139.790], zoom:15,
+    places:[
+      {id:'A',name:'稻荷町駅',lat:35.7129,lon:139.7856,cat:'交通',color:'#7a6b55',
+       note:'都營淺草線 A17\n合羽橋道具街入口步行5分',time:'09:15',
+       gmap:'https://www.google.com/maps/search/稲荷町駅'},
+      {id:'B',name:'田窯（でんがま）',lat:35.7122,lon:139.7858,cat:'購物',color:'#c43b1e',
+       note:'和食器｜合羽橋入口第一站\n10:00–18:00',time:'09:30',
+       gmap:'https://www.google.com/maps/search/田窯+でんがま+合羽橋'},
+      {id:'C',name:'鍔屋菜刀店',lat:35.7133,lon:139.7870,cat:'購物',color:'#c43b1e',
+       note:'水果刀¥1,822｜10:00–17:00',time:'10:00',
+       gmap:'https://www.google.com/maps/search/鍔屋菜刀店+合羽橋'},
+      {id:'D',name:'釜淺商店',lat:35.7138,lon:139.7887,cat:'購物',color:'#c43b1e',
+       note:'水果刀¥1,900 可免費刻字⭐\n11:00–17:30',time:'11:00',
+       gmap:'https://www.google.com/maps/search/釜浅商店+合羽橋'},
+      {id:'E',name:'馬嶋屋・ZAKA',lat:35.7136,lon:139.7880,cat:'購物',color:'#c43b1e',
+       note:'馬嶋屋：烘焙模具 9:30–17:30\nZAKA：茶筅・抹茶碗',time:'10:30',
+       gmap:'https://www.google.com/maps/search/馬嶋屋菓子道具店+合羽橋'},
+      {id:'F',name:'CONFECT-CONCEPT',lat:35.7125,lon:139.7884,cat:'甜點',color:'#c43b1e',
+       note:'甜點外帶¥310起\n10:30–18:30',time:'10:30',
+       gmap:'https://www.google.com/maps/search/CONFECT-CONCEPT+合羽橋'},
+      {id:'G',name:'尾張屋 蕎麥麵',lat:35.7135,lon:139.7892,cat:'午餐',color:'#c43b1e',
+       note:'午餐 11:30–20:00',time:'13:00',
+       gmap:'https://www.google.com/maps/search/尾張屋+蕎麦+合羽橋'},
+      {id:'H',name:'淺草（仲見世通）',lat:35.7148,lon:139.7967,cat:'景點',color:'#2055a0',
+       note:'和泉屋仙貝・壽壽喜園抹茶冰淇淋\n淺草寺鄰近',time:'14:15',
+       gmap:'https://www.google.com/maps/search/浅草+仲見世通'},
+      {id:'I',name:'KURAMAE CANNELE',lat:35.7021,lon:139.7904,cat:'甜點',color:'#c43b1e',
+       note:'藏前｜可麗露+霜淇淋¥680\n11:00–18:00',time:'15:15',
+       gmap:'https://www.google.com/maps/search/KURAMAE+CANNELE+蔵前'},
+      {id:'J',name:'marble 蔵前',lat:35.7019,lon:139.7888,cat:'甜點',color:'#c43b1e',
+       note:'藏前｜布丁・巴斯克乳酪¥680\n9:00–19:00',time:'15:30',
+       gmap:'https://www.google.com/maps/search/marble+蔵前+布丁'},
+    ]
+  },
+  {
+    id:'d7', label:'D7 鎌倉', date:'5/15 (五)',
+    desc:'洗錢神社・小町通・八幡宮', center:[35.323,139.547], zoom:15,
+    places:[
+      {id:'A',name:'鎌倉駅',lat:35.3217,lon:139.5508,cat:'交通',color:'#7a6b55',
+       note:'JR横須賀線｜7:30到，早去人少！',time:'08:00',
+       gmap:'https://www.google.com/maps/search/鎌倉駅'},
+      {id:'B',name:'BREAD IT BE',lat:35.3230,lon:139.5495,cat:'早餐',color:'#c43b1e',
+       note:'歐式麵包早餐｜8:00–17:00',time:'08:00',
+       gmap:'https://www.google.com/maps/search/Bread+It+Be+鎌倉'},
+      {id:'C',name:'洗錢神社（銭洗弁財天）',lat:35.3257,lon:139.5422,cat:'神社',color:'#2055a0',
+       note:'一組¥200（竹簍+香+蠟燭）\n祈金錢運・事業運｜16:30關門',time:'09:00',
+       gmap:'https://www.google.com/maps/search/銭洗弁財天+宇賀福神社+鎌倉'},
+      {id:'D',name:'八十八鎌倉抹茶',lat:35.3220,lon:139.5505,cat:'必吃',color:'#b8882a',
+       note:'⭐必吃｜10:00–18:00\nHatoya Kamakura',time:'10:30',
+       gmap:'https://www.google.com/maps/search/八十八鎌倉抹茶+Hatoya+Kamakura'},
+      {id:'E',name:'Cafe vivement dimanche',lat:35.3204,lon:139.5512,cat:'午餐',color:'#c43b1e',
+       note:'蛋包飯¥650｜栗子布丁聖代¥950',time:'11:00',
+       gmap:'https://www.google.com/maps/search/Cafe+vivement+dimanche+鎌倉'},
+      {id:'F',name:'小町通商店街',lat:35.3228,lon:139.5525,cat:'購物',color:'#c43b1e',
+       note:'豐島屋 鳩サブレー8入¥1,220\narbre noir 抹茶燒¥90｜Beller銀飾',time:'12:00',
+       gmap:'https://www.google.com/maps/search/鎌倉+小町通+商店街'},
+      {id:'G',name:'鶴岡八幡宮',lat:35.3260,lon:139.5563,cat:'景點',color:'#2055a0',
+       note:'¥300｜鎌倉最重要神社',time:'14:00',
+       gmap:'https://www.google.com/maps/search/鶴岡八幡宮+鎌倉'},
+      {id:'H',name:'鎌倉シャツ（Maker\'s Shirt）',lat:35.3225,lon:139.5520,cat:'購物',color:'#c43b1e',
+       note:'⭐必去｜日本製高質感襯衫\n11:00–18:00',time:'15:00',
+       gmap:'https://www.google.com/maps/search/鎌倉シャツ+Makers+Shirt+KAMAKURA'},
+    ]
+  },
+];
+
+// ── MAP STATE ──
+var leafMap = null;       // normal map instance
+var leafMapFs = null;     // fullscreen map instance
+var mapInitDone = false;
+var mapCurrentDayId = null;
+var mapMarkersN = [];
+var mapMarkersFs = [];
+var mapActiveIdx = -1;
+var mapActiveIdxFs = -1;
+
+function initMapIfNeeded() {
+  if (!mapInitDone) {
+    mapInitDone = true;
+    var d0 = MAP_DAYS[0];
+    leafMap = L.map('leaflet-map', {zoomControl:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19
+    }).addTo(leafMap);
+    L.control.zoom({position:'topright'}).addTo(leafMap);
+
+    // Build day tabs for normal view
+    buildMapDayTabs('map-day-tabs-inline', leafMap, 'N');
+    // Render first day
+    renderMapDay(d0, leafMap, 'map-sidebar-normal', 'N');
+    mapCurrentDayId = d0.id;
+    leafMap.invalidateSize();
+  }
+}
+
+function buildMapDayTabs(containerId, mapInst, which) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '';
+  MAP_DAYS.forEach(function(day, i) {
+    var btn = document.createElement('button');
+    btn.className = 'map-dtab' + (i===0?' active':'');
+    btn.innerHTML = day.label;
+    btn.addEventListener('click', function() {
+      el.querySelectorAll('.map-dtab').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      renderMapDay(day, mapInst, which==='N'?'map-sidebar-normal':'map-sidebar-fs', which);
+      mapCurrentDayId = day.id;
+      // sync other panel's tab if both exist
+      var otherId = which==='N'?'map-day-tabs-fs':'map-day-tabs-inline';
+      var other = document.getElementById(otherId);
+      if (other) {
+        var idx = i;
+        other.querySelectorAll('.map-dtab').forEach(function(b,j){
+          b.classList.toggle('active', j===idx);
+        });
+      }
+    });
+    el.appendChild(btn);
+  });
+}
+
+function makeMapIcon(color, letter) {
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">'
+    +'<filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter>'
+    +'<path d="M16 0C7.163 0 0 7.163 0 16c0 10 16 24 16 24S32 26 32 16C32 7.163 24.837 0 16 0z" fill="'+color+'" filter="url(#sh)"/>'
+    +'<circle cx="16" cy="16" r="9" fill="white" opacity="0.95"/>'
+    +'<text x="16" y="21" text-anchor="middle" font-size="10" font-weight="800" fill="'+color+'" font-family="sans-serif">'+letter+'</text>'
+    +'</svg>';
+  return L.divIcon({html:svg,className:'',iconSize:[32,40],iconAnchor:[16,40],popupAnchor:[0,-42]});
+}
+
+function makeMapActiveIcon(color, letter) {
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="38" height="48" viewBox="0 0 38 48">'
+    +'<filter id="sh2"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.4"/></filter>'
+    +'<path d="M19 0C9.059 0 1 8.059 1 18c0 11.5 18 30 18 30S37 29.5 37 18C37 8.059 28.941 0 19 0z" fill="'+color+'" filter="url(#sh2)" stroke="white" stroke-width="2"/>'
+    +'<circle cx="19" cy="18" r="10" fill="white" opacity="0.95"/>'
+    +'<text x="19" y="23" text-anchor="middle" font-size="11" font-weight="800" fill="'+color+'" font-family="sans-serif">'+letter+'</text>'
+    +'</svg>';
+  return L.divIcon({html:svg,className:'',iconSize:[38,48],iconAnchor:[19,48],popupAnchor:[0,-50]});
+}
+
+function mapPopupHTML(p) {
+  var noteLines = p.note.split('\n').map(function(l){return l.trim();}).filter(Boolean)
+    .map(function(l){return '<div>'+l+'</div>';}).join('');
+  var catColors={'必逛':'#c43b1e','購物':'#c43b1e','餐廳':'#c43b1e','午餐':'#c43b1e','晚餐':'#c43b1e',
+    '早餐':'#c43b1e','甜點':'#c43b1e','必吃':'#b8882a','🍩甜甜圈':'#b8882a','體驗':'#b8882a',
+    '夕陽':'#b8882a','飯店':'#b8882a','景點':'#2055a0','神社':'#2055a0','交通':'#7a6b55',
+    '選做':'#3d6b45','公園':'#3d6b45'};
+  var catBgMap={'必逛':'#fde4dc','購物':'#fde4dc','景點':'#d8e8f5','神社':'#d8e8f5',
+    '交通':'#ede8df','🍩甜甜圈':'#fdf0c0','體驗':'#fdf0c0','夕陽':'#fdf0c0','飯店':'#fdf0c0',
+    '必吃':'#fdf0c0','選做':'#d8eddc','午餐':'#fde4dc','晚餐':'#fde4dc','早餐':'#fde4dc','甜點':'#fde4dc'};
+  var cc = catColors[p.cat]||'#555';
+  var cb = catBgMap[p.cat]||'#f0ece4';
+  return '<div style="padding:0;">'
+    +'<div style="padding:.65rem .8rem .5rem;border-bottom:1px solid #f0e8d8;">'
+    +'<div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:'+cc+';background:'+cb+';display:inline-block;padding:.1rem .4rem;border-radius:3px;margin-bottom:.18rem;">'+p.cat+'</div>'
+    +'<div style="font-size:.95rem;font-weight:700;color:#18130e;line-height:1.25;margin-bottom:.2rem;">'+p.id+'. '+p.name+'</div>'
+    +'<div style="font-size:.78rem;color:#7a6b55;line-height:1.45;">'+noteLines+'</div>'
+    +'</div>'
+    +'<div style="padding:.45rem .8rem;background:#faf6f0;display:flex;justify-content:space-between;align-items:center;">'
+    +'<span style="font-size:.72rem;color:#7a6b55;">'+(p.time?'🕐 '+p.time:'')+'</span>'
+    +'<a href="'+p.gmap+'" target="_blank" style="font-size:.7rem;font-weight:700;color:#2055a0;text-decoration:none;">🗺 Google Maps →</a>'
+    +'</div></div>';
+}
+
+function renderMapDay(day, mapInst, sidebarId, which) {
+  // Clear markers
+  var markers = which==='N' ? mapMarkersN : mapMarkersFs;
+  markers.forEach(function(m){mapInst.removeLayer(m);});
+  if (which==='N') { mapMarkersN=[]; mapActiveIdx=-1; }
+  else { mapMarkersFs=[]; mapActiveIdxFs=-1; }
+
+  var sb = document.getElementById(sidebarId);
+  if (!sb) return;
+  sb.innerHTML = '<div class="map-sidebar-day-header"><h3>'+day.label+'　'+day.date+'</h3><p>'+day.desc+'</p></div>';
+
+  var newMarkers = [];
+  day.places.forEach(function(p, i) {
+    var item = document.createElement('div');
+    item.className = 'map-place-item';
+    item.dataset.idx = i;
+    item.innerHTML = '<div class="map-place-dot" style="background:'+p.color+'">'+p.id+'</div>'
+      +'<div class="map-place-info"><div class="map-place-name">'+p.name+'</div>'
+      +'<div class="map-place-meta">'+p.note.split('\n')[0]+(p.time?' · '+p.time:'')+'</div></div>';
+    item.addEventListener('click', function(){activateMapPlace(i, day, mapInst, sidebarId, which);});
+    sb.appendChild(item);
+
+    var mk = L.marker([p.lat, p.lon], {icon: makeMapIcon(p.color, p.id)})
+      .addTo(mapInst)
+      .bindPopup(mapPopupHTML(p), {maxWidth:240, minWidth:220});
+    mk.on('click', function(){activateMapPlace(i, day, mapInst, sidebarId, which);});
+    newMarkers.push(mk);
+  });
+
+  if (which==='N') mapMarkersN = newMarkers;
+  else mapMarkersFs = newMarkers;
+
+  if (day.places.length > 0) {
+    var bounds = L.latLngBounds(day.places.map(function(p){return[p.lat,p.lon];}));
+    mapInst.fitBounds(bounds, {padding:[40,40], maxZoom:day.zoom});
+  }
+}
+
+function activateMapPlace(idx, day, mapInst, sidebarId, which) {
+  var markers = which==='N' ? mapMarkersN : mapMarkersFs;
+  var activeIdx = which==='N' ? mapActiveIdx : mapActiveIdxFs;
+
+  if (activeIdx >= 0 && markers[activeIdx]) {
+    markers[activeIdx].setIcon(makeMapIcon(day.places[activeIdx].color, day.places[activeIdx].id));
+  }
+  var items = document.getElementById(sidebarId).querySelectorAll('.map-place-item');
+  items.forEach(function(it){it.classList.remove('active');});
+
+  if (which==='N') mapActiveIdx = idx; else mapActiveIdxFs = idx;
+  var p = day.places[idx];
+  if (markers[idx]) {
+    markers[idx].setIcon(makeMapActiveIcon(p.color, p.id));
+    markers[idx].openPopup();
+    mapInst.panTo([p.lat, p.lon], {animate:true, duration:0.5});
+  }
+  if (items[idx]) {
+    items[idx].classList.add('active');
+    items[idx].scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+}
+
+// ── MAXIMIZE / MINIMIZE ──
+function mapMaximize() {
+  var fsEl = document.getElementById('map-fullscreen');
+  fsEl.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  if (!leafMapFs) {
+    leafMapFs = L.map('leaflet-map-fs', {zoomControl:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19
+    }).addTo(leafMapFs);
+    L.control.zoom({position:'topright'}).addTo(leafMapFs);
+    buildMapDayTabs('map-day-tabs-fs', leafMapFs, 'FS');
+  }
+
+  // Find current active day idx
+  var curIdx = 0;
+  MAP_DAYS.forEach(function(d,i){if(d.id===mapCurrentDayId) curIdx=i;});
+
+  setTimeout(function(){
+    leafMapFs.invalidateSize();
+    var day = MAP_DAYS[curIdx];
+    renderMapDay(day, leafMapFs, 'map-sidebar-fs', 'FS');
+    // Sync tab UI
+    document.getElementById('map-day-tabs-fs').querySelectorAll('.map-dtab').forEach(function(b,j){
+      b.classList.toggle('active', j===curIdx);
+    });
+  }, 100);
+}
+
+function mapMinimize() {
+  var fsEl = document.getElementById('map-fullscreen');
+  fsEl.classList.remove('active');
+  document.body.style.overflow = '';
+  if (leafMap) setTimeout(function(){leafMap.invalidateSize();}, 80);
+}
 </script>
 </body>
 </html>
