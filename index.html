@@ -755,7 +755,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 <div class="panel" id="panel-tips">
   <div class="tipc warn">
     <h4>⚠️ 天氣與必備物品</h4>
-    <p>5月藤澤・橫濱・鎌倉，白天20–25°C，早晚較涼，建議攜帶薄外套。5/9–16應無梅雨，但備折疊傘以防萬一。</p>
+    <p>最新預報（5/8發布）：5/9–12晴天為主，白天16–24°C舒適；5/13多雲（降雨30%），5/14–15有雨（降雨60–70%），務必帶摺疊傘；5/16回台灣當天轉晴，最高27°C。全程早晚涼，建議隨身備薄外套。</p>
   </div>
   <div class="tipc blue">
     <h4>🚃 票券總攻略</h4>
@@ -893,7 +893,7 @@ function showTab(t){
 // ══════════════════════════════════════════
 var days=[
   {n:1,date:'5/9 (六)',title:'抵達日本！',sub:'成田機場 → 大船 → 藤澤本町 → OK超市',
-   tags:['tp','ta'],weather:{sky:'陰天陣雨',temp:'17–20°C',rain:'70%'},tid:'t1',
+   tags:['tp','ta'],weather:{sky:'晴時多雲',temp:'16–24°C'},tid:'t1',
    tl:[
     {t:'10:40',tx:'從台北桃園機場出發（JX802）',c:'must'},
     {t:'15:05',tx:'抵達成田機場第2航廈（T2）入境'},
@@ -910,10 +910,10 @@ var days=[
      n:'鮮奶、優格、瓶裝茶、點心'},
     {t:'晚上',tx:'與姑姑一起用晚餐，聊天休息',c:'must'}
    ],
-   note:'📌 第一天不安排觀光，以安頓聊天採購為主。降雨機率70%，記得帶傘。'},
+   note:'📌 第一天不安排觀光，以安頓聊天採購為主。天氣晴朗，舒適好出行。'},
 
   {n:2,date:'5/10 (日)',title:'小田原一日遊',sub:'麵包→蕎麥麵→小田原城→報徳神社→海邊→晚餐',
-   tags:['tf','tp','ts'],weather:{sky:'多雲',temp:'14–22°C',rain:'60%'},tid:'t2',
+   tags:['tf','tp','ts'],weather:{sky:'晴時多雲',temp:'15–24°C'},tid:'t2',
    tl:[
     {t:'08:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR 東海道線→小田原',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→小田原 JR東海道線約40分¥590'},
@@ -951,7 +951,7 @@ var days=[
 </div>`},
 
   {n:3,date:'5/11 (一)',title:'橫濱 Day 1 + 🍩 I\'m donut！',sub:'寄行李→I\'m donut→百貨→牛鍋晚餐→入住飯店',
-   tags:['tf','ts','ta'],weather:{sky:'晴天',temp:'20–24°C'},tid:'t3',
+   tags:['tf','ts','ta'],weather:{sky:'晴天',temp:'17–23°C'},tid:'t3',
    tl:[
     {t:'09:00',tx:'從藤澤本町出發，搭小田急→藤澤→JR→橫濱',c:'must'},
     {t:'09:30',tx:'橫濱站：轉 JR 根岸線 1站→ 櫻木町站，步行至飯店3F寄行李',c:'must',
@@ -984,7 +984,7 @@ var days=[
    note:'🏨 今晚住 JR EAST METS Premier 橫濱櫻木町（唯一不住親戚家的夜晚）。記得先去飯店寄行李！'},
 
   {n:4,date:'5/12 (二)',title:'橫濱 Day 2 深度遊',sub:'馬車道・元町・山下公園<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/山下公園+横浜\" target=\"_blank\">地圖</a>・紅磚倉庫→纜車回飯店→藤澤本町',
-   tags:['tf','ts'],weather:{sky:'晴天'},tid:'t4',
+   tags:['tf','ts'],weather:{sky:'晴天',temp:'18–24°C'},tid:'t4',
    tl:[
     {t:'09:00',tx:'飯店早餐＋寄放行李（check-out，下午取）',c:'must'},
     {t:'09:30',tx:'☕ Gooz 銀杏並木通店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Gooz+銀杏並木通+横浜\" target=\"_blank\">地圖</a> 平價拿鐵¥200（早餐咖啡）',c:'opt'},
@@ -1015,7 +1015,7 @@ var days=[
    note:'🚡 纜車 YOKOHAMA AIR CABIN 週二平日傍晚人少，強烈推薦體驗一次！'},
 
   {n:5,date:'5/13 (三)',title:'和田塚・長谷・江之島',sub:'早餐→長谷大佛→江之島三社巡禮→夕陽→鰻魚飯',
-   tags:['tp','tf'],weather:{sky:'晴天',temp:'16–25°C'},tid:'t5',
+   tags:['tp','tf'],weather:{sky:'多雲偶晴',temp:'16–25°C',rain:'30%'},tid:'t5',
    tl:[
     {t:'07:00',tx:'從藤澤本町出發，搭小田急→藤澤→江ノ電（買一日票¥800）',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→和田塚 江ノ電往鎌倉方向約10分¥260\n⭐ 座位選右側靠海！'},
@@ -1038,7 +1038,7 @@ var days=[
    note:'⭐ 今天全天使用江ノ電一日票¥800，比單次買票省！5月平日，遊客少，非常舒適。'},
 
   {n:6,date:'5/14 (四)',title:'合羽橋・淺草・藏前 → 表參道',sub:'廚房道具採購→淺草老街→藏前文青區→表參道',
-   tags:['ts','tf'],tid:'t6',
+   tags:['ts','tf'],weather:{sky:'陰天有雨',temp:'17–23°C',rain:'70%'},tid:'t6',
    tl:[
     {t:'08:00',tx:'從藤澤本町出發（越早越好！）',c:'must',
      n:'小田急→藤澤→JR 東海道線→品川→都営浅草線→稲荷町\n總約75分，¥136+¥550+¥310=¥996'},
@@ -1071,7 +1071,7 @@ var days=[
    note:'💡 合羽橋週四開門沒問題（多數店週日公休）。8:00前從藤澤本町出發，9:30搶早場。'},
 
   {n:7,date:'5/15 (五)',title:'鎌倉 洗錢神社・小町通',sub:'早餐→洗錢神社→小町通→八幡宮→晚餐→Uniqlo特價',
-   tags:['tp','tf','ts'],weather:{sky:'晴天',temp:'16–25°C'},tid:'t7',
+   tags:['tp','tf','ts'],weather:{sky:'多雲有雨',temp:'18–26°C',rain:'60%'},tid:'t7',
    tl:[
     {t:'07:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR横須賀線→鎌倉',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→鎌倉 JR横須賀線直達約12分¥230\n⭐ 7:30出發，8:00前抵鎌倉，早去人少'},
@@ -1096,7 +1096,7 @@ var days=[
    note:'✅ 今天5/15（週五）：鎌倉紅谷確定開門＋Uniqlo週五特價日，雙重好處！'},
 
   {n:8,date:'5/16 (六)',title:'藤澤採買 → 成田機場 → 回台灣',sub:'採買→13:00出發→大船NEX→成田→JX805',
-   tags:['ts','tp'],tid:'t8',
+   tags:['ts','tp'],weather:{sky:'晴天',temp:'18–27°C'},tid:'t8',
    tl:[
     {t:'10:00',tx:'藤澤<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/藤沢駅+ショッピング\" target=\"_blank\">地圖</a>最後採買',c:'must',
      n:'Uniqlo（LUMINE 藤沢 5F，10:00–20:00）\n無印良品（OPA 7F，10:00–21:00）\n3coins（JR藤沢駅商場 3F，10:00–21:00）\nOK超市（補飲料零食）'},
