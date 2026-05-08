@@ -81,7 +81,8 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 /* ── PANELS ── */
 .panel{display:none;padding:1rem;}
 .panel.active{display:block;}
-@media(min-width:720px){.panel{max-width:860px;margin:0 auto;padding:1.5rem;}}
+@media(min-width:720px){.panel{max-width:860px;margin:0 auto;padding:1.5rem;}
+#panel-map{max-width:100%;margin:0;padding:0;}}
 
 /* ── UTILITY ── */
 .stitle{
@@ -172,6 +173,15 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
   font-size:.67rem;font-weight:700;padding:.1rem .42rem;border-radius:3px;
   cursor:pointer;border:none;font-family:inherit;margin-top:.28rem;
 }
+/* MAP DAY LINK */
+.maplink{
+  display:inline-flex;align-items:center;gap:.18rem;
+  background:var(--sky);color:#fff;
+  font-size:.67rem;font-weight:700;padding:.1rem .38rem;border-radius:3px;
+  cursor:pointer;border:none;font-family:inherit;margin-top:.28rem;
+  text-decoration:none;
+}
+.maplink:hover{background:var(--sky2);}
 .tlink:hover{background:#7248b8;}
 
 /* ── DAY DETAIL ── */
@@ -385,7 +395,7 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 
 /* ── MAP PANEL ── */
 #panel-map{padding:0!important;}
-.map-panel-wrap{display:flex;flex-direction:column;height:calc(100vh - 96px);position:relative;}
+.map-panel-wrap{display:flex;flex-direction:column;height:calc(100svh - 42px);min-height:500px;position:relative;}
 .map-toolbar{
   display:flex;align-items:center;gap:.5rem;
   padding:.5rem .85rem;background:var(--ink);
@@ -497,13 +507,13 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;f
 <nav class="tabbar">
   <button class="tbtn active" onclick="showTab('overview')">總覽</button>
   <button class="tbtn" onclick="showTab('itinerary')">逐日行程</button>
+  <button class="tbtn" onclick="showTab('map')">🗺 地圖</button>
   <button class="tbtn" onclick="showTab('transport')">🚃 交通指南</button>
   <button class="tbtn" onclick="showTab('nex')">✈ NEX</button>
   <button class="tbtn" onclick="showTab('donut')">🍩 甜甜圈</button>
   <button class="tbtn" onclick="showTab('shopping')">購物</button>
   <button class="tbtn" onclick="showTab('tips')">💡 建議</button>
   <button class="tbtn" onclick="showTab('links')">🔗 連結</button>
-  <button class="tbtn" onclick="showTab('map')">🗺 地圖</button>
 </nav>
 
 <!-- ══════ OVERVIEW ══════ -->
@@ -864,11 +874,17 @@ function showTab(t){
   document.querySelectorAll('.tbtn').forEach(function(b){b.classList.remove('active');});
   var el = document.getElementById('panel-'+t);
   if(el) el.classList.add('active');
-  var tabs=['overview','itinerary','transport','nex','donut','shopping','tips','links','map'];
+  var tabs=['overview','itinerary','map','transport','nex','donut','shopping','tips','links'];
   var i=tabs.indexOf(t);
   var btns=document.querySelectorAll('.tbtn');
   if(i>=0 && btns[i]) btns[i].classList.add('active');
-  if(t==='map') setTimeout(initMapIfNeeded, 80);
+  if(t==='map') {
+    setTimeout(initMapIfNeeded, 80);
+    // scroll so tabbar is at top (map gets full viewport minus just tabbar)
+    var hdr = document.querySelector('.site-header');
+    if(hdr) window.scrollTo({top: hdr.offsetHeight, behavior:'smooth'});
+    return;
+  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -987,8 +1003,8 @@ var days=[
     {t:'17:00',tx:'🧺 紅磚倉庫：Huffnagel 蘭姆葡萄夾心餅乾¥430–450',c:'must',
      n:'11:00–20:00，冷藏，今天吃！'},
     {t:'17:30',tx:'🍜 晚餐：味奈登庵<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/味奈登庵+蕎麦+横浜\" target=\"_blank\">地圖</a> 蕎麥麵總本店（至22:00）平價份量大',c:'opt'},
-    {t:'18:00',tx:'🚡 搭 YOKOHAMA AIR CABIN<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/YOKOHAMA+AIR+CABIN+横浜\" target=\"_blank\">地圖</a> 纜車回飯店（⭐強烈推薦！）',c:'must',
-     n:'運河パーク→桜木町，單程¥1,000，約5分\n40m高空俯瞰港未來，傍晚光線最漂亮\n備案：港未來線（馬車道→桜木町，¥210）'},
+    {t:'18:00',tx:'🚡 搭 YOKOHAMA AIR CABIN 運河パーク駅<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/YOKOHAMA+AIR+CABIN+運河パーク駅\" target=\"_blank\">地圖</a> 纜車回飯店（⭐強烈推薦！）',c:'must',
+     n:'從運河パーク駅搭乘→桜木町，單程¥1,000，約5分\n40m高空俯瞰港未來，傍晚光線最漂亮\n備案：港未來線（馬車道→桜木町，¥210）'},
     {t:'18:30',tx:'🛍️ Colette Mare<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Colette+Mare+桜木町+横浜\" target=\"_blank\">地圖</a> 商場（桜木町旁）',c:'opt',
      n:'必逛：1F Francfranc・2F andST⭐・5F FORMA文具\n有時間再逛：3F Uniqlo・GU / 4F Seria・Muji'},
     {t:'18:30',tx:'🍫 Sils Maria CIAL桜木町店<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/Sils+Maria+CIAL桜木町店\" target=\"_blank\">地圖</a> 生巧克力帶回去！',c:'must',
@@ -1003,7 +1019,7 @@ var days=[
    tl:[
     {t:'07:00',tx:'從藤澤本町出發，搭小田急→藤澤→江ノ電（買一日票¥800）',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→和田塚 江ノ電往鎌倉方向約10分¥260\n⭐ 座位選右側靠海！'},
-    {t:'07:30',tx:'🐟 早餐：ヨリドコロ<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/ヨリドコロ+和田塚+鎌倉\" target=\"_blank\">地圖</a>（和田塚，7:00–17:00）',c:'must',
+    {t:'07:30',tx:'🐟 早餐：ヨリドコロ<a class=\"gmap-link\" href=\"https://www.google.com/maps/place/%E3%83%A8%E3%83%AA%E3%83%89%E3%82%B3%E3%83%AD+%E7%94%B1%E6%AF%94%E3%83%B6%E6%B5%9C%E5%A4%A7%E9%80%9A%E3%82%8A%E5%BA%97/@33.8704213,129.8910069,6z/data=!4m10!1m2!2m1!1z44Oo44Oq44OJ44Kz44Ot!3m6!1s0x601845e92245db21:0xf04d36d6ff688c55!8m2!3d35.3148903!4d139.5458672!15sCg_jg6jjg6rjg4njgrPjg61aESIP44Oo44Oq44OJ44Kz44OtkgEgY2FzdWFsX2phcGFuZXNlX3N0eWxlX3Jlc3RhdXJhbnTgAQA!16s%2Fg%2F11kk8z8d3l\" target=\"_blank\">地圖</a>（和田塚，7:00–17:00）',c:'must',
      n:'烤魚定食¥1,020–¥1,300，鎌倉當地人愛店'},
     {t:'08:30',tx:'長谷站<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/長谷駅+鎌倉+周辺\" target=\"_blank\">地圖</a>下車，周邊散策',c:'must',
      n:'• Boulangerie Ensemble 法國麵包（7:00–17:00）\n• Takeya 大福¥200、糰子¥150、蕨餅¥320，免費送熱茶⭐\n• 力餅家 和菓子（9:00–18:00）\n• 雷神堂長谷大仏店 仙貝（10:00–18:00）'},
@@ -1059,7 +1075,7 @@ var days=[
    tl:[
     {t:'07:30',tx:'從藤澤本町出發，搭小田急→藤澤→JR横須賀線→鎌倉',c:'must',
      n:'藤澤本町→藤澤 小田急2–3分¥136\n藤澤→鎌倉 JR横須賀線直達約12分¥230\n⭐ 7:30出發，8:00前抵鎌倉，早去人少'},
-    {t:'08:00',tx:'🍞 BREAD IT BE<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/BREAD+IT+BE+鎌倉\" target=\"_blank\">地圖</a> 早餐（8:00–17:00）歐式麵包，店外有座位',c:'must'},
+    {t:'08:00',tx:'🍞 BREAD IT BE<a class=\"gmap-link\" href=\"https://www.google.com/maps/place/BREAD+IT+BE/@35.3191779,139.5506962,17z/data=!3m1!4b1!4m6!3m5!1s0x6018457a4d2c7b41:0xb3774b39c1d9d009!8m2!3d35.3191779!4d139.5532711!16s%2Fg%2F11fqpwm2mv\" target=\"_blank\">地圖</a> 早餐（8:00–17:00）歐式麵包，店外有座位',c:'must'},
     {t:'09:00',tx:'⛩️ 洗錢神社（銭洗弁財天<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/銭洗弁財天+宇賀福神社+鎌倉\" target=\"_blank\">地圖</a>宇賀福神社）',c:'must',
      n:'祈求金錢運、事業運\n路線：鎌倉駅西口→步行約20分（上坡）或計程車\n竹簍+香+蠟燭 ¥200\n流程：點蠟燭→燃香→投5円→拜拜→洗錢'},
     {t:'10:30',tx:'⚔️ Hatsune Antique Kamakura 初音美術<a class=\"gmap-link\" href=\"https://www.google.com/maps/search/初音美術+Hatsune+Antique+鎌倉\" target=\"_blank\">地圖</a>（10:00–18:00）',c:'opt',
@@ -1439,13 +1455,18 @@ function buildDay(d,mini){
       +'<div style="display:flex;align-items:center;padding:0 .65rem;color:var(--muted);font-size:.9rem;">▸</div>'
       +'</div></div>';
   }
+  // Map icon button - only show if MAP_DAYS has this day
+  var mapDayId = {1:null,2:'d2',3:'d3',4:'d4',5:'d5',6:'d6',7:'d7',8:null}[d.n];
+  var mapBtn = mapDayId
+    ? '<button class="maplink" onclick="jumpToMapDay(\''+mapDayId+'\',event)" title="查看地圖">🗺 地圖</button>'
+    : '';
   return '<div class="daycard" id="day-'+d.n+'">'
     +'<div class="dayhead" onclick="toggleDay('+d.n+')">'
     +'<div class="daynum">D'+d.n+'</div>'
     +'<div class="daysum">'
     +'<div class="dtitle">'+d.date+'&emsp;'+d.title+'</div>'
     +'<div class="dsub">'+d.sub+'</div>'
-    +'<div class="dtags">'+d.tags.map(tagH).join('')+tBtn+'</div>'
+    +'<div class="dtags">'+d.tags.map(tagH).join('')+tBtn+mapBtn+'</div>'
     +'</div><div class="daytog">▾</div></div>'
     +'<div class="daydet">'
     +wH
@@ -2322,7 +2343,26 @@ function expandAll(){document.querySelectorAll('#itin-days .daycard').forEach(fu
 function collapseAll(){document.querySelectorAll('#itin-days .daycard').forEach(function(c){c.classList.remove('open');});}
 function expandAllT(){document.querySelectorAll('.dtblock').forEach(function(c){c.classList.add('open');});}
 function collapseAllT(){document.querySelectorAll('.dtblock').forEach(function(c){c.classList.remove('open');});}
-</script>
+
+function jumpToMapDay(dayId, e) {
+  if(e) e.stopPropagation();
+  showTab('map');
+  setTimeout(function(){
+    initMapIfNeeded();
+    // Find the day index in MAP_DAYS
+    var idx = 0;
+    MAP_DAYS.forEach(function(d,i){ if(d.id===dayId) idx=i; });
+    // Click the correct tab in the inline map
+    var tabs = document.getElementById('map-day-tabs-inline');
+    if(tabs){
+      var btns = tabs.querySelectorAll('.map-dtab');
+      if(btns[idx]) btns[idx].click();
+    }
+    // Scroll map panel to top
+    var panel = document.getElementById('panel-map');
+    if(panel) panel.scrollIntoView({behavior:'smooth',block:'start'});
+  }, 120);
+}</script>
 
 <!-- ══════════════════════════════════════════
      LEAFLET MAP ENGINE
@@ -2334,25 +2374,26 @@ var MAP_DAYS = [
     id:'d2', label:'D2 小田原', date:'5/10 (日)',
     desc:'小田原一日遊', center:[35.252,139.155], zoom:15,
     places:[
-      {id:'A',name:'小田原駅・ミナカ小田原',lat:35.2551,lon:139.1560,cat:'交通',color:'#7a6b55',
+      {id:'1',name:'小田原駅・ミナカ小田原',lat:35.2551,lon:139.1560,cat:'交通',color:'#7a6b55',
        note:'出發點｜パン工房ブンブン Plus 在此',time:'08:30',
        gmap:'https://www.google.com/maps/search/ミナカ小田原'},
-      {id:'B',name:'甘味喫茶 岡西',lat:35.2548,lon:139.1548,cat:'甜點',color:'#c43b1e',
+      {id:'2',name:'甘味喫茶 岡西',lat:35.25570303033046,lon:139.15860215,cat:'甜點',color:'#c43b1e',
+       // ⚠️ 未確認：搜尋結果為「Farmer's kitchen 岡西」，業態不同，請手動核對
        note:'御荻¥400・糰子¥220 外帶送姑姑',time:'10:15',
        gmap:'https://www.google.com/maps/search/甘味喫茶岡西+小田原'},
-      {id:'C',name:'三層究極のそば',lat:35.2540,lon:139.1540,cat:'午餐',color:'#c43b1e',
+      {id:'3',name:'三層究極のそば',lat:35.2537,lon:139.1579,cat:'午餐',color:'#c43b1e',
        note:'天婦羅蕎麥麵¥1,800 11:00–14:00',time:'11:00',
        gmap:'https://www.google.com/maps/search/三層究極のそば+小田原'},
-      {id:'D',name:'小田原城 天守閣',lat:35.2509,lon:139.1535,cat:'景點',color:'#2055a0',
+      {id:'4',name:'小田原城 天守閣',lat:35.2509,lon:139.1535,cat:'景點',color:'#2055a0',
        note:'入場¥510｜報徳二宮神社鄰近',time:'13:20',
        gmap:'https://www.google.com/maps/search/小田原城+天守閣'},
-      {id:'E',name:'報徳二宮神社',lat:35.2500,lon:139.1528,cat:'神社',color:'#2055a0',
+      {id:'5',name:'報徳二宮神社',lat:35.2500,lon:139.1528,cat:'神社',color:'#2055a0',
        note:'祈求財運・事業・學業',time:'14:30',
        gmap:'https://www.google.com/maps/search/報徳二宮神社+小田原'},
-      {id:'F',name:'御幸の浜',lat:35.2451,lon:139.1593,cat:'選做',color:'#3d6b45',
+      {id:'6',name:'御幸の浜',lat:35.2451,lon:139.1593,cat:'選做',color:'#3d6b45',
        note:'海邊散步，可看相模灣（選做）',time:'15:30',
        gmap:'https://www.google.com/maps/search/御幸の浜+小田原'},
-      {id:'G',name:'一膳飯屋 八起',lat:35.2541,lon:139.1555,cat:'晚餐',color:'#c43b1e',
+      {id:'7',name:'一膳飯屋 八起',lat:35.2541,lon:139.1555,cat:'晚餐',color:'#c43b1e',
        note:'生魚片+炸竹莢魚定食¥1,650',time:'17:30',
        gmap:'https://www.google.com/maps/search/一膳飯屋八起+小田原'},
     ]
@@ -2361,31 +2402,28 @@ var MAP_DAYS = [
     id:'d3', label:'D3 橫濱①', date:'5/11 (一)',
     desc:'I\'m donut + 百貨購物 + 住飯店', center:[35.455,139.630], zoom:14,
     places:[
-      {id:'A',name:'橫濱駅',lat:35.4660,lon:139.6221,cat:'交通',color:'#7a6b55',
+      {id:'1',name:'橫濱駅',lat:35.4660,lon:139.6221,cat:'交通',color:'#7a6b55',
        note:'出發點｜JR・小田急・港未來線交會',time:'09:00',
        gmap:'https://www.google.com/maps/search/横浜駅'},
-      {id:'B',name:'Kamoshika Sports（正確位置⭐）',lat:35.4619,lon:139.6230,cat:'必逛',color:'#c43b1e',
-       note:'登山戶外用品 ウィスポートビル1F\n新高島駅1番出口徒歩5分\n平日11:00–20:00（目標店）',time:'12:30',
-       gmap:'https://www.google.com/maps/search/カモシカスポーツ+横浜+高島'},
-      {id:'B2',name:'Kamoshika Sports（備案舊標記）',lat:35.4673,lon:139.6254,cat:'選做',color:'#7a6b55',
-       note:'原始標記位置（備案參考）',time:'',
-       gmap:'https://www.google.com/maps/search/カモシカスポーツ+横浜+ウィスポートビル'},
-      {id:'C',name:'I\'m donut？横浜',lat:35.4624,lon:139.6369,cat:'🍩甜甜圈',color:'#b8882a',
+      {id:'2',name:"I'm donut？横浜",lat:35.4624,lon:139.6369,cat:'🍩甜甜圈',color:'#b8882a',
        note:'横浜ティンバーワーフ1F｜8:00–19:00\n橫濱限定：マンハッタン・ドバイチョコ',time:'10:00',
        gmap:'https://www.google.com/maps/search/Im+donut+横浜ティンバーワーフ'},
-      {id:'D',name:'JOINUS百貨',lat:35.4653,lon:139.6193,cat:'購物',color:'#c43b1e',
+      {id:'3',name:'Kamoshika Sports',lat:35.4618,lon:139.6232,cat:'必逛',color:'#c43b1e',
+       note:'登山戶外用品 ウィスポートビル1F\n新高島駅1番出口徒歩5分\n平日11:00–20:00',time:'12:30',
+       gmap:'https://www.google.com/maps/search/カモシカスポーツ+横浜+高島'},
+      {id:'4',name:'JOINUS百貨',lat:35.46545706551638,lon:139.62078331534025,cat:'購物',color:'#c43b1e',
        note:'B1 治一郎・鎌倉シャツ\n3F Francfranc｜4F Lattice',time:'11:45',
        gmap:'https://www.google.com/maps/search/横浜JOINUS'},
-      {id:'E',name:'高島屋',lat:35.4656,lon:139.6199,cat:'購物',color:'#c43b1e',
+      {id:'5',name:'高島屋',lat:35.465820802972296, lon:139.62077628650522,cat:'購物',color:'#c43b1e',
        note:'5F 伊東屋文具（ZEBRA Miffy筆！）\nB1 横浜バニラ｜1F 黛珂',time:'',
        gmap:'https://www.google.com/maps/search/横浜高島屋'},
-      {id:'F',name:'SOGO',lat:35.4655,lon:139.6249,cat:'購物',color:'#c43b1e',
+      {id:'6',name:'SOGO',lat:35.4655,lon:139.6249,cat:'購物',color:'#c43b1e',
        note:'7F Loft⭐｜B2 小倉山莊・tulip rose\n荒井屋牛鍋 B2（午餐）',time:'12:00',
        gmap:'https://www.google.com/maps/search/横浜SOGO'},
-      {id:'G',name:'Lumine 橫濱',lat:35.4654,lon:139.6229,cat:'購物',color:'#c43b1e',
+      {id:'7',name:'Lumine 橫濱',lat:35.4654,lon:139.6229,cat:'購物',color:'#c43b1e',
        note:'B2 @cosme Store⭐｜1F HARBS蛋糕\n4F kastane・FREE\'S MART｜B1 淺野屋',time:'',
        gmap:'https://www.google.com/maps/search/ルミネ横浜'},
-      {id:'H',name:'桜木町駅・JR METS',lat:35.4509,lon:139.6311,cat:'飯店',color:'#7a6b55',
+      {id:'8',name:'桜木町駅・JR METS',lat:35.4509,lon:139.6311,cat:'飯店',color:'#7a6b55',
        note:'JR EAST METS Premier 橫濱\n今晚入住！',time:'20:00',
        gmap:'https://www.google.com/maps/search/JR+EAST+METS+Premier+横浜+桜木町'},
     ]
@@ -2394,37 +2432,37 @@ var MAP_DAYS = [
     id:'d4', label:'D4 橫濱②', date:'5/12 (二)',
     desc:'馬車道・元町・山下公園・纜車', center:[35.451,139.638], zoom:14,
     places:[
-      {id:'A',name:'桜木町駅',lat:35.4509,lon:139.6311,cat:'交通',color:'#7a6b55',
+      {id:'1',name:'桜木町駅',lat:35.4509,lon:139.6311,cat:'交通',color:'#7a6b55',
        note:'飯店退房，寄行李後出發',time:'09:00',
        gmap:'https://www.google.com/maps/search/桜木町駅'},
-      {id:'B',name:'横浜市開港記念会館',lat:35.4482,lon:139.6405,cat:'景點',color:'#3d6b45',
+      {id:'2',name:'横浜市開港記念会館',lat:35.4473,lon:139.6413,cat:'景點',color:'#3d6b45',
        note:'免費参観｜大正紅磚建築（選做）\n10:00–16:00',time:'10:00',
        gmap:'https://www.google.com/maps/search/横浜市開港記念会館'},
-      {id:'C',name:'CAESAR 蛋包飯 ✅已預訂',lat:35.4479,lon:139.6391,cat:'午餐',color:'#c43b1e',
+      {id:'3',name:'CAESAR 蛋包飯 ✅已預訂',lat:35.4483,lon:139.6434,cat:'午餐',color:'#c43b1e',
        note:'✅ 已預訂！11:00 到達\n商業午餐¥2,500｜關內站步行5分',time:'11:00',
        gmap:'https://www.google.com/maps/search/CAESAR+オムライス+関内+横浜'},
-      {id:'D',name:'Sils Maria 馬車道本店',lat:35.4485,lon:139.6362,cat:'甜點',color:'#c43b1e',
+      {id:'4',name:'Sils Maria 馬車道本店',lat:35.4485,lon:139.6362,cat:'甜點',color:'#c43b1e',
        note:'生巧克力・可可霜淇淋¥500',time:'12:30',
        gmap:'https://www.google.com/maps/search/シルスマリア+馬車道+横浜'},
-      {id:'E',name:'Belle Plage',lat:35.4405,lon:139.6486,cat:'購物',color:'#c43b1e',
+      {id:'5',name:'Belle Plage',lat:35.4405,lon:139.6486,cat:'購物',color:'#c43b1e',
        note:'元町｜袋裝巧克力送同事\n10:30–19:00',time:'14:00',
        gmap:'https://www.google.com/maps/search/Belle+Plage+元町+横浜'},
-      {id:'F',name:'La Théière 紅茶',lat:35.4426,lon:139.6537,cat:'購物',color:'#c43b1e',
+      {id:'6',name:'La Théière 紅茶',lat:35.4426,lon:139.6537,cat:'購物',color:'#c43b1e',
        note:'元町紅茶専門店⭐\n元町デュエット必買',time:'14:00',
        gmap:'https://www.google.com/maps/search/La+Theiere+元町+横浜'},
-      {id:'G',name:'山下公園',lat:35.4458,lon:139.6498,cat:'景點',color:'#3d6b45',
+      {id:'7',name:'山下公園',lat:35.4458,lon:139.6498,cat:'景點',color:'#3d6b45',
        note:'5月玫瑰花季！背景橫濱灣大景',time:'16:00',
        gmap:'https://www.google.com/maps/search/山下公園+横浜'},
-      {id:'H',name:'象鼻公園',lat:35.4501,lon:139.6429,cat:'景點',color:'#3d6b45',
+      {id:'8',name:'象鼻公園',lat:35.4501,lon:139.6429,cat:'景點',color:'#3d6b45',
        note:'特殊造型碼頭，橫濱地標',time:'16:30',
        gmap:'https://www.google.com/maps/search/象の鼻公園+横浜'},
-      {id:'I',name:'橫濱紅磚倉庫',lat:35.4526,lon:139.6429,cat:'購物',color:'#c43b1e',
+      {id:'9',name:'橫濱紅磚倉庫',lat:35.4526,lon:139.6429,cat:'購物',color:'#c43b1e',
        note:'Huffnagel 蘭姆葡萄夾心¥430–450\n今天吃！11:00–20:00',time:'17:00',
        gmap:'https://www.google.com/maps/search/横浜赤レンガ倉庫'},
-      {id:'J',name:'AIR CABIN 纜車',lat:35.4514,lon:139.6314,cat:'體驗',color:'#b8882a',
-       note:'⭐強烈推薦！¥1,000単程\n40m高空俯瞰港未來，傍晚最美',time:'18:00',
-       gmap:'https://www.google.com/maps/search/YOKOHAMA+AIR+CABIN'},
-      {id:'K',name:'Colette Mare',lat:35.4522,lon:139.6307,cat:'購物',color:'#2055a0',
+      {id:'10',name:'YOKOHAMA AIR CABIN 運河パーク駅',lat:35.4533,lon:139.6383,cat:'體驗',color:'#b8882a',
+       note:'⭐強烈推薦！¥1,000単程\n40m高空俯瞰港未來，傍晚最美\n從運河パーク駅搭乘→桜木町',time:'18:00',
+       gmap:'https://www.google.com/maps/search/YOKOHAMA+AIR+CABIN+運河パーク駅'},
+      {id:'11',name:'Colette Mare',lat:35.4522,lon:139.6307,cat:'購物',color:'#2055a0',
        note:'1F Francfranc｜2F andST⭐\n3F Uniqlo・GU｜5F FORMA文具',time:'18:30',
        gmap:'https://www.google.com/maps/search/Colette+Mare+横浜+桜木町'},
     ]
@@ -2433,64 +2471,67 @@ var MAP_DAYS = [
     id:'d5', label:'D5 江之島', date:'5/13 (三)',
     desc:'和田塚・長谷大佛・江之島夕陽', center:[35.312,139.508], zoom:13,
     places:[
-      {id:'A',name:'藤澤駅（出發）',lat:35.3389,lon:139.4875,cat:'交通',color:'#7a6b55',
+      {id:'1',name:'藤澤駅（出發）',lat:35.3389,lon:139.4875,cat:'交通',color:'#7a6b55',
        note:'江之電 往鎌倉方向｜買一日票¥800',time:'07:00',
        gmap:'https://www.google.com/maps/search/藤沢駅'},
-      {id:'B',name:'和田塚駅・ヨリドコロ',lat:35.3231,lon:139.5424,cat:'早餐',color:'#c43b1e',
+      {id:'2',name:'和田塚駅',lat:35.313706345214214,lon:139.54541881831193,cat:'交通',color:'#7a6b55',
+       note:'江之電 和田塚站｜下車後步行至ヨリドコロ',time:'07:30',
+       gmap:'https://www.google.com/maps/place/%E5%92%8C%E7%94%B0%E5%A1%9A%E8%BB%8A%E7%AB%99/@35.3095679,139.5334638,16.55z/data=!4m12!1m5!3m4!2zMzXCsDE4JzM1LjAiTiAxMznCsDMyJzA1LjYiRQ!8m2!3d35.3097106!4d139.5348944!3m5!1s0x601845e8f30bd7d5:0xa339ca4759391de2!8m2!3d35.3137116!4d139.5454342!16s%2Fm%2F02vnks2'},
+      {id:'3',name:'ヨリドコロ（早餐）',lat:35.314933515549775,lon:139.54590084061098,cat:'早餐',color:'#c43b1e',
        note:'烤魚定食¥1,020–¥1,300\n7:00–17:00',time:'07:30',
-       gmap:'https://www.google.com/maps/search/ヨリドコロ+和田塚+鎌倉'},
-      {id:'C',name:'Kotori 文具店',lat:35.3215,lon:139.5338,cat:'購物',color:'#c43b1e',
+       gmap:'https://www.google.com/maps/place/%E3%83%A8%E3%83%AA%E3%83%89%E3%82%B3%E3%83%AD+%E7%94%B1%E6%AF%94%E3%83%B6%E6%B5%9C%E5%A4%A7%E9%80%9A%E3%82%8A%E5%BA%97/@33.8704213,129.8910069,6z/data=!4m10!1m2!2m1!1z44Oo44Oq44OJ44Kz44Ot!3m6!1s0x601845e92245db21:0xf04d36d6ff688c55!8m2!3d35.3148903!4d139.5458672!15sCg_jg6jjg6rjg4njgrPjg61aESIP44Oo44Oq44OJ44Kz44OtkgEgY2FzdWFsX2phcGFuZXNlX3N0eWxlX3Jlc3RhdXJhbnTgAQA!16s%2Fg%2F11kk8z8d3l'},
+      {id:'4',name:'Kotori 文具店',lat:35.31499975102762,lon:139.55209519819243,cat:'購物',color:'#c43b1e',
        note:'11:00–18:00⭐可愛文具聖地',time:'11:00',
-       gmap:'https://www.google.com/maps/search/Kotori+文具+長谷+鎌倉'},
-      {id:'D',name:'鎌倉大佛（高徳院）',lat:35.3168,lon:139.5357,cat:'景點',color:'#2055a0',
+       gmap:'https://www.google.com/maps/place/Kotori/@35.3149064,139.5519458,20.47z/data=!4m6!3m5!1s0x601845dccaf903ad:0xf4e97ed434ca33f8!8m2!3d35.3149807!4d139.5520946!16s%2Fg%2F1ptvrqydn?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D/maps/place/Kotori/@35.3149807,139.5495197,17z/data=!3m1!4b1!4m6!3m5!1s0x601845dccaf903ad:0xf4e97ed434ca33f8!8m2!3d35.3149807!4d139.5520946!16s%2Fg%2F1ptvrqydn'},
+      {id:'5',name:'鎌倉大佛（高徳院）',lat:35.3168,lon:139.5357,cat:'景點',color:'#2055a0',
        note:'入場¥300｜江之電一日票折¥100\n8:00–17:30',time:'10:00',
        gmap:'https://www.google.com/maps/search/高徳院+鎌倉大仏'},
-      {id:'E',name:'Cafe vivement dimanche',lat:35.3204,lon:139.5512,cat:'午餐',color:'#c43b1e',
+      {id:'6',name:'Cafe vivement dimanche',lat:35.3204,lon:139.5512,cat:'午餐',color:'#c43b1e',
        note:'蛋包飯¥650｜栗子布丁聖代¥950',time:'11:30',
        gmap:'https://www.google.com/maps/search/Cafe+vivement+dimanche+鎌倉'},
-      {id:'F',name:'江之島駅',lat:35.3023,lon:139.4886,cat:'交通',color:'#7a6b55',
+      {id:'7',name:'江之島駅',lat:35.31123155501466,lon:139.48741658650522,cat:'交通',color:'#7a6b55',
        note:'→弁天橋步行10分到島上\n購エスカー全程¥360',time:'13:00',
        gmap:'https://www.google.com/maps/search/江ノ島駅'},
-      {id:'G',name:'江之島 入口（弁天橋）',lat:35.3003,lon:139.4815,cat:'景點',color:'#2055a0',
+      {id:'8',name:'江之島 入口（弁天橋）',lat:35.30406535185239,lon:139.4819185771665,cat:'景點',color:'#2055a0',
        note:'三社巡禮路線起點\n仲見世通→邊津宮→中津宮→奧津宮',time:'13:15',
-       gmap:'https://www.google.com/maps/search/江の島+弁天橋'},
-      {id:'H',name:'稚兒之淵',lat:35.2986,lon:139.4770,cat:'夕陽',color:'#b8882a',
+       gmap:'https://www.google.com/maps/place/%E6%B1%9F%E4%B9%8B%E5%B3%B6%E5%BC%81%E5%A4%A9%E6%A9%8B/@35.3036047,139.4813764,17.94z/data=!4m14!1m7!3m6!1s0x60184f020b633871:0x1e050e6fc9e9a1cd!2z5rGf5LmL5bO2!8m2!3d35.3110477!4d139.4873844!16s%2Fm%2F02qnylf!3m5!1s0x60184f21aff10321:0xd8955f9bfcb5e118!8m2!3d35.3039654!4d139.4819516!16s%2Fg%2F11m9l5lkw_?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'9',name:'稚兒之淵',lat:35.29889871249675,lon:139.47443287286856,cat:'夕陽',color:'#b8882a',
        note:'🌅 精確日落：18:37⭐\n建議18:15前到位！',time:'18:15',
-       gmap:'https://www.google.com/maps/search/稚児ケ淵+江の島'},
+       gmap:'https://www.google.com/maps/place/%E7%A8%9A%E5%85%92%E4%B9%8B%E6%B7%B5/@35.2992772,139.4769354,17.42z/data=!4m14!1m7!3m6!1s0x60184f020b633871:0x1e050e6fc9e9a1cd!2z5rGf5LmL5bO2!8m2!3d35.3110477!4d139.4873844!16s%2Fm%2F02qnylf!3m5!1s0x60184f76a182385d:0xfdba5f5725ecffd4!8m2!3d35.2987385!4d139.4744322!16s%2Fg%2F11h6yxhrpj?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
     ]
   },
   {
     id:'d6', label:'D6 合羽橋', date:'5/14 (四)',
     desc:'合羽橋・淺草・藏前', center:[35.710,139.790], zoom:15,
     places:[
-      {id:'A',name:'稻荷町駅',lat:35.7129,lon:139.7856,cat:'交通',color:'#7a6b55',
+      {id:'1',name:'稻荷町駅',lat:35.71154466358328, lon:139.78269482883505,cat:'交通',color:'#7a6b55',
        note:'都營淺草線 A17\n合羽橋道具街入口步行5分',time:'09:15',
-       gmap:'https://www.google.com/maps/search/稲荷町駅'},
-      {id:'B',name:'田窯（でんがま）',lat:35.7122,lon:139.7858,cat:'購物',color:'#c43b1e',
+       gmap:'https://www.google.com/maps/place/%E7%A8%BB%E8%8D%B7%E7%94%BA%EF%BC%88%E6%9D%B1%E4%BA%AC%EF%BC%89/@35.7113443,139.7826841,17z/data=!3m1!4b1!4m6!3m5!1s0x60188e9804104df5:0xa28f9c8337a15a43!8m2!3d35.7113443!4d139.7826841!16s%2Fm%2F02vlhz5?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'2',name:'田窯（でんがま）',lat:35.71060953121849,lon:139.78848494232983,cat:'購物',color:'#c43b1e',
        note:'和食器｜合羽橋入口第一站\n10:00–18:00',time:'09:30',
-       gmap:'https://www.google.com/maps/search/田窯+でんがま+合羽橋'},
-      {id:'C',name:'鍔屋菜刀店',lat:35.7133,lon:139.7870,cat:'購物',color:'#c43b1e',
+       gmap:'https://www.google.com/maps/place/%E7%94%B0%E7%AA%AF/@35.7104353,139.7885064,17z/data=!3m1!4b1!4m6!3m5!1s0x60188ebe83463ba1:0x63a8321860f1f363!8m2!3d35.7104353!4d139.7885064!16s%2Fg%2F1tlqp_8b?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'3',name:'鍔屋菜刀店',lat:35.7145,lon:139.7892,cat:'購物',color:'#c43b1e',
        note:'水果刀¥1,822｜10:00–17:00',time:'10:00',
        gmap:'https://www.google.com/maps/search/鍔屋菜刀店+合羽橋'},
-      {id:'D',name:'釜淺商店',lat:35.7138,lon:139.7887,cat:'購物',color:'#c43b1e',
+      {id:'4',name:'釜淺商店',lat:35.7138,lon:139.7887,cat:'購物',color:'#c43b1e',
        note:'水果刀¥1,900 可免費刻字⭐\n11:00–17:30',time:'11:00',
        gmap:'https://www.google.com/maps/search/釜浅商店+合羽橋'},
-      {id:'E',name:'馬嶋屋・ZAKA',lat:35.7136,lon:139.7880,cat:'購物',color:'#c43b1e',
+      {id:'5',name:'馬嶋屋・ZAKA',lat:35.7125,lon:139.7887,cat:'購物',color:'#c43b1e',
        note:'馬嶋屋：烘焙模具 9:30–17:30\nZAKA：茶筅・抹茶碗',time:'10:30',
        gmap:'https://www.google.com/maps/search/馬嶋屋菓子道具店+合羽橋'},
-      {id:'F',name:'CONFECT-CONCEPT',lat:35.7125,lon:139.7884,cat:'甜點',color:'#c43b1e',
+      {id:'6',name:'CONFECT-CONCEPT',lat:35.7096,lon:139.7849,cat:'甜點',color:'#c43b1e',
        note:'甜點外帶¥310起\n10:30–18:30',time:'10:30',
        gmap:'https://www.google.com/maps/search/CONFECT-CONCEPT+合羽橋'},
-      {id:'G',name:'尾張屋 蕎麥麵',lat:35.7135,lon:139.7892,cat:'午餐',color:'#c43b1e',
+      {id:'7',name:'尾張屋 蕎麥麵',lat:35.71144022362196,lon:139.79364148238128,cat:'午餐',color:'#c43b1e',
        note:'午餐 11:30–20:00',time:'13:00',
-       gmap:'https://www.google.com/maps/search/尾張屋+蕎麦+合羽橋'},
-      {id:'H',name:'淺草（仲見世通）',lat:35.7148,lon:139.7967,cat:'景點',color:'#2055a0',
+       gmap:'https://www.google.com/maps/place/%E5%B0%BE%E5%BC%B5%E5%B1%8B+%E6%9C%AC%E5%BA%97/@35.7113597,139.7921777,17z/data=!3m1!4b1!4m6!3m5!1s0x60188ec0a6117f9d:0x73e420b5bed37c66!8m2!3d35.7113597!4d139.7936745!16s%2Fg%2F1vcq7ltv?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'8',name:'淺草（仲見世通）',lat:35.71201466535407,lon:139.79647481349477,cat:'景點',color:'#2055a0',
        note:'和泉屋仙貝・壽壽喜園抹茶冰淇淋\n淺草寺鄰近',time:'14:15',
-       gmap:'https://www.google.com/maps/search/浅草+仲見世通'},
-      {id:'I',name:'KURAMAE CANNELE',lat:35.7021,lon:139.7904,cat:'甜點',color:'#c43b1e',
+       gmap:'https://www.google.com/maps/place/%E4%BB%B2%E8%A6%8B%E4%B8%96%E5%95%86%E5%BA%97%E8%A1%97/@35.7124241,139.796507,17z/data=!4m15!1m8!3m7!1s0x60188ec12e2c51d5:0xf1d0cb578b3d5e97!2zTmFrYW1pc2UsIEFzYWt1c2EsIFRhaXRvIENpdHksIFRva3lvIDExMS0wMDMy5pel5pys!3b1!8m2!3d35.7124241!4d139.796507!16s%2Fg%2F11rk533v_2!3m5!1s0x60188ec130fbdd3d:0x5135221a7fa19dbc!8m2!3d35.7118413!4d139.7964542!16s%2Fg%2F11rg73mbfv?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'9',name:'KURAMAE CANNELE',lat:35.7021,lon:139.7904,cat:'甜點',color:'#c43b1e',
        note:'藏前｜可麗露+霜淇淋¥680\n11:00–18:00',time:'15:15',
        gmap:'https://www.google.com/maps/search/KURAMAE+CANNELE+蔵前'},
-      {id:'J',name:'marble 蔵前',lat:35.7019,lon:139.7888,cat:'甜點',color:'#c43b1e',
+      {id:'10',name:'marble 蔵前',lat:35.7019,lon:139.7888,cat:'甜點',color:'#c43b1e',
        note:'藏前｜布丁・巴斯克乳酪¥680\n9:00–19:00',time:'15:30',
        gmap:'https://www.google.com/maps/search/marble+蔵前+布丁'},
     ]
@@ -2499,28 +2540,28 @@ var MAP_DAYS = [
     id:'d7', label:'D7 鎌倉', date:'5/15 (五)',
     desc:'洗錢神社・小町通・八幡宮', center:[35.323,139.547], zoom:15,
     places:[
-      {id:'A',name:'鎌倉駅',lat:35.3217,lon:139.5508,cat:'交通',color:'#7a6b55',
+      {id:'1',name:'鎌倉駅',lat:35.319232740971565,lon:139.55039234232981,cat:'交通',color:'#7a6b55',
        note:'JR横須賀線｜7:30到，早去人少！',time:'08:00',
-       gmap:'https://www.google.com/maps/search/鎌倉駅'},
-      {id:'B',name:'BREAD IT BE',lat:35.3230,lon:139.5495,cat:'早餐',color:'#c43b1e',
+       gmap:'https://www.google.com/maps/place/%E9%90%AE%E5%80%89/@35.3190401,139.5504138,17z/data=!4m10!1m2!2m1!1z6Y6M5YCJ6aeF!3m6!1s0x601845c22a4f73df:0xc7e93a3e84fb0e0e!8m2!3d35.3190156!4d139.5504157!15sCgnpjozlgInpp4WSAQ10cmFpbl9zdGF0aW9u4AEA!16s%2Fg%2F1tfzb46k?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'2',name:'BREAD IT BE',lat:35.3192,lon:139.5533,cat:'早餐',color:'#c43b1e',
        note:'歐式麵包早餐｜8:00–17:00',time:'08:00',
-       gmap:'https://www.google.com/maps/search/Bread+It+Be+鎌倉'},
-      {id:'C',name:'洗錢神社（銭洗弁財天）',lat:35.3257,lon:139.5422,cat:'神社',color:'#2055a0',
+       gmap:'https://www.google.com/maps/place/BREAD+IT+BE/@35.3191779,139.5506962,17z/data=!3m1!4b1!4m6!3m5!1s0x6018457a4d2c7b41:0xb3774b39c1d9d009!8m2!3d35.3191779!4d139.5532711!16s%2Fg%2F11fqpwm2mv'},
+      {id:'3',name:'洗錢神社（銭洗弁財天）',lat:35.3257,lon:139.5422,cat:'神社',color:'#2055a0',
        note:'一組¥200（竹簍+香+蠟燭）\n祈金錢運・事業運｜16:30關門',time:'09:00',
        gmap:'https://www.google.com/maps/search/銭洗弁財天+宇賀福神社+鎌倉'},
-      {id:'D',name:'八十八鎌倉抹茶',lat:35.3220,lon:139.5505,cat:'必吃',color:'#b8882a',
+      {id:'4',name:'八十八鎌倉抹茶',lat:35.3191,lon:139.5493,cat:'必吃',color:'#b8882a',
        note:'⭐必吃｜10:00–18:00\nHatoya Kamakura',time:'10:30',
        gmap:'https://www.google.com/maps/search/八十八鎌倉抹茶+Hatoya+Kamakura'},
-      {id:'E',name:'Cafe vivement dimanche',lat:35.3204,lon:139.5512,cat:'午餐',color:'#c43b1e',
+      {id:'5',name:'Cafe vivement dimanche',lat:35.3204,lon:139.5512,cat:'午餐',color:'#c43b1e',
        note:'蛋包飯¥650｜栗子布丁聖代¥950',time:'11:00',
        gmap:'https://www.google.com/maps/search/Cafe+vivement+dimanche+鎌倉'},
-      {id:'F',name:'小町通商店街',lat:35.3228,lon:139.5525,cat:'購物',color:'#c43b1e',
+      {id:'6',name:'小町通商店街',lat:35.32049297995386,lon:139.55174422883505,cat:'購物',color:'#c43b1e',
        note:'豐島屋 鳩サブレー8入¥1,220\narbre noir 抹茶燒¥90｜Beller銀飾',time:'12:00',
-       gmap:'https://www.google.com/maps/search/鎌倉+小町通+商店街'},
-      {id:'G',name:'鶴岡八幡宮',lat:35.3260,lon:139.5563,cat:'景點',color:'#2055a0',
+       gmap:'https://www.google.com/maps/place/%E5%B0%8F%E7%94%BA%E9%80%9A%E5%95%86%E5%BA%97%E8%A1%97/@35.3203179,139.5517335,17z/data=!3m1!4b1!4m6!3m5!1s0x601845000ae0b8bb:0x97b367ea5c78c3bb!8m2!3d35.3203179!4d139.5517335!16s%2Fg%2F11y879w230?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D'},
+      {id:'7',name:'鶴岡八幡宮',lat:35.3260,lon:139.5563,cat:'景點',color:'#2055a0',
        note:'¥300｜鎌倉最重要神社',time:'14:00',
        gmap:'https://www.google.com/maps/search/鶴岡八幡宮+鎌倉'},
-      {id:'H',name:'鎌倉シャツ（Maker\'s Shirt）',lat:35.3225,lon:139.5520,cat:'購物',color:'#c43b1e',
+      {id:'8',name:'鎌倉シャツ（Maker\'s Shirt）',lat:35.323180512990234,lon:139.55676405582463,cat:'購物',color:'#c43b1e',
        note:'⭐必去｜日本製高質感襯衫\n11:00–18:00',time:'15:00',
        gmap:'https://www.google.com/maps/search/鎌倉シャツ+Makers+Shirt+KAMAKURA'},
     ]
